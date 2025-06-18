@@ -1,4 +1,4 @@
-@extends('ClientView.Layout.main')
+@extends('ClientView.Layouts.main')
 @section('main-section')
 
 @endsection
