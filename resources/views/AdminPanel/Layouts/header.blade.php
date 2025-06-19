@@ -32,10 +32,10 @@
           <ul id="sidebarnav">
             <li class="nav-small-cap">
               <iconify-icon icon="solar:menu-dots-linear" class="nav-small-cap-icon fs-4"></iconify-icon>
-              <span class="hide-menu">Home</span>
+              {{-- <span class="hide-menu">Home</span> --}}
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link primary-hover-bg" href="./index.html" aria-expanded="false">
+              <a class="sidebar-link primary-hover-bg" href="" aria-expanded="false">
                 <iconify-icon icon="solar:atom-line-duotone"></iconify-icon>
                 <span class="hide-menu">Dashboard</span>
               </a>
@@ -45,39 +45,123 @@
             <!-- ---------------------------------- -->
             <li class="sidebar-item">
               <a class="sidebar-link primary-hover-bg justify-content-between" target="_blank"
-                href="https://bootstrapdemos.wrappixel.com/spike/dist/main/index.html" aria-expanded="false">
+                href="" aria-expanded="false">
                 <div class="d-flex align-items-center gap-6">
                   <span class="d-flex">
                     <iconify-icon icon="solar:screencast-2-line-duotone" class=""></iconify-icon>
                   </span>
-                  <span class="hide-menu">Dashboard 1</span>
+                  <span class="hide-menu">Banner</span>
                 </div>
-                <span class="hide-menu badge text-bg-primary fs-1 py-1 px-2 rounded-pill">Pro</span>
+                <span class="hide-menu badge text-bg-primary fs-1 py-1 px-2 rounded-pill"></span>
               </a>
             </li>
             <li class="sidebar-item">
               <a class="sidebar-link primary-hover-bg justify-content-between" target="_blank"
-                href="https://bootstrapdemos.wrappixel.com/spike/dist/main/index2.html" aria-expanded="false">
+                href="" aria-expanded="false">
                 <div class="d-flex align-items-center gap-6">
                   <span class="d-flex">
                     <iconify-icon icon="solar:chart-line-duotone" class=""></iconify-icon>
                   </span>
-                  <span class="hide-menu">Dashboard 2</span>
+                  <span class="hide-menu">Class</span>
                 </div>
-                <span class="hide-menu badge text-bg-primary fs-1 py-1 px-2 rounded-pill">Pro</span>
+                <span class="hide-menu badge text-bg-primary fs-1 py-1 px-2 rounded-pill"></span>
               </a>
             </li>
+
+              <li class="sidebar-item">
+              <a class="sidebar-link primary-hover-bg justify-content-between" target="_blank"
+                href="" aria-expanded="false">
+                <div class="d-flex align-items-center gap-6">
+                  <span class="d-flex">
+                    <iconify-icon icon="solar:chart-line-duotone" class=""></iconify-icon>
+                  </span>
+                  <span class="hide-menu">Sub Class</span>
+                </div>
+                <span class="hide-menu badge text-bg-primary fs-1 py-1 px-2 rounded-pill"></span>
+              </a>
+            </li>
+
+
+              <li class="sidebar-item">
+              <a class="sidebar-link primary-hover-bg justify-content-between" target="_blank"
+                href="" aria-expanded="false">
+                <div class="d-flex align-items-center gap-6">
+                  <span class="d-flex">
+                    <iconify-icon icon="solar:chart-line-duotone" class=""></iconify-icon>
+                  </span>
+                  <span class="hide-menu">Test CLass</span>
+                </div>
+                <span class="hide-menu badge text-bg-primary fs-1 py-1 px-2 rounded-pill"></span>
+              </a>
+            </li>
+
+              <li class="sidebar-item">
+              <a class="sidebar-link primary-hover-bg justify-content-between" target="_blank"
+                href="" aria-expanded="false">
+                <div class="d-flex align-items-center gap-6">
+                  <span class="d-flex">
+                    <iconify-icon icon="solar:chart-line-duotone" class=""></iconify-icon>
+                  </span>
+                  <span class="hide-menu">Question</span>
+                </div>
+                <span class="hide-menu badge text-bg-primary fs-1 py-1 px-2 rounded-pill"></span>
+              </a>
+            </li>
+
+              <li class="sidebar-item">
+              <a class="sidebar-link primary-hover-bg justify-content-between" target="_blank"
+                href="" aria-expanded="false">
+                <div class="d-flex align-items-center gap-6">
+                  <span class="d-flex">
+                    <iconify-icon icon="solar:chart-line-duotone" class=""></iconify-icon>
+                  </span>
+                  <span class="hide-menu">Result</span>
+                </div>
+                <span class="hide-menu badge text-bg-primary fs-1 py-1 px-2 rounded-pill"></span>
+              </a>
+            </li>
+
+              <li class="sidebar-item">
+              <a class="sidebar-link primary-hover-bg justify-content-between" target="_blank"
+                href="" aria-expanded="false">
+                <div class="d-flex align-items-center gap-6">
+                  <span class="d-flex">
+                    <iconify-icon icon="solar:chart-line-duotone" class=""></iconify-icon>
+                  </span>
+                  <span class="hide-menu">Booking Ditails</span>
+                </div>
+                <span class="hide-menu badge text-bg-primary fs-1 py-1 px-2 rounded-pill"></span>
+              </a>
+            </li>
+
+              <li class="sidebar-item">
+              <a class="sidebar-link primary-hover-bg justify-content-between" target="_blank"
+                href="com/spike/dist/main/index2.html" aria-expanded="false">
+                <div class="d-flex align-items-center gap-6">
+                  <span class="d-flex">
+                    <iconify-icon icon="solar:chart-line-duotone" class=""></iconify-icon>
+                  </span>
+                  <span class="hide-menu">User Detial</span>
+                </div>
+                <span class="hide-menu badge text-bg-primary fs-1 py-1 px-2 rounded-pill"></span>
+              </a>
+            </li>
+
+
+
+
+
             <li class="sidebar-item">
-              <a class="sidebar-link primary-hover-bg justify-content-between has-arrow" href="javascript:void(0)"
+              {{-- <a class="sidebar-link primary-hover-bg justify-content-between has-arrow" href="javascript:void(0)"
                 aria-expanded="false">
                 <div class="d-flex align-items-center gap-6">
                   <span class="d-flex">
                     <iconify-icon icon="solar:home-angle-line-duotone"></iconify-icon>
                   </span>
-                  <span class="hide-menu">Front Pages</span>
+                  <span class="hide-menu">SubClass</span>
                 </div>
                 <span class="hide-menu badge text-bg-primary fs-1 py-1 px-2 rounded-pill me-4">Pro</span>
-              </a>
+              </a> --}}
               <ul aria-expanded="false" class="collapse first-level">
                 <li class="sidebar-item">
                   <a class="sidebar-link primary-hover-bg justify-content-between" target="_blank"
@@ -168,11 +252,11 @@
 
             </ul>
           <div
-            class="unlimited-access d-flex align-items-center hide-menu bg-secondary-subtle position-relative mb-7 mt-4 p-3 rounded-3">
+            class=>
             <div class="flex-shrink-0">
-              <h6 class="fw-semibold fs-4 mb-6 text-dark w-75 lh-sm">Check Pro Version</h6>
+              {{-- <h6 class="fw-semibold fs-4 mb-6 text-dark w-75 lh-sm">Check Pro Version</h6>
               <a href="https://www.wrappixel.com/templates/spike-bootstrap-admin-dashboard/?ref=376" target="_blank"
-                class="btn btn-secondary fs-2 fw-semibold lh-sm">Check</a>
+                class="btn btn-secondary fs-2 fw-semibold lh-sm">Check</a> --}}
             </div>
             <div class="unlimited-access-img">
               <img src="../assets/images/backgrounds/sidebar-buynow-bg.png" alt="" class="img-fluid">
