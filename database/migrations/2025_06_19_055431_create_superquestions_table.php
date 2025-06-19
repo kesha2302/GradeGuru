@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id('sq_id');
             $table->unsignedBigInteger('cp_id');
             $table->foreign('cp_id')->references('cp_id')->on('class_prices');
+            $table->integer('question_no');
             $table->string('question');
             $table->string('option1');
             $table->string('option2');
