@@ -45,7 +45,7 @@
             <!-- ---------------------------------- -->
             <li class="sidebar-item">
               <a class="sidebar-link primary-hover-bg justify-content-between" target="_blank"
-                href="" aria-expanded="false">
+                href="{{ route('admin.banner') }}" aria-expanded="false">
                 <div class="d-flex align-items-center gap-6">
                   <span class="d-flex">
                     <iconify-icon icon="solar:screencast-2-line-duotone" class=""></iconify-icon>
@@ -55,6 +55,20 @@
                 <span class="hide-menu badge text-bg-primary fs-1 py-1 px-2 rounded-pill"></span>
               </a>
             </li>
+
+ <li class="sidebar-item">
+              <a class="sidebar-link primary-hover-bg justify-content-between" target="_blank"
+                href="" aria-expanded="false">
+                <div class="d-flex align-items-center gap-6">
+                  <span class="d-flex">
+                    <iconify-icon icon="solar:chart-line-duotone" class=""></iconify-icon>
+                  </span>
+                  <span class="hide-menu">About As</span>
+                </div>
+                <span class="hide-menu badge text-bg-primary fs-1 py-1 px-2 rounded-pill"></span>
+              </a>
+            </li>
+
             <li class="sidebar-item">
               <a class="sidebar-link primary-hover-bg justify-content-between" target="_blank"
                 href="{{url('/ClassNameData')}}" aria-expanded="false">
