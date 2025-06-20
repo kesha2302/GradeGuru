@@ -26,7 +26,7 @@
                      <div class="mb-3">
                         <label class="form-label">Title:</label>
                         <input type="text" name="title" class="form-control" value="{{ $class_names->title }}"
-                            placeholder="Tile of Class" />
+                            placeholder="Title of Class" />
                         @error('title')
                             {{ $message }}
                         @enderror
