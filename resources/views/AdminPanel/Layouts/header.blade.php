@@ -64,7 +64,7 @@
                                     <span class="d-flex">
                                         <iconify-icon icon="solar:chart-line-duotone" class=""></iconify-icon>
                                     </span>
-                                    <span class="hide-menu">About As</span>
+                                    <span class="hide-menu">About Us</span>
                                 </div>
                                 <span class="hide-menu badge text-bg-primary fs-1 py-1 px-2 rounded-pill"></span>
                             </a>

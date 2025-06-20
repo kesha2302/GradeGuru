@@ -27,8 +27,9 @@ public function addBannerForm()
     $bannerdetail->description = '';
     $bannerdetail->image = '';
     $title = 'Add Banner';
+    $url = url('/Admin/banner/store');
 
-    return view('AdminPanel.addbanner', compact('bannerdetail', 'title'));
+    return view('AdminPanel.addbanner', compact('bannerdetail', 'title','url'));
 }
 
 
@@ -103,7 +104,8 @@ public function index()
     {
         $bannerdetail = Banner::findOrFail($id);
         $title = "Update Banner";
-        return view('AdminPanel.addBanner', compact('bannerdetail', 'title'));
+        $url = url('/admin/banner/update') . "/". $id;
+        return view('AdminPanel.addBanner', compact('bannerdetail', 'title','url q'));
     }
 
     public function update(Request $request, $id)
