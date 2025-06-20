@@ -6,8 +6,8 @@
             <h3>{{ $title }}</h3>
         </div>
 
-    <div class="card-body">
-       <form action="{{ isset($bannerdetail->banner_id) ? route('admin.banner.update', $bannerdetail->banner_id) : route('admin.banner.store') }}" method="POST">
+        <div class="card-body">
+            <form action="{{ $url }}" enctype="multipart/form-data" method="POST">
 
                 @csrf
 
