@@ -51,7 +51,7 @@
                                 <tr>
                                     <td>{{ $cn->standard ?: '-' }}</td>
                                     <td>{{$cn->title ?: '-'}}</td>
-                                    <td style="width: 25%; text-align: justify;">
+                                    <td style="text-align: justify;">
                                         @if (!empty($cn->description))
                                             <div class="description-container">
                                                 <span class="description-text"
