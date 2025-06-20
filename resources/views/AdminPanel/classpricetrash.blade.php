@@ -1,7 +1,7 @@
 @extends('AdminPanel.Layouts.main')
 @section('main-section')
 <div class="container-fluid">
-        <h3>Trashed ClassName Data</h3>
+        <h3>Trashed ClassPrice Data</h3>
         <hr>
 
          <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -9,7 +9,7 @@
 
                 <div class="d-flex">
 
-                    <a href="{{ url('/Admin/ClassNameData') }}">
+                    <a href="{{ url('/Admin/ClassPrice') }}">
                         <button class="btn btn-danger ml-2">
                             View ClassName Data</button>
                     </a>
@@ -23,28 +23,29 @@
                 <div class="table-responsive text-center">
                     <table class="table">
                         <thead>
-                            <tr>
-                                <th>Standard</th>
+                          <tr>
+                                <th>ClassName</th>
                                 <th>Title</th>
-                                <th>Description</th>
+                                <th>Feature</th>
+                                <th>Price</th>
                                 <th colspan="2">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($class_names as $cn)
+                            @foreach ($class_price as $cp)
                                 <tr>
-                                    <td>{{ $cn->standard ?: '-' }}</td>
-                                    <td>{{$cn->title ?: '-'}}</td>
-                                    <td style="text-align: justify;">
-                                        @if (!empty($cn->description))
+                                    <td>{{ $cp->classNames->standard ?: '-' }}</td>
+                                    <td>{{$cp->title ?: '-'}}</td>
+                                    <td style="width: 25%; text-align: justify;">
+                                        @if (!empty($cp->feature))
                                             <div class="description-container">
                                                 <span class="description-text"
-                                                    data-truncated="{{ Str::limit($cn->description, 100) }}">
-                                                    {{ Str::limit($cn->description, 100) }}
+                                                    data-truncated="{{ Str::limit($cp->feature, 100) }}">
+                                                    {{ Str::limit($cp->feature, 100) }}
                                                 </span>
-                                                @if (strlen($cn->description) > 100)
+                                                @if (strlen($cp->feature) > 100)
                                                     <button class="btn btn-link btn-sm more-btn"
-                                                        data-description="{{ $cn->description }}">
+                                                        data-description="{{ $cp->feature }}">
                                                         More
                                                     </button>
                                                     <button class="btn btn-link btn-sm less-btn" style="display: none;">
@@ -56,13 +57,14 @@
                                             -
                                         @endif
                                     </td>
+                                    <td>₹{{$cp->price ?: '-'}}</td>
 
                                     <td>
-                                        <a href="{{ route('classnames.forcedelete', ['id' => $cn->class_id]) }}">
+                                        <a href="{{ route('classprice.forcedelete', ['id' => $cp->cp_id]) }}">
                                             <button class="btn btn-danger m-2">Delete</button>
                                         </a>
 
-                                        <a href="{{ route('classnames.restore', ['id' => $cn->class_id]) }}">
+                                        <a href="{{ route('classprice.restore', ['id' => $cp->cp_id]) }}">
                                             <button class="btn btn-primary">Restore</button>
                                         </a>
                                     </td>
@@ -77,7 +79,7 @@
 
         <div class="row">
             <div class="col-md-12 d-flex justify-content-center">
-                {{ $class_names->links('pagination::bootstrap-4') }}
+                {{ $class_price->links('pagination::bootstrap-4') }}
             </div>
         </div>
 

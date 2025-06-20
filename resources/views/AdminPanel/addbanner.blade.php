@@ -7,7 +7,8 @@
     </div>
 
     <div class="card-body">
-       <form action="{{ isset($bannerdetail->banner_id) ? route('admin.banner.update', $bannerdetail->banner_id) : route('admin.banner.store') }}" method="POST">
+       <form action="{{ isset($bannerdetail->banner_id) ? route('admin.banner.update', $bannerdetail->banner_id) : route('admin.banner.store') }}" method="POST"
+        enctype="multipart/form-data">
 
             @csrf
 

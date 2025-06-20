@@ -9,7 +9,11 @@ class ClassPrice extends Model
 {
     use SoftDeletes;
 
-      protected $table = 'class_prices';
-      protected $primaryKey = 'cp_id';
+    protected $table = 'class_prices';
+    protected $primaryKey = 'cp_id';
 
+    public function classNames()
+    {
+        return $this->belongsTo(ClassName::class, 'class_id', 'class_id');
+    }
 }
