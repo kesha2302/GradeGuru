@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\AdminAboutController;
 use App\Http\Controllers\AdminClassNameController;
 use App\Http\Controllers\AdminPanelController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminBannerController;
+use App\Http\Controllers\AdminClassPriceController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -35,13 +37,14 @@ Route::get('/Admin/Classname/frocedelete/{id}', [AdminClassNameController::class
 Route::get('/Admin/Classname/restore/{id}', [AdminClassNameController::class, 'classnamerestore'])->name('classnames.restore');
 
 
-// Change Controller names and method but kepp the route name same for main page, I have set this route names in header file.
-// Make other curd operations routes that will be ok.
+
 Route::get('/Aboutus', [AdminBannerController::class, 'aboutus'])->name('admin.aboutus');
-Route::get('/Admin/ClassPrice', [AdminClassNameController::class, 'index']);
-Route::get('/Admin/RegularQuestions', [AdminClassNameController::class, 'index']);
-Route::get('/Admin/SuperQuestions', [AdminClassNameController::class, 'index']);
-Route::get('/Admin/Result', [AdminClassNameController::class, 'index']);
+Route::get('/Admin/aboutus/add', [AdminAboutController::class, 'addAboutForm'])->name('admin.about.add');
+Route::post('/Admin/aboutus/store', [AdminAboutController::class, 'storeAbout'])->name('admin.banner.store');
+Route::get('/Admin/aboutus/edit/{id}', [AdminAboutController::class, 'editAboutForm'])->name('admin.aboutus.edit');
+Route::post('/Admin/aboutus/update/{id}', [AdminAboutController::class, 'updateAbout'])->name('admin.aboutus.update');
+Route::get('/Admin/aboutus/delete/{id}', [AdminAboutController::class, 'deleteAbout'])->name('admin.aboutus.delete');
+
 
 
 Route::get('/Admin/ClassPrice', [AdminClassPriceController::class, 'index']);
@@ -55,3 +58,8 @@ Route::get('/Admin/Classprice/frocedelete/{id}', [AdminClassPriceController::cla
 Route::get('/Admin/Classprice/restore/{id}', [AdminClassPriceController::class, 'classpricerestore'])->name('classprice.restore');
 
 
+// Change Controller names and method but kepp the route name same for main page, I have set this route names in header file.
+// Make other curd operations routes that will be ok.
+Route::get('/Admin/RegularQuestions', [AdminClassNameController::class, 'index']);
+Route::get('/Admin/SuperQuestions', [AdminClassNameController::class, 'index']);
+Route::get('/Admin/Result', [AdminClassNameController::class, 'index']);
