@@ -64,7 +64,7 @@
                                     <span class="d-flex">
                                         <iconify-icon icon="solar:chart-line-duotone" class=""></iconify-icon>
                                     </span>
-                                    <span class="hide-menu">About As</span>
+                                    <span class="hide-menu">About Us</span>
                                 </div>
                                 <span class="hide-menu badge text-bg-primary fs-1 py-1 px-2 rounded-pill"></span>
                             </a>
@@ -72,7 +72,7 @@
 
                         <li class="sidebar-item">
                             <a class="sidebar-link primary-hover-bg justify-content-between"
-                                href="{{ url('/ClassNameData') }}" aria-expanded="false">
+                                href="{{ url('/Admin/ClassNameData') }}" aria-expanded="false">
                                 <div class="d-flex align-items-center gap-6">
                                     <span class="d-flex">
                                         <iconify-icon icon="solar:chart-line-duotone" class=""></iconify-icon>
@@ -151,7 +151,7 @@
 
                         <li class="sidebar-item">
                             <a class="sidebar-link primary-hover-bg justify-content-between"
-                                href="" aria-expanded="false">
+                                href="{{ url('/Admin/Userdetail') }}" aria-expanded="false">
                                 <div class="d-flex align-items-center gap-6">
                                     <span class="d-flex">
                                         <iconify-icon icon="solar:chart-line-duotone" class=""></iconify-icon>

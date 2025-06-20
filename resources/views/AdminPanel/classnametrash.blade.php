@@ -9,7 +9,7 @@
 
                 <div class="d-flex">
 
-                    <a href="{{ url('/ClassNameData') }}">
+                    <a href="{{ url('/Admin/ClassNameData') }}">
                         <button class="btn btn-danger ml-2">
                             View ClassName Data</button>
                     </a>

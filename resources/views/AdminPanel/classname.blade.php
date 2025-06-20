@@ -9,23 +9,23 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
 
-                <form class="d-flex"  method="GET" action="{{ url('/ClassNameData') }}">
+                <form class="d-flex"  method="GET" action="{{ url('/Admin/ClassNameData') }}">
 
                     <input class="form-control me-5 mr-sm-2" type="search" value="{{ $search }}" name="search"
                         placeholder="Search" aria-label="Search">
                     <button class="btn btn-dark">Search</button>
                     <span style="margin-left: 10px;">
-                        <a href="{{ url('/ClassNameData') }}">
+                        <a href="{{ url('/Admin/ClassNameData') }}">
                             <button class="btn btn-dark" type="button">Reset</button>
                         </a>
                     </span>
                 </form>
                 <div class="d-flex">
-                    <button type="button" onclick="window.location='{{ url('/Classnameform') }}'"
+                    <button type="button" onclick="window.location='{{ url('/Admin/Classnameform') }}'"
                         class="btn btn-dark btn-circle font-rights me-md-2">
                         </i> Add
                     </button>
-                    <a href="{{ url('/ClassnameTrashdata') }}">
+                    <a href="{{ url('/Admin/ClassnameTrashdata') }}">
                         <button class="btn btn-danger ml-2">
                             Trashed Data</button>
                     </a>
@@ -51,7 +51,7 @@
                                 <tr>
                                     <td>{{ $cn->standard ?: '-' }}</td>
                                     <td>{{$cn->title ?: '-'}}</td>
-                                    <td style="text-align: justify;">
+                                    <td style=" width: 25%; text-align: justify;">
                                         @if (!empty($cn->description))
                                             <div class="description-container">
                                                 <span class="description-text"

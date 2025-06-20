@@ -28,7 +28,7 @@ class AdminClassNameController extends Controller
     public function classnameform()
     {
         $class_names = new ClassName();
-        $url = url('/Classnameform2');
+        $url = url('/Admin/Classnameform2');
         $title = "ClassNames Detail Form";
         $data = compact('url', 'title', 'class_names');
 
@@ -41,7 +41,7 @@ class AdminClassNameController extends Controller
         $validator = Validator::make($request->all(), [
             'standard' => 'required|string',
             'title' => 'required|string',
-            'description' => 'required|string|max:255',
+            'description' => 'required|string|max:1500',
         ]);
 
         if ($validator->fails()) {
@@ -54,7 +54,7 @@ class AdminClassNameController extends Controller
         $class_names->description = $request->input('description');
         $class_names->save();
 
-        return redirect('/ClassNameData');
+        return redirect('/Admin/ClassNameData');
     }
 
     public function classnametrash()
@@ -69,9 +69,9 @@ class AdminClassNameController extends Controller
     {
         $class_names = ClassName::find($id);
         if (is_null($class_names)) {
-            return redirect('/ClassNameData');
+            return redirect('/Admin/ClassNameData');
         } else {
-            $url = url('/Classname/update') . "/" . $id;
+            $url = url('/Admin/Classname/update') . "/" . $id;
             $title = "Update ClassName Details";
             $data = compact('class_names', 'url', 'title');
             return view('AdminPanel.classnameform')->with($data);
@@ -87,7 +87,7 @@ class AdminClassNameController extends Controller
         $class_names->save();
 
 
-        return redirect('/ClassNameData');
+        return redirect('/Admin/ClassNameData');
     }
 
     public function classnamedelete($id)
@@ -96,7 +96,7 @@ class AdminClassNameController extends Controller
         if (!is_null($class_names)) {
             $class_names->delete();
         }
-        return redirect('/ClassNameData');
+        return redirect('/Admin/ClassNameData');
     }
 
     public function classnamerestore($id)
@@ -105,7 +105,7 @@ class AdminClassNameController extends Controller
         if (!is_null($class_names)) {
             $class_names->restore();
         }
-        return redirect('/ClassNameData');
+        return redirect('/Admin/ClassNameData');
     }
 
     public function classnameforcedelete($id)
@@ -116,4 +116,7 @@ class AdminClassNameController extends Controller
         }
         return redirect()->back();
     }
+
+
+
 }
