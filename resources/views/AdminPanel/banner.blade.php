@@ -12,7 +12,7 @@
                 <form class="d-flex" action="{{ route('admin.banner') }}" method="GET">
                     <input class="form-control me-5 mr-sm-2" type="search"
                         value="{{ request()->search }}" name="search" placeholder="Search by title"
-                        aria-label="Search" style="width: 500px;">
+                        aria-label="Search" >
                     <button class="btn btn-dark">Search</button>
                     <span style="margin-left: 10px;">
                         <a href="{{ route('admin.banner') }}">
@@ -32,7 +32,7 @@
             </div>
         </nav>
 
-        <div class="card mt-2" style="width: 100%;">
+        <div class="card mt-2" style="width:100%;">
             <div class="card-body">
                 <div class="table-responsive text-center">
                     <table class="table table-bordered">
