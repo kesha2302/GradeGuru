@@ -66,6 +66,20 @@ protected $fillable = [
     'contact', // add this
 ];
 
+<<<<<<< HEAD
+=======
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var list<string>
+     */
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'contact'
+    ];
+>>>>>>> 52fb47d4bd8670ae2deb482fddd526d33ade3fea
 
     protected $hidden = [
         'password',
