@@ -1,3 +1,3 @@
-@include('ClientView.Layout.header')
+@include('ClientView.Layouts.header')
 @yield('main-section')
-@include('ClientView.Layout.footer')
+@include('ClientView.Layouts.footer')
