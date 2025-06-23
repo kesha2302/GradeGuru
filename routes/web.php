@@ -6,6 +6,8 @@ use App\Http\Controllers\AdminPanelController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminBannerController;
 use App\Http\Controllers\AdminClassPriceController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
