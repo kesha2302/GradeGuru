@@ -36,7 +36,7 @@
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link primary-hover-bg" href="{{url('/Admin')}}" aria-expanded="false">
-                                <iconify-icon icon="solar:atom-line-duotone"></iconify-icon>
+                                <iconify-icon icon="material-symbols:dashboard-outline-rounded"></iconify-icon>
                                 <span class="hide-menu">Dashboard</span>
                             </a>
                         </li>
@@ -48,7 +48,7 @@
                                 href="{{ route('admin.banner') }}" aria-expanded="false">
                                 <div class="d-flex align-items-center gap-6">
                                     <span class="d-flex">
-                                        <iconify-icon icon="solar:screencast-2-line-duotone"
+                                        <iconify-icon icon="mdi:image-outline"
                                             class=""></iconify-icon>
                                     </span>
                                     <span class="hide-menu">Banner</span>
@@ -62,7 +62,7 @@
                                 href="{{ route('admin.aboutus') }}" aria-expanded="false">
                                 <div class="d-flex align-items-center gap-6">
                                     <span class="d-flex">
-                                        <iconify-icon icon="solar:chart-line-duotone" class=""></iconify-icon>
+                                        <iconify-icon icon="mdi:account-details-outline" class=""></iconify-icon>
                                     </span>
                                     <span class="hide-menu">About Us</span>
                                 </div>
@@ -75,7 +75,7 @@
                                 href="{{ url('/Admin/ClassNameData') }}" aria-expanded="false">
                                 <div class="d-flex align-items-center gap-6">
                                     <span class="d-flex">
-                                        <iconify-icon icon="solar:chart-line-duotone" class=""></iconify-icon>
+                                        <iconify-icon icon="fluent:book-number-24-regular" class=""></iconify-icon>
                                     </span>
                                     <span class="hide-menu">ClassNames</span>
                                 </div>
@@ -88,7 +88,7 @@
                                 href="{{ url('/Admin/ClassPrice') }}" aria-expanded="false">
                                 <div class="d-flex align-items-center gap-6">
                                     <span class="d-flex">
-                                        <iconify-icon icon="solar:chart-line-duotone" class=""></iconify-icon>
+                                        <iconify-icon icon="mdi:cash-100" class=""></iconify-icon>
                                     </span>
                                     <span class="hide-menu">Class Price</span>
                                 </div>
@@ -102,7 +102,7 @@
                                 href="{{ url('/Admin/RegularQuestions') }}" aria-expanded="false">
                                 <div class="d-flex align-items-center gap-6">
                                     <span class="d-flex">
-                                        <iconify-icon icon="solar:chart-line-duotone" class=""></iconify-icon>
+                                        <iconify-icon icon="mdi:help-circle-outline" class=""></iconify-icon>
                                     </span>
                                     <span class="hide-menu">Regular Question</span>
                                 </div>
@@ -115,7 +115,7 @@
                                 href="{{ url('/Admin/SuperQuestions') }}" aria-expanded="false">
                                 <div class="d-flex align-items-center gap-6">
                                     <span class="d-flex">
-                                        <iconify-icon icon="solar:chart-line-duotone" class=""></iconify-icon>
+                                        <iconify-icon icon="mdi:help-circle-outline" class=""></iconify-icon>
                                     </span>
                                     <span class="hide-menu">Super Question</span>
                                 </div>
@@ -128,9 +128,9 @@
                                 href="{{ url('/Admin/Result') }}" aria-expanded="false">
                                 <div class="d-flex align-items-center gap-6">
                                     <span class="d-flex">
-                                        <iconify-icon icon="solar:chart-line-duotone" class=""></iconify-icon>
+                                        <iconify-icon icon="mdi:medal-outline" class=""></iconify-icon>
                                     </span>
-                                    <span class="hide-menu">Result</span>
+                                    <span class="hide-menu">Result Details</span>
                                 </div>
                                 <span class="hide-menu badge text-bg-primary fs-1 py-1 px-2 rounded-pill"></span>
                             </a>
@@ -141,9 +141,9 @@
                                 href="{{url('/Admin/Booking')}}" aria-expanded="false">
                                 <div class="d-flex align-items-center gap-6">
                                     <span class="d-flex">
-                                        <iconify-icon icon="solar:chart-line-duotone" class=""></iconify-icon>
+                                        <iconify-icon icon="mdi:clipboard-text-clock-outline" class=""></iconify-icon>
                                     </span>
-                                    <span class="hide-menu">Booking Ditails</span>
+                                    <span class="hide-menu">Booking Details</span>
                                 </div>
                                 <span class="hide-menu badge text-bg-primary fs-1 py-1 px-2 rounded-pill"></span>
                             </a>
@@ -154,9 +154,9 @@
                                 href="{{url('/Admin/Userdetail')}}" aria-expanded="false">
                                 <div class="d-flex align-items-center gap-6">
                                     <span class="d-flex">
-                                        <iconify-icon icon="solar:chart-line-duotone" class=""></iconify-icon>
+                                        <iconify-icon icon="mdi:account-group-outline" class=""></iconify-icon>
                                     </span>
-                                    <span class="hide-menu">User Detial</span>
+                                    <span class="hide-menu">User Detials</span>
                                 </div>
                                 <span class="hide-menu badge text-bg-primary fs-1 py-1 px-2 rounded-pill"></span>
                             </a>

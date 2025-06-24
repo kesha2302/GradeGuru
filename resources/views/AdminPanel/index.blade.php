@@ -1,5 +1,5 @@
 @extends('AdminPanel.Layouts.main')
 @section('main-section')
 
-<h1>Hiii</h1>
+<h1>Dashboard</h1>
 @endsection
