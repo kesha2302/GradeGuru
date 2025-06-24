@@ -20,7 +20,7 @@
             <!-- Sidebar scroll-->
             <div>
                 <div class="brand-logo d-flex align-items-center justify-content-between">
-                    <a href="./index.html" class="text-nowrap logo-img h2">
+                    <a href="{{url('/Admin')}}" class="text-nowrap logo-img h2">
                         GRADEGURU
                     </a>
                     <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
@@ -35,7 +35,7 @@
                             {{-- <span class="hide-menu">Home</span> --}}
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link primary-hover-bg" href="" aria-expanded="false">
+                            <a class="sidebar-link primary-hover-bg" href="{{url('/Admin')}}" aria-expanded="false">
                                 <iconify-icon icon="solar:atom-line-duotone"></iconify-icon>
                                 <span class="hide-menu">Dashboard</span>
                             </a>
