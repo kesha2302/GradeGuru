@@ -49,7 +49,7 @@ Route::get('/Admin/Classname/restore/{id}', [AdminClassNameController::class, 'c
 
 
 
-Route::get('/Aboutus', [AdminAboutController::class, 'aboutus'])->name('admin.aboutus');
+Route::get('/Admin/Aboutus', [AdminAboutController::class, 'aboutus'])->name('admin.aboutus');
 Route::get('/Admin/aboutus/add', [AdminAboutController::class, 'addAboutForm'])->name('admin.about.add');
 Route::post('/Admin/aboutus/store', [AdminAboutController::class, 'storeAbout'])->name('admin.banner.store');
 Route::get('/Admin/aboutus/edit/{id}', [AdminAboutController::class, 'editAboutForm'])->name('admin.aboutus.edit');
