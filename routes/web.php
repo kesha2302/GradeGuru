@@ -10,6 +10,7 @@ use App\Http\Controllers\AdminSuperQueController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 
+
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
@@ -77,8 +78,13 @@ Route::get('/Admin/SuperQue/delete/{id}', [AdminSuperQueController::class, 'supe
 
 // Change Controller names and method but kepp the route name same for main page, I have set this route names in header file.
 // Make other curd operations routes that will be ok.
+<<<<<<< HEAD
 Route::get('/Admin/RegularQuestions', [AdminClassNameController::class, 'index']);
 
+=======
 
+Route::get('/Admin/SuperQuestions', [AdminClassNameController::class, 'index']);
+Route::get('/Admin/Result', [AdminClassNameController::class, 'index']);
+>>>>>>> d4488470e722bfd9d5541df1cbad576623feedac
 
 
