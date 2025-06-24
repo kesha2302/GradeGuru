@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminPanelController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminBannerController;
 use App\Http\Controllers\AdminClassPriceController;
+use App\Http\Controllers\AdminSuperQueController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 
@@ -21,6 +22,8 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/Admin', [AdminPanelController::class, 'index']);
 Route::get('/Admin/Userdetail', [AdminPanelController::class, 'userdetail']);
+Route::get('/Admin/Result', [AdminPanelController::class, 'resultdetail']);
+Route::get('/Admin/Booking', [AdminPanelController::class, 'bookingdetail']);
 
 
 Route::get('/Admin/banner', [AdminBannerController::class, 'banner'])->name('admin.banner');
@@ -65,11 +68,19 @@ Route::get('/Admin/Classprice/delete/{id}', [AdminClassPriceController::class, '
 Route::get('/Admin/Classprice/frocedelete/{id}', [AdminClassPriceController::class, 'classpriceforcedelete'])->name('classprice.forcedelete');
 Route::get('/Admin/Classprice/restore/{id}', [AdminClassPriceController::class, 'classpricerestore'])->name('classprice.restore');
 
+Route::get('/Admin/SuperQuestions', [AdminSuperQueController::class, 'index']);
+Route::get('/Admin/SuperQueform', [AdminSuperQueController::class, 'superqueform']);
+Route::post('/Admin/SuperQueform2', [AdminSuperQueController::class, 'superqueform2']);
+Route::get('/Admin/SuperQue/edit/{id}', [AdminSuperQueController::class, 'superqueedit'])->name('superque.edit');
+Route::post('/Admin/SuperQue/update/{id}', [AdminSuperQueController::class, 'superqueupdate'])->name('superque.update');
+Route::get('/Admin/SuperQue/delete/{id}', [AdminSuperQueController::class, 'superquedelete'])->name('superque.delete');
+
 
 // Change Controller names and method but kepp the route name same for main page, I have set this route names in header file.
 // Make other curd operations routes that will be ok.
-
+Route::get('/Admin/RegularQuestions', [AdminClassNameController::class, 'index']);
 Route::get('/Admin/SuperQuestions', [AdminClassNameController::class, 'index']);
 Route::get('/Admin/Result', [AdminClassNameController::class, 'index']);
+
 
 

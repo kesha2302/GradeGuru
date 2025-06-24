@@ -3,32 +3,32 @@
 
 
  <div class="container-fluid">
-        <h3>ClassPrice Data</h3>
+        <h3>SuperQuestions Data</h3>
         <hr>
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
 
-                <form class="d-flex"  method="GET" action="{{ url('/Admin/ClassPrice') }}">
+                <form class="d-flex"  method="GET" action="{{ url('/Admin/SuperQuestions') }}">
 
                     <input class="form-control me-5 mr-sm-2" type="search" value="{{ $search }}" name="search"
                         placeholder="Search" aria-label="Search">
                     <button class="btn btn-dark">Search</button>
                     <span style="margin-left: 10px;">
-                        <a href="{{ url('/Admin/ClassPrice') }}">
+                        <a href="{{ url('/Admin/SuperQuestions') }}">
                             <button class="btn btn-dark" type="button">Reset</button>
                         </a>
                     </span>
                 </form>
                 <div class="d-flex">
-                    <button type="button" onclick="window.location='{{ url('/Admin/Classpriceform') }}'"
+                    <button type="button" onclick="window.location='{{ url('/Admin/SuperQueform') }}'"
                         class="btn btn-dark btn-circle font-rights me-md-2">
                         </i> Add
                     </button>
-                    <a href="{{ url('/Admin/ClasspriceTrashdata') }}">
+                    {{-- <a href="{{ url('/Admin/ClasspriceTrashdata') }}">
                         <button class="btn btn-danger ml-2">
                             Trashed Data</button>
-                    </a>
+                    </a> --}}
                 </div>
             </div>
         </nav>
@@ -36,33 +36,36 @@
 
         <div class="card mt-2" style="width:100%">
             <div class="card-body">
-                <div class="table-responsive text-center">
+                <div class="table-responsive text-center" >
                     <table class="table">
                         <thead>
                             <tr>
                                 <th>ClassName</th>
-                                <th>Title</th>
-                                <th>Feature</th>
-                                <th>Que Type</th>
-                                <th>Price</th>
+                                <th>Question No</th>
+                                <th>Question</th>
+                                <th>Option1</th>
+                                <th>Option2</th>
+                                <th>Option3</th>
+                                <th>Option4</th>
+                                <th>Answer</th>
                                 <th colspan="2">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($class_price as $cp)
+                            @foreach ($superque as $sq)
                                 <tr>
-                                    <td>{{ $cp->classNames->standard ?: '-' }}</td>
-                                    <td>{{$cp->title ?: '-'}}</td>
+                                    <td>{{ $sq->classPrice->title}}-(₹{{ $sq->classPrice->price}})</td>
+                                    <td>{{$sq->question_no ?: '-'}}</td>
                                     <td style="width: 25%; text-align: justify;">
-                                        @if (!empty($cp->feature))
+                                        @if (!empty($sq->question))
                                             <div class="description-container">
                                                 <span class="description-text"
-                                                    data-truncated="{{ Str::limit($cp->feature, 100) }}">
-                                                    {{ Str::limit($cp->feature, 100) }}
+                                                    data-truncated="{{ Str::limit($sq->question, 100) }}">
+                                                    {{ Str::limit($sq->question, 100) }}
                                                 </span>
-                                                @if (strlen($cp->feature) > 100)
+                                                @if (strlen($sq->question) > 100)
                                                     <button class="btn btn-link btn-sm more-btn"
-                                                        data-description="{{ $cp->feature }}">
+                                                        data-description="{{ $sq->question }}">
                                                         More
                                                     </button>
                                                     <button class="btn btn-link btn-sm less-btn" style="display: none;">
@@ -74,15 +77,17 @@
                                             -
                                         @endif
                                     </td>
-                                    <td>{{$cp->que_type ?: '-'}}</td>
-                                    <td>₹{{$cp->price ?: '-'}}</td>
-
+                                    <td>{{$sq->option1 ?: '-'}}</td>
+                                    <td>{{$sq->option2 ?: '-'}}</td>
+                                    <td>{{$sq->option3 ?: '-'}}</td>
+                                    <td>{{$sq->option4 ?: '-'}}</td>
+                                    <td>{{$sq->answer ?: '-'}}</td>
                                     <td>
-                                        <a href="{{ route('classprice.delete', ['id' => $cp->cp_id]) }}">
-                                            <button class="btn btn-danger m-2">Trash</button>
+                                        <a href="{{ route('superque.delete', ['id' => $sq->sq_id]) }}">
+                                            <button class="btn btn-danger m-2">Delete</button>
                                         </a>
 
-                                        <a href="{{ route('classprice.edit', ['id' => $cp->cp_id]) }}">
+                                        <a href="{{ route('superque.edit', ['id' => $sq->sq_id]) }}">
                                             <button class="btn btn-primary">Update</button>
                                         </a>
                                     </td>
@@ -97,7 +102,7 @@
 
         <div class="row">
             <div class="col-md-12 d-flex justify-content-center">
-                {{ $class_price->links('pagination::bootstrap-4') }}
+                {{ $superque->links('pagination::bootstrap-4') }}
             </div>
         </div>
 

@@ -46,6 +46,7 @@ class AdminClassPriceController extends Controller
             'class_names' => 'required|exists:class_names,class_id',
             'title' => 'required|string',
             'feature' => 'required|string|max:1500',
+            'que_type' => 'required|string',
             'price' => 'required|integer',
         ]);
 
@@ -57,6 +58,7 @@ class AdminClassPriceController extends Controller
         $class_price->class_id = $request->input('class_names');
         $class_price->title = $request->input('title');
         $class_price->feature = $request->input('feature');
+        $class_price->que_type = $request->input('que_type');
         $class_price->price = $request->input('price');
         $class_price->save();
 
@@ -89,6 +91,7 @@ class AdminClassPriceController extends Controller
         $class_price = ClassPrice::find($id);
         $class_price->title = $request->input('title');
         $class_price->feature = $request->input('feature');
+        $class_price->que_type = $request->input('que_type');
         $class_price->price = $request->input('price');
         $class_price->save();
 
