@@ -75,13 +75,6 @@ Route::get('/Admin/SuperQue/edit/{id}', [AdminSuperQueController::class, 'superq
 Route::post('/Admin/SuperQue/update/{id}', [AdminSuperQueController::class, 'superqueupdate'])->name('superque.update');
 Route::get('/Admin/SuperQue/delete/{id}', [AdminSuperQueController::class, 'superquedelete'])->name('superque.delete');
 
-Route::get('/Admin/SuperQuestions', [AdminSuperQueController::class, 'index']);
-Route::get('/Admin/SuperQueform', [AdminSuperQueController::class, 'superqueform']);
-Route::post('/Admin/SuperQueform2', [AdminSuperQueController::class, 'superqueform2']);
-Route::get('/Admin/SuperQue/edit/{id}', [AdminSuperQueController::class, 'superqueedit'])->name('superque.edit');
-Route::post('/Admin/SuperQue/update/{id}', [AdminSuperQueController::class, 'superqueupdate'])->name('superque.update');
-Route::get('/Admin/SuperQue/delete/{id}', [AdminSuperQueController::class, 'superquedelete'])->name('superque.delete');
-
 
 Route::get('/Admin/RegularQuestions', [AdminRegularQueController::class, 'index']);
 Route::get('/Admin/RegularQue/add', [AdminRegularQueController::class, 'addRegularQueForm'])->name('admin.regularque.add');
