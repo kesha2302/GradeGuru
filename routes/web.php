@@ -6,6 +6,8 @@ use App\Http\Controllers\AdminPanelController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminBannerController;
 use App\Http\Controllers\AdminClassPriceController;
+use App\Http\Controllers\AdminRegularQueController;
+use App\Http\Controllers\AdminSuperQueController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 
@@ -73,11 +75,21 @@ Route::get('/Admin/SuperQue/edit/{id}', [AdminSuperQueController::class, 'superq
 Route::post('/Admin/SuperQue/update/{id}', [AdminSuperQueController::class, 'superqueupdate'])->name('superque.update');
 Route::get('/Admin/SuperQue/delete/{id}', [AdminSuperQueController::class, 'superquedelete'])->name('superque.delete');
 
+Route::get('/Admin/SuperQuestions', [AdminSuperQueController::class, 'index']);
+Route::get('/Admin/SuperQueform', [AdminSuperQueController::class, 'superqueform']);
+Route::post('/Admin/SuperQueform2', [AdminSuperQueController::class, 'superqueform2']);
+Route::get('/Admin/SuperQue/edit/{id}', [AdminSuperQueController::class, 'superqueedit'])->name('superque.edit');
+Route::post('/Admin/SuperQue/update/{id}', [AdminSuperQueController::class, 'superqueupdate'])->name('superque.update');
+Route::get('/Admin/SuperQue/delete/{id}', [AdminSuperQueController::class, 'superquedelete'])->name('superque.delete');
 
-// Change Controller names and method but kepp the route name same for main page, I have set this route names in header file.
-// Make other curd operations routes that will be ok.
 
-Route::get('/Admin/SuperQuestions', [AdminClassNameController::class, 'index']);
-Route::get('/Admin/Result', [AdminClassNameController::class, 'index']);
+Route::get('/Admin/RegularQuestions', [AdminRegularQueController::class, 'index']);
+Route::get('/Admin/RegularQue/add', [AdminRegularQueController::class, 'addRegularQueForm'])->name('admin.regularque.add');
+Route::post('/Admin/RegularQue/store', [AdminRegularQueController::class, 'storeRegularQue'])->name('admin.regularque.store');
+Route::get('/Admin/RegularQue/edit/{id}', [AdminRegularQueController::class, 'editRegularQueForm'])->name('admin.regularque.edit');
+Route::post('/Admin/RegularQue/update/{id}', [AdminRegularQueController::class, 'updateRegularQue'])->name('admin.regularque.update');
+Route::get('/Admin/RegularQue/delete/{id}', [AdminRegularQueController::class, 'deleteRegularQue'])->name('admin.regularque.delete');
+
+
 
 
