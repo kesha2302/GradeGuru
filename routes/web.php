@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminAboutController;
+use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\AdminClassNameController;
 use App\Http\Controllers\AdminPanelController;
 use Illuminate\Support\Facades\Route;
@@ -83,6 +84,7 @@ Route::get('/Admin/RegularQue/edit/{id}', [AdminRegularQueController::class, 'ed
 Route::post('/Admin/RegularQue/update/{id}', [AdminRegularQueController::class, 'updateRegularQue'])->name('admin.regularque.update');
 Route::get('/Admin/RegularQue/delete/{id}', [AdminRegularQueController::class, 'deleteRegularQue'])->name('admin.regularque.delete');
 
-
+Route::get('/AdminRegister', [AdminAuthController::class, 'register']);
+Route::get('/AdminLogin', [AdminAuthController::class, 'login']);
 
 
