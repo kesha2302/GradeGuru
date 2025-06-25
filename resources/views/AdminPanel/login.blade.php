@@ -32,7 +32,7 @@
                     <input type="password" name="password" class="form-control" id="exampleInputPassword1">
                   </div>
 
-                  <button type="button" class="btn btn-primary w-100 py-8 fs-4 mb-4">Sign In</button>
+                  <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4">Sign In</button>
                   <div class="d-flex align-items-center justify-content-center">
                     <a class="text-primary fw-bold ms-2" href="{{url('/AdminRegister')}}">Create an account</a>
                   </div>
