@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\AdminRegister;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AdminAuthController extends Controller
 {
@@ -11,10 +15,13 @@ class AdminAuthController extends Controller
         return view('AdminPanel.register');
     }
 
-
-
     public function login()
     {
+        return view('AdminPanel.login');
+    }
 
+    public function loginstore()
+    {
+        return view('AdminPanel.login');
     }
 }
