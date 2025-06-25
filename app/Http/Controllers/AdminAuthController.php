@@ -13,6 +13,11 @@ class AdminAuthController extends Controller
 
     public function login()
     {
+        return view('AdminPanel.login');
+    }
 
+    public function loginstore()
+    {
+        return view('AdminPanel.login');
     }
 }
