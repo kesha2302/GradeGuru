@@ -86,5 +86,8 @@ Route::get('/Admin/RegularQue/delete/{id}', [AdminRegularQueController::class, '
 
 Route::get('/AdminRegister', [AdminAuthController::class, 'register']);
 Route::get('/AdminLogin', [AdminAuthController::class, 'login']);
+Route::post('/Admin/Register/store', [AdminAuthController::class, 'storeRegister'])->name('admin.register.store');
+Route::get('/Adminlogindata', [AdminAuthController::class, 'loginstore']);
+Route::post('/Adminlogout', [AdminAuthController::class, 'logout'])->name('adminlogout');
 
 
