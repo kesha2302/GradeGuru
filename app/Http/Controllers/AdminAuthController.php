@@ -6,10 +6,12 @@ use Illuminate\Http\Request;
 
 class AdminAuthController extends Controller
 {
-    public function register()
+    public function register(Request $request)
     {
-
+        return view('AdminPanel.register');
     }
+
+
 
     public function login()
     {
