@@ -20,10 +20,7 @@
           <div class="col-md-8 col-lg-6 col-xxl-3">
             <div class="card mb-0">
               <div class="card-body">
-                <a href="" class="text-nowrap logo-img text-center d-block py-3 w-100">
-                  <img src="{{ asset('AdminPanel/assets/images/logos/logo.svg')}}" alt="">
-                </a>
-                <p class="text-center">Your Social Campaigns</p>
+                 <h3 class="text-center">GradeGuru</h3>
                 <form action="{{url('/Admin/Register/store')}}" method ="POST">
                     @csrf
                   <div class="mb-3">
