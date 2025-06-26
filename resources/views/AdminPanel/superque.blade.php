@@ -41,6 +41,7 @@
                         <thead>
                             <tr>
                                 <th>ClassName</th>
+                                <th>Test</th>
                                 <th>Question No</th>
                                 <th>Question</th>
                                 <th>Option1</th>
@@ -55,6 +56,7 @@
                             @foreach ($superque as $sq)
                                 <tr>
                                     <td>{{ $sq->classPrice->title}}-(₹{{ $sq->classPrice->price}})</td>
+                                    <td>{{ $sq->tests->title}}</td>
                                     <td>{{$sq->question_no ?: '-'}}</td>
                                     <td style="width: 25%; text-align: justify;">
                                         @if (!empty($sq->question))

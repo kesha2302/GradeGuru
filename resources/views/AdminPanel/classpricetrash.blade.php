@@ -27,7 +27,6 @@
                                 <th>ClassName</th>
                                 <th>Title</th>
                                 <th>Feature</th>
-                                <th>Que Type</th>
                                 <th>Price</th>
                                 <th colspan="2">Action</th>
                             </tr>
@@ -58,7 +57,6 @@
                                             -
                                         @endif
                                     </td>
-                                    <td>{{$cp->que_type ?: '-'}}</td>
                                     <td>₹{{$cp->price ?: '-'}}</td>
 
                                     <td>

@@ -101,7 +101,7 @@
                                 href="{{ url('/Admin/Test') }}" aria-expanded="false">
                                 <div class="d-flex align-items-center gap-6">
                                     <span class="d-flex">
-                                        <iconify-icon icon="mdi:cash-100" class=""></iconify-icon>
+                                        <iconify-icon icon="mdi:clipboard-text-outline" class=""></iconify-icon>
                                     </span>
                                     <span class="hide-menu">Test</span>
                                 </div>
