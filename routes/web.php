@@ -9,6 +9,7 @@ use App\Http\Controllers\AdminBannerController;
 use App\Http\Controllers\AdminClassPriceController;
 use App\Http\Controllers\AdminRegularQueController;
 use App\Http\Controllers\AdminSuperQueController;
+use App\Http\Controllers\AdminTestController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 
@@ -90,4 +91,4 @@ Route::post('/Admin/Register/store', [AdminAuthController::class, 'storeRegister
 Route::post('/Adminlogindata', [AdminAuthController::class, 'loginstore']);
 Route::post('/Adminlogout', [AdminAuthController::class, 'logout'])->name('adminlogout');
 
-
+Route::post('/Admin/Test', [AdminTestController::class, 'index']);
