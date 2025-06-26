@@ -73,6 +73,7 @@ Route::get('/Admin/Classprice/restore/{id}', [AdminClassPriceController::class, 
 Route::get('/Admin/SuperQuestions', [AdminSuperQueController::class, 'index']);
 Route::get('/Admin/SuperQueform', [AdminSuperQueController::class, 'superqueform']);
 Route::post('/Admin/SuperQueform2', [AdminSuperQueController::class, 'superqueform2']);
+Route::get('/get-tests/{cp_id}', [AdminSuperQueController::class, 'getTestsByClass']);
 Route::get('/Admin/SuperQue/edit/{id}', [AdminSuperQueController::class, 'superqueedit'])->name('superque.edit');
 Route::post('/Admin/SuperQue/update/{id}', [AdminSuperQueController::class, 'superqueupdate'])->name('superque.update');
 Route::get('/Admin/SuperQue/delete/{id}', [AdminSuperQueController::class, 'superquedelete'])->name('superque.delete');
@@ -81,6 +82,7 @@ Route::get('/Admin/SuperQue/delete/{id}', [AdminSuperQueController::class, 'supe
 Route::get('/Admin/RegularQuestions', [AdminRegularQueController::class, 'index']);
 Route::get('/Admin/RegularQue/add', [AdminRegularQueController::class, 'addRegularQueForm'])->name('admin.regularque.add');
 Route::post('/Admin/RegularQue/store', [AdminRegularQueController::class, 'storeRegularQue'])->name('admin.regularque.store');
+Route::get('/Admin/Addtest/{cp_id}', [AdminRegularQueController::class, 'getTestsByClass']);
 Route::get('/Admin/RegularQue/edit/{id}', [AdminRegularQueController::class, 'editRegularQueForm'])->name('admin.regularque.edit');
 Route::post('/Admin/RegularQue/update/{id}', [AdminRegularQueController::class, 'updateRegularQue'])->name('admin.regularque.update');
 Route::get('/Admin/RegularQue/delete/{id}', [AdminRegularQueController::class, 'deleteRegularQue'])->name('admin.regularque.delete');
@@ -92,3 +94,8 @@ Route::post('/Adminlogindata', [AdminAuthController::class, 'loginstore']);
 Route::post('/Adminlogout', [AdminAuthController::class, 'logout'])->name('adminlogout');
 
 Route::get('/Admin/Test', [AdminTestController::class, 'index']);
+Route::get('/Admin/Testform', [AdminTestController::class, 'testform']);
+Route::post('/Admin/Testform2', [AdminTestController::class, 'testform2']);
+Route::get('/Admin/Test/edit/{id}', [AdminTestController::class, 'testedit'])->name('test.edit');
+Route::post('/Admin/Test/update/{id}', [AdminTestController::class, 'testupdate'])->name('test.update');
+Route::get('/Admin/Test/delete/{id}', [AdminTestController::class, 'testdelete'])->name('test.delete');

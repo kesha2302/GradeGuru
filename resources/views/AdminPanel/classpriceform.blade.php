@@ -48,21 +48,6 @@
                         @enderror
                     </div>
 
-                    <div class="mb-3">
-                        <label class="form-label">Question Type:</label>
-                        <select name="que_type" class="form-select mb-3">
-                            <option disabled {{ old('que_type') ? '' : 'selected' }}>Select Option</option>
-                            <option value="Super_Que" {{ old('que_type') == 'Super_Que' ? 'selected' : '' }}>Super Que
-                            </option>
-                            <option value="Regular_Que" {{ old('que_type') == 'Regular_Que' ? 'selected' : '' }}>Regular
-                                Que</option>
-                        </select>
-
-                        @error('que_type')
-                            <div class="text-danger">{{ $message }}</div>
-                        @enderror
-                    </div>
-
 
                     <div class="mb-3">
                         <label class="form-label">Price:</label>

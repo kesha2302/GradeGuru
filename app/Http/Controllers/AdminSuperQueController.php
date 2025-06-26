@@ -4,15 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\ClassPrice;
 use App\Models\Superquestion;
+use App\Models\Test;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class AdminSuperQueController extends Controller
 {
-        public function index(Request $request)
+    public function index(Request $request)
     {
         $search = $request->input('search', '');
-        $query = Superquestion::query();
+        $query = Superquestion::with(['classPrice', 'tests']);
+
 
         if (!empty($search)) {
             $query->where(function ($q) use ($search) {
@@ -32,11 +34,18 @@ class AdminSuperQueController extends Controller
     {
         $superque = new Superquestion;
         $class_price = ClassPrice::all();
+        $test = Test::all();
         $url = url('/Admin/SuperQueform2');
-        $title = "ClassPrice Detail Form";
-        $data = compact('url', 'title', 'class_price','superque');
+        $title = "SuperQuestions Detail Form";
+        $data = compact('url', 'title', 'class_price', 'superque');
 
         return view('AdminPanel.superqueform')->with($data);
+    }
+
+    public function getTestsByClass($cp_id)
+    {
+        $tests = Test::where('cp_id', $cp_id)->get();
+        return response()->json($tests);
     }
 
     public function superqueform2(Request $request)
@@ -44,6 +53,7 @@ class AdminSuperQueController extends Controller
 
         $validator = Validator::make($request->all(), [
             'class_price' => 'required|exists:class_prices,cp_id',
+            'test' => 'required|exists:test,test_id',
             'que_no' => 'required|integer',
             'question' => 'required|string',
             'option1' => 'required|string',
@@ -60,6 +70,7 @@ class AdminSuperQueController extends Controller
 
         $superque = new Superquestion();
         $superque->cp_id = $request->input('class_price');
+        $superque->test_id = $request->input('test');
         $superque->question_no = $request->input('que_no');
         $superque->question = $request->input('question');
         $superque->option1 = $request->input('option1');
@@ -110,6 +121,4 @@ class AdminSuperQueController extends Controller
         }
         return redirect('/Admin/SuperQuestions');
     }
-
-
 }
