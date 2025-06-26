@@ -13,4 +13,9 @@ class Regularquestion extends Model
     {
         return $this->belongsTo(ClassPrice::class, 'cp_id', 'cp_id');
     }
+
+     public function tests()
+    {
+        return $this->belongsTo(Test::class, 'test_id', 'test_id');
+    }
 }

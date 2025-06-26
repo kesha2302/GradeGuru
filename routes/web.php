@@ -91,4 +91,4 @@ Route::post('/Admin/Register/store', [AdminAuthController::class, 'storeRegister
 Route::post('/Adminlogindata', [AdminAuthController::class, 'loginstore']);
 Route::post('/Adminlogout', [AdminAuthController::class, 'logout'])->name('adminlogout');
 
-Route::post('/Admin/Test', [AdminTestController::class, 'index']);
+Route::get('/Admin/Test', [AdminTestController::class, 'index']);
