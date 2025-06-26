@@ -82,6 +82,7 @@ Route::get('/Admin/SuperQue/delete/{id}', [AdminSuperQueController::class, 'supe
 Route::get('/Admin/RegularQuestions', [AdminRegularQueController::class, 'index']);
 Route::get('/Admin/RegularQue/add', [AdminRegularQueController::class, 'addRegularQueForm'])->name('admin.regularque.add');
 Route::post('/Admin/RegularQue/store', [AdminRegularQueController::class, 'storeRegularQue'])->name('admin.regularque.store');
+Route::get('/Admin/Addtest/{cp_id}', [AdminRegularQueController::class, 'getTestsByClass']);
 Route::get('/Admin/RegularQue/edit/{id}', [AdminRegularQueController::class, 'editRegularQueForm'])->name('admin.regularque.edit');
 Route::post('/Admin/RegularQue/update/{id}', [AdminRegularQueController::class, 'updateRegularQue'])->name('admin.regularque.update');
 Route::get('/Admin/RegularQue/delete/{id}', [AdminRegularQueController::class, 'deleteRegularQue'])->name('admin.regularque.delete');
