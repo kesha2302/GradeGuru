@@ -37,6 +37,7 @@
                         <thead>
                             <tr>
                                 <th style="width: 5%;">Class Name</th>
+                                <th style="width: 5%;">Test id</th>
                                 <th style="width: 20%;">Question No</th>
                                 <th style="width: 35%;">Question</th>
                                 <th style="width: 35%;">Option1</th>
@@ -51,6 +52,7 @@
                             @forelse ($regularque as $xy)
                                 <tr>
                                     <td>{{ $xy->classPrice->title }}-(₹{{ $xy->classPrice->price}})</td>
+                                    <td>{{ $xy->tests->title ?: '-' }}</td>
                                     <td>{{ $xy->question_no ?: '-' }}</td>
                                     {{-- <td>{{ $xy->question ?: '-' }}</td> --}}
                                       <td style="width: 25%; text-align: justify;">

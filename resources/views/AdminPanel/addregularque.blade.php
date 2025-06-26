@@ -16,8 +16,8 @@
 
                     @if(empty($regulerque->cp_id))
                 <div class="mb-3" >
-                    <label class="form-label">Class:</label>
-                    <select name="class_price" class="form-select" data-live-search="true"
+                    <label class="form-label">ClassName:</label>
+                    <select name="class_price" id="class-price-dropdown" class="form-select" data-live-search="true"
                     aria-label="Default select">
                         <option selected disabled>Select Class</option>
                         @foreach($class_price as $xy)
@@ -29,6 +29,20 @@
                     @enderror
                 </div>
                 @endif
+
+                  @if(empty($regulerque->cp_id))
+                    <div class="mb-3" >
+                    <label class="form-label">Test:</label>
+                    <select name="test" id ="test-dropdown" class="form-select" data-live-search="true"
+                    aria-label="Default select">
+                        <option selected disabled>Select Test</option>
+                    </select>
+                    @error('test')
+                    <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                @endif
+
 
                      <div class="mb-3">
                         <label class="form-label">question_no:</label>
@@ -101,4 +115,29 @@
 
         </div>
     </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $('#class-price-dropdown').on('change', function() {
+            var cp_id = $(this).val();
+            if (cp_id) {
+                $.ajax({
+                    url: '/Admin/Addtest/' + cp_id,
+                    type: "GET",
+                    dataType: "json",
+                    success: function(data) {
+                        $('#test-dropdown').empty();
+                        $('#test-dropdown').append('<option selected disabled>Select Test</option>');
+                        $.each(data, function(key, value) {
+                            $('#test-dropdown').append('<option value="' + value.test_id +
+                                '">' + value.title + '</option>');
+                        });
+                    }
+                });
+            } else {
+                $('#test-dropdown').empty();
+            }
+        });
+    </script>
 @endsection
