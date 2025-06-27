@@ -70,6 +70,7 @@ Route::get('/Admin/Classprice/restore/{id}', [AdminClassPriceController::class, 
 // Change Controller names and method but kepp the route name same for main page, I have set this route names in header file.
 // Make other curd operations routes that will be ok.
 Route::get('/Admin/RegularQuestions', [AdminClassNameController::class, 'index']);
+
 Route::get('/Admin/SuperQuestions', [AdminClassNameController::class, 'index']);
 Route::get('/Admin/Result', [AdminClassNameController::class, 'index']);
 
