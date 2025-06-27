@@ -50,6 +50,7 @@
 
 namespace App\Models;
 
+use App\Http\Controllers\PlanController;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -57,17 +58,6 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-// app/Models/User.php
-
-protected $fillable = [
-    'name',
-    'email',
-    'password',
-    'contact', // add this
-];
-
-<<<<<<< HEAD
-=======
     /**
      * The attributes that are mass assignable.
      *
@@ -77,12 +67,12 @@ protected $fillable = [
         'name',
         'email',
         'password',
-        'contact'
+        'contact',
     ];
->>>>>>> 52fb47d4bd8670ae2deb482fddd526d33ade3fea
 
     protected $hidden = [
         'password',
         'remember_token',
     ];
+
 }

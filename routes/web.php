@@ -8,6 +8,8 @@ use App\Http\Controllers\AdminBannerController;
 use App\Http\Controllers\AdminClassPriceController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PlanController;
+use App\Http\Controllers\ProfileController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -73,3 +75,12 @@ Route::get('/Admin/Result', [AdminClassNameController::class, 'index']);
 
 
 
+Route::get('/about', [HomeController::class, 'about'])->name('about');
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+// Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/plans/purchased', [PlanController::class, 'purchased'])->name('plans.purchased');
+});
