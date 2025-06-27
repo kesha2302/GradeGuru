@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Booking;
+use App\Models\Result;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
@@ -27,25 +29,36 @@ class AdminPanelController extends Controller
         return view('AdminPanel.userdetail', compact('userdetail', 'search'));
     }
 
-
-    public function storeUser(Request $request)
+    public function resultdetail(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|string',
-            'email' => 'required|email|max:150',
-            'contact' => 'required|digits:10',
-        ]);
+        $search = $request->input('search');
 
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
+        $resultdetail = Result::with(['users', 'classPrice'])
+        ->when($search, function ($query, $search) {
+            return $query->whereHas('users', function ($subQuery) use ($search) {
+                $subQuery->where('name', 'LIKE', "%{$search}%");
+            });
+        })
+        ->get();
 
-        $user = new User();
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
-        $user->contact = $request->input('contact');
-        $user->save();
-
-        return redirect('/Admin/Userdetail')->with('success', 'User added successfully!');
+        return view('AdminPanel.resultdetail', compact('resultdetail', 'search'));
     }
+
+    public function bookingdetail(Request $request)
+    {
+        $search = $request->input('search');
+
+        $bookingdetail = Booking::with(['users', 'classPrice'])
+        ->when($search, function ($query, $search) {
+            return $query->whereHas('users', function ($subQuery) use ($search) {
+                $subQuery->where('name', 'LIKE', "%{$search}%");
+            });
+        })
+        ->get();
+
+        return view('AdminPanel.bookingdetail', compact('bookingdetail', 'search'));
+    }
+
+
+
 }

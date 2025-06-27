@@ -15,7 +15,7 @@
                         aria-label="Search" >
                     <button class="btn btn-dark">Search</button>
                     <span style="margin-left: 10px;">
-                        <a href="{{ route('admin.aboutus') }}">
+                        <a href="{{ url('/Admin/Userdetail') }}">
                             <button class="btn btn-dark" type="button">Reset</button>
                         </a>
                     </span>

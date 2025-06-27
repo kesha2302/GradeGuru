@@ -20,7 +20,7 @@
             <!-- Sidebar scroll-->
             <div>
                 <div class="brand-logo d-flex align-items-center justify-content-between">
-                    <a href="./index.html" class="text-nowrap logo-img h2">
+                    <a href="{{ url('/Admin') }}" class="text-nowrap logo-img h2">
                         GRADEGURU
                     </a>
                     <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
@@ -35,8 +35,8 @@
                             {{-- <span class="hide-menu">Home</span> --}}
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link primary-hover-bg" href="" aria-expanded="false">
-                                <iconify-icon icon="solar:atom-line-duotone"></iconify-icon>
+                            <a class="sidebar-link primary-hover-bg" href="{{ url('/Admin') }}" aria-expanded="false">
+                                <iconify-icon icon="material-symbols:dashboard-outline-rounded"></iconify-icon>
                                 <span class="hide-menu">Dashboard</span>
                             </a>
                         </li>
@@ -48,8 +48,7 @@
                                 href="{{ route('admin.banner') }}" aria-expanded="false">
                                 <div class="d-flex align-items-center gap-6">
                                     <span class="d-flex">
-                                        <iconify-icon icon="solar:screencast-2-line-duotone"
-                                            class=""></iconify-icon>
+                                        <iconify-icon icon="mdi:image-outline" class=""></iconify-icon>
                                     </span>
                                     <span class="hide-menu">Banner</span>
                                 </div>
@@ -62,7 +61,7 @@
                                 href="{{ route('admin.aboutus') }}" aria-expanded="false">
                                 <div class="d-flex align-items-center gap-6">
                                     <span class="d-flex">
-                                        <iconify-icon icon="solar:chart-line-duotone" class=""></iconify-icon>
+                                        <iconify-icon icon="mdi:account-details-outline" class=""></iconify-icon>
                                     </span>
                                     <span class="hide-menu">About Us</span>
                                 </div>
@@ -75,7 +74,8 @@
                                 href="{{ url('/Admin/ClassNameData') }}" aria-expanded="false">
                                 <div class="d-flex align-items-center gap-6">
                                     <span class="d-flex">
-                                        <iconify-icon icon="solar:chart-line-duotone" class=""></iconify-icon>
+                                        <iconify-icon icon="fluent:book-number-24-regular"
+                                            class=""></iconify-icon>
                                     </span>
                                     <span class="hide-menu">ClassNames</span>
                                 </div>
@@ -88,9 +88,22 @@
                                 href="{{ url('/Admin/ClassPrice') }}" aria-expanded="false">
                                 <div class="d-flex align-items-center gap-6">
                                     <span class="d-flex">
-                                        <iconify-icon icon="solar:chart-line-duotone" class=""></iconify-icon>
+                                        <iconify-icon icon="mdi:cash-100" class=""></iconify-icon>
                                     </span>
                                     <span class="hide-menu">Class Price</span>
+                                </div>
+                                <span class="hide-menu badge text-bg-primary fs-1 py-1 px-2 rounded-pill"></span>
+                            </a>
+                        </li>
+
+                         <li class="sidebar-item">
+                            <a class="sidebar-link primary-hover-bg justify-content-between"
+                                href="{{ url('/Admin/Test') }}" aria-expanded="false">
+                                <div class="d-flex align-items-center gap-6">
+                                    <span class="d-flex">
+                                        <iconify-icon icon="mdi:clipboard-text-outline" class=""></iconify-icon>
+                                    </span>
+                                    <span class="hide-menu">Test</span>
                                 </div>
                                 <span class="hide-menu badge text-bg-primary fs-1 py-1 px-2 rounded-pill"></span>
                             </a>
@@ -102,7 +115,7 @@
                                 href="{{ url('/Admin/RegularQuestions') }}" aria-expanded="false">
                                 <div class="d-flex align-items-center gap-6">
                                     <span class="d-flex">
-                                        <iconify-icon icon="solar:chart-line-duotone" class=""></iconify-icon>
+                                        <iconify-icon icon="mdi:help-circle-outline" class=""></iconify-icon>
                                     </span>
                                     <span class="hide-menu">Regular Question</span>
                                 </div>
@@ -115,7 +128,7 @@
                                 href="{{ url('/Admin/SuperQuestions') }}" aria-expanded="false">
                                 <div class="d-flex align-items-center gap-6">
                                     <span class="d-flex">
-                                        <iconify-icon icon="solar:chart-line-duotone" class=""></iconify-icon>
+                                        <iconify-icon icon="mdi:help-circle-outline" class=""></iconify-icon>
                                     </span>
                                     <span class="hide-menu">Super Question</span>
                                 </div>
@@ -128,9 +141,9 @@
                                 href="{{ url('/Admin/Result') }}" aria-expanded="false">
                                 <div class="d-flex align-items-center gap-6">
                                     <span class="d-flex">
-                                        <iconify-icon icon="solar:chart-line-duotone" class=""></iconify-icon>
+                                        <iconify-icon icon="mdi:medal-outline" class=""></iconify-icon>
                                     </span>
-                                    <span class="hide-menu">Result</span>
+                                    <span class="hide-menu">Result Details</span>
                                 </div>
                                 <span class="hide-menu badge text-bg-primary fs-1 py-1 px-2 rounded-pill"></span>
                             </a>
@@ -138,12 +151,13 @@
 
                         <li class="sidebar-item">
                             <a class="sidebar-link primary-hover-bg justify-content-between"
-                                href="" aria-expanded="false">
+                                href="{{ url('/Admin/Booking') }}" aria-expanded="false">
                                 <div class="d-flex align-items-center gap-6">
                                     <span class="d-flex">
-                                        <iconify-icon icon="solar:chart-line-duotone" class=""></iconify-icon>
+                                        <iconify-icon icon="mdi:clipboard-text-clock-outline"
+                                            class=""></iconify-icon>
                                     </span>
-                                    <span class="hide-menu">Booking Ditails</span>
+                                    <span class="hide-menu">Booking Details</span>
                                 </div>
                                 <span class="hide-menu badge text-bg-primary fs-1 py-1 px-2 rounded-pill"></span>
                             </a>
@@ -151,12 +165,12 @@
 
                         <li class="sidebar-item">
                             <a class="sidebar-link primary-hover-bg justify-content-between"
-                                href="{{url('/Admin/Userdetail')}}" aria-expanded="false">
+                                href="{{ url('/Admin/Userdetail') }}" aria-expanded="false">
                                 <div class="d-flex align-items-center gap-6">
                                     <span class="d-flex">
-                                        <iconify-icon icon="solar:chart-line-duotone" class=""></iconify-icon>
+                                        <iconify-icon icon="mdi:account-group-outline" class=""></iconify-icon>
                                     </span>
-                                    <span class="hide-menu">User Detial</span>
+                                    <span class="hide-menu">User Detials</span>
                                 </div>
                                 <span class="hide-menu badge text-bg-primary fs-1 py-1 px-2 rounded-pill"></span>
                             </a>
@@ -213,38 +227,24 @@
                                     </div>
                                 </li>
                             </ul>
+
+
+
                             <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
+
                                 <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
-                                    <a href="https://www.wrappixel.com/templates/spike-bootstrap-admin-dashboard/?ref=376"
-                                        target="_blank" class="btn btn-primary">Check Pro Template</a>
+
                                     <li class="nav-item dropdown">
-                                        <a class="nav-link " href="javascript:void(0)" id="drop2"
-                                            data-bs-toggle="dropdown" aria-expanded="false">
-                                            <img src="../assets/images/profile/user1.jpg" alt=""
-                                                width="35" height="35" class="rounded-circle">
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up"
-                                            aria-labelledby="drop2">
-                                            <div class="message-body">
-                                                <a href="javascript:void(0)"
-                                                    class="d-flex align-items-center gap-2 dropdown-item">
-                                                    <i class="ti ti-user fs-6"></i>
-                                                    <p class="mb-0 fs-3">My Profile</p>
-                                                </a>
-                                                <a href="javascript:void(0)"
-                                                    class="d-flex align-items-center gap-2 dropdown-item">
-                                                    <i class="ti ti-mail fs-6"></i>
-                                                    <p class="mb-0 fs-3">My Account</p>
-                                                </a>
-                                                <a href="javascript:void(0)"
-                                                    class="d-flex align-items-center gap-2 dropdown-item">
-                                                    <i class="ti ti-list-check fs-6"></i>
-                                                    <p class="mb-0 fs-3">My Task</p>
-                                                </a>
-                                                <a href="./authentication-login.html"
-                                                    class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
-                                            </div>
-                                        </div>
+
+                                        @auth('admin')
+                                            <form action="{{ route('adminlogout') }}" method="POST"
+                                                style="display: inline;">
+                                                @csrf
+                                                <button type="submit" class="btn btn-danger">
+                                                    <i class="fa fa-sign-out-alt"></i> Logout
+                                                </button>
+                                            </form>
+                                        @endauth
                                     </li>
                                 </ul>
                             </div>

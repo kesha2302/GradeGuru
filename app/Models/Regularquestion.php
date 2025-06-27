@@ -8,4 +8,14 @@ class Regularquestion extends Model
 {
      protected $table = 'regularquestions';
      protected $primaryKey = 'rq_id';
+
+     public function classPrice()
+    {
+        return $this->belongsTo(ClassPrice::class, 'cp_id', 'cp_id');
+    }
+
+     public function tests()
+    {
+        return $this->belongsTo(Test::class, 'test_id', 'test_id');
+    }
 }
