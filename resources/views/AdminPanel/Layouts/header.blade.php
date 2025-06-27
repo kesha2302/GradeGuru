@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>GradeGuru</title>
-    <link rel="shortcut icon" type="image/png" href="{{ asset('AdminPanel/assets/images/logos/favicon.png') }}" />
+    <link rel="shortcut icon" type="image/png" href="{{ asset('AdminPanel/assets/images/logos/guru.png') }}" />
     <link rel="stylesheet" href="{{ asset('AdminPanel/assets/css/styles.min.css') }}" />
 </head>
 
