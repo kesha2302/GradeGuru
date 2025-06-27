@@ -1,4 +1,4 @@
-
+{{--
     <!-- Footer Start -->
     <div
       class="container-fluid bg-secondary text-white mt-3 py-5 px-sm-3 px-md-5"
@@ -10,9 +10,9 @@
             class="navbar-brand font-weight-bold text-primary m-0 mb-4 p-0"
             style="font-size: 40px; line-height: 40px; margin-top:5px;"
           >
-            {{-- <i class="flaticon-043-teddy-bear"></i> --}}
+
                      <img src="./ClientView/img/guru4.png" alt="" height="160px" width="180px" style="color: #17a2b8;">
-            {{-- <span class="text-white">GradeGuru</span> --}}
+
           </a>
           <p>
 
@@ -130,7 +130,7 @@
           <a class="text-primary font-weight-bold" href="#">Your Site Name</a>.
           All Rights Reserved.
 
-          <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+
           Designed by
           <a class="text-primary font-weight-bold" href="https://htmlcodex.com"
             >HTML Codex</a
@@ -140,4 +140,94 @@
         </p>
       </div>
     </div>
-    <!-- Footer End -->
+ --}}
+<!-- Footer Start -->
+<div class="container-fluid bg-secondary text-white mt-5 py-5 px-sm-3 px-md-5">
+  <div class="row pt-5">
+    <!-- Brand & Description -->
+    <div class="col-lg-3 col-md-6 mb-5">
+      <a href="{{ route('home') }}" class="navbar-brand font-weight-bold text-primary m-0 mb-4 p-0" style="font-size: 40px; line-height: 40px;">
+        <img src="{{ asset('ClientView/img/guru4.png') }}" alt="GradeGuru Logo" height="160" width="180">
+      </a>
+      <p>Empowering learners with resources, mentorship, and tools to thrive academically and beyond.</p>
+      <!-- Social Media Links -->
+      <div class="d-flex justify-content-start mt-4">
+        <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 38px; height: 38px" href="https://twitter.com/gradeguru" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 38px; height: 38px" href="https://facebook.com/gradeguru" target="_blank">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 38px; height: 38px" href="https://linkedin.com/company/gradeguru" target="_blank">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 38px; height: 38px" href="https://instagram.com/gradeguru" target="_blank">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Contact Information -->
+    <div class="col-lg-3 col-md-6 mb-5">
+      <h3 class="text-primary mb-4">Get in Touch</h3>
+      <div class="d-flex mb-3">
+        <h4 class="fa fa-map-marker-alt text-primary"></h4>
+        <div class="pl-3">
+          <h5 class="text-white">Address</h5>
+          <p>Ahmedabad, Gujarat, India</p>
+        </div>
+      </div>
+      <div class="d-flex mb-3">
+        <h4 class="fa fa-envelope text-primary"></h4>
+        <div class="pl-3">
+          <h5 class="text-white">Email</h5>
+          <p>support@gradeguru.com</p>
+        </div>
+      </div>
+      <div class="d-flex">
+        <h4 class="fa fa-phone-alt text-primary"></h4>
+        <div class="pl-3">
+          <h5 class="text-white">Phone</h5>
+          <p>+91 98765 43210</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="col-lg-3 col-md-6 mb-5">
+      <h3 class="text-primary mb-4">Quick Links</h3>
+      <div class="d-flex flex-column justify-content-start">
+        <a class="text-white mb-2" href="{{ route('home') }}"><i class="fa fa-angle-right mr-2"></i>Home</a>
+        <a class="text-white mb-2" href="{{ route('about') }}"><i class="fa fa-angle-right mr-2"></i>About Us</a>
+        <a class="text-white mb-2" href="{{ route('contact') }}"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
+        <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Classes</a>
+        <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Packages</a>
+        <a class="text-white" href="team.html"><i class="fa fa-angle-right mr-2"></i>Profile</a>
+      </div>
+    </div>
+
+    <!-- Newsletter -->
+    <div class="col-lg-3 col-md-6 mb-5">
+      <h3 class="text-primary mb-4">Newsletter</h3>
+      {{-- <form action="{{ route('subscribe') }}" method="POST"> --}}
+        @csrf
+        <div class="form-group">
+          <input type="text" name="name" class="form-control border-0 py-4" placeholder="Your Name" required>
+        </div>
+        <div class="form-group">
+          <input type="email" name="email" class="form-control border-0 py-4" placeholder="Your Email" required>
+        </div>
+        <button class="btn btn-primary btn-block border-0 py-3" type="submit">Subscribe Now</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Bottom Footer Bar -->
+  <div class="container-fluid pt-5" style="border-top: 1px solid rgba(23, 162, 184, 0.2);">
+    <p class="m-0 text-center text-white">
+      &copy; <a class="text-primary font-weight-bold" href="{{ route('home') }}">GradeGuru</a>. All Rights Reserved.
+
+    </p>
+  </div>
+</div>
+<!-- Footer End -->

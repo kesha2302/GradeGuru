@@ -2,13 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>KidKinder - Kindergarten Website Template</title>
+    <title>GradeGuru </title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta content="Free HTML Templates" name="keywords" />
     <meta content="Free HTML Templates" name="description" />
-
+ <link rel="icon" type="image/png" href="{{ asset('ClientView/img/guru.png') }}" />
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon" />
+    {{-- <link href="img/favicon.ico" rel="icon" /> --}}
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -25,13 +25,14 @@
 
     <!-- Flaticon Font -->
     <link href="{{ asset('ClientView/lib/flaticon/font/flaticon.css')}}" rel="stylesheet" />
-
+d
     <!-- Libraries Stylesheet -->
     <link href="{{ asset('ClientView/lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet" />
     <link href="{{ asset('ClientView/lib/lightbox/css/lightbox.min.css')}}" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{ asset('ClientView/css/style.css')}}" rel="stylesheet" />
+
   </head>
   <body>
         <div class="container-fluid bg-light position-relative shadow">
@@ -61,9 +62,12 @@
           id="navbarCollapse"
         >
           <div class="navbar-nav font-weight-bold mx-auto py-0">
-            <a href="index.html" class="nav-item nav-link active">Home</a>
-            <a href="about.html" class="nav-item nav-link">About us</a>
-            <a href="class.html" class="nav-item nav-link">Contact us   </a>
+            <a href="{{ route('home') }}" class="nav-item nav-link active">Home</a>
+            {{-- <a href="{{ route('about') }}">About Us</a>
+<a href="{{ route('contact') }}">Contact Us</a> --}}
+
+            <a href="{{ route('about') }}" class="nav-item nav-link">About us</a>
+            <a href="{{ route('contact') }}" class="nav-item nav-link">Contact us   </a>
             <div class="nav-item dropdown">
               <a
                 href="#"
@@ -81,18 +85,29 @@
                 href="#"
                 class="nav-link dropdown-toggle"
                 data-toggle="dropdown"
-                > Packadge</a
+                > Package</a
               >
               <div class="dropdown-menu rounded-0 m-0">
                 <a href="blog.html" class="dropdown-item">Blog Grid</a>
                 <a href="single.html" class="dropdown-item">Blog Detail</a>
               </div>
             </div>
-            <a href="team.html" class="nav-item nav-link">Profile</a>
+            {{-- <a href="="{{ route('profile') }}" class="nav-item nav-link">Profile</a> --}}
+            <!-- Dropdown for Profile -->
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Profile
+    </a>
+<ul class="dropdown-menu" aria-labelledby="profileDropdown">
+    <li><a class="dropdown-item" href="{{ route('profile.edit') }}">Edit Profile</a></li>
+    <li><a class="dropdown-item" href="{{ route('plans.purchased') }}">Purchased Plan</a></li>
+</ul>
+
+</li>
+
 
           </div>
-{{-- <a href="{{ route('register') }}" class="btn btn-outline-primary mr-2">Register</a>
-<a href="{{ route('login') }}" class="btn btn-outline-secondary mr-2">Login</a> --}}
+
 
 
          <div class="d-flex align-items-center gap-2">
@@ -102,7 +117,7 @@
     @endguest
 
     @auth
-        {{-- <a href="{{ route('') }}" class="btn btn-success mr-2">Dashboard</a> --}}
+
         <form method="POST" action="{{ route('logout') }}" class="d-inline">
             @csrf
             <button type="submit" class="btn btn-secondary mr-2">Logout</button>
@@ -116,27 +131,9 @@
 
       </nav>
     </div>
-    <!-- Header Start -->
-    {{-- <div class="container-fluid bg-primary px-0 px-md-5 mb-5">
-      <div class="row align-items-center px-3">
-        <div class="col-lg-6 text-center text-lg-left">
-          <h4 class="text-white mb-4 mt-5 mt-lg-0">Kids Learning Center</h4>
-          <h1 class="display-3 font-weight-bold text-white">
-            New Approach to Kids Education
-          </h1>
-          <p class="text-white mb-4">
-            Sea ipsum kasd eirmod kasd magna, est sea et diam ipsum est amet sed
-            sit. Ipsum dolor no justo dolor et, lorem ut dolor erat dolore sed
-            ipsum at ipsum nonumy amet. Clita lorem dolore sed stet et est justo
-            dolore.
-          </p>
-          <a href="" class="btn btn-secondary mt-1 py-3 px-5">Learn More</a>
-        </div>
-        <div class="col-lg-6 text-center text-lg-right">
-          <img class="img-fluid mt-5" src="ClientView/img/header.png" alt="" />
-        </div>
-      </div>
-    </div> --}}
+
+<!-- Bootstrap 5 JS Bundle (with Popper) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 
   </body>

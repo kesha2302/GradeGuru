@@ -2,7 +2,7 @@
 @section('main-section')
 
 
-<div class="container" style="margin-top: 80px; margin-bottom:80px;">
+<div class="container mt-5 pt-5 mb-4">
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card p-4 shadow">
