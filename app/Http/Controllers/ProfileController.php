@@ -21,8 +21,8 @@ class ProfileController extends Controller
             'contact' => 'nullable|string|max:15',
         ]);
 
-        $user = Auth::user();
-        $user->update($request->only('name', 'email', 'contact'));
+    $user = Auth::user();
+    $user->update($request->only('name', 'email', 'contact'));
 
         return redirect()->route('profile.edit')->with('success', 'Profile updated successfully.');
     }
