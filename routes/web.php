@@ -121,3 +121,6 @@ Route::post('/profile/update', [ProfileController::class, 'update'])->name('prof
 Route::middleware('auth')->group(function () {
     Route::get('/plans/purchased', [PlanController::class, 'purchased'])->name('plans.purchased');
 });
+
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
