@@ -112,9 +112,12 @@ Route::post('/Admin/Test/update/{id}', [AdminTestController::class, 'testupdate'
 Route::get('/Admin/Test/delete/{id}', [AdminTestController::class, 'testdelete'])->name('test.delete');
 });
 
+
+// ClientView Routes
+Route::get('/classprice/{id}', [HomeController::class, 'classpriceshow'])->name('classprice.show');
+
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
-// Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
 Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
 Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 

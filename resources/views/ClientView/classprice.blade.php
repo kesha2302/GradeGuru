@@ -1,26 +1,32 @@
-<div class="col-md-6 mb-4">
-    <div class="card shadow-sm border-0 h-100">
-        <div class="card-body">
-            <h5 class="card-title text-primary">Super Test</h5>
+@extends('ClientView.Layouts.main')
+@section('main-section')
 
-            <ul class="list-unstyled text-muted mb-3">
-                <li><i class="fas fa-check text-success me-2"></i> 240+ Tests Available</li>
-                <li><i class="fas fa-check text-success me-2"></i> Solution lecture</li>
-                <li><i class="fas fa-clock text-warning me-2"></i> Timing: 120 mins</li>
-            </ul>
 
-            <h6 class="card-subtitle text-muted">Price:</h6>
-            <p class="card-text fw-bold">₹999</p>
+<div class="container mt-5 pt-5 mb-4">
 
-                <form method="POST" action="{{ route('cart.add') }}">
+    <h3 class="mt-5"> This is ClassPrice Package</h3>
+    <div class="row">
+        @foreach ($classprice as $index => $cp)
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm border-0 h-100">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">{{ $cp->title }}</h5>
+                        <p>{{ $cp->feature }}</p>
 
-                @csrf
-                <input type="hidden" name="name" value="Super Test">
-                <input type="hidden" name="price" value="999">
-                <input type="hidden" name="quantity" value="1">
-                <button type="submit" class="btn btn-outline-primary">Add to Cart</button>
-            </form>
-        </div>
+                        <h6 class="card-subtitle text-muted">Price:</h6>
+                        <p class="card-text fw-bold">₹{{ $cp->price }}</p>
+
+                        <button type="submit" class="btn btn-outline-primary">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            {{-- Close and open row every 3 items --}}
+            @if(($index + 1) % 3 == 0)
+                </div><div class="row">
+            @endif
+        @endforeach
     </div>
 </div>
 
+@endsection

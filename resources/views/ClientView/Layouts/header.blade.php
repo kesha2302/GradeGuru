@@ -40,7 +40,7 @@
           class="navbar-brand font-weight-bold text-secondary"
           style="font-size: 50px"
         >
-      <img src="./ClientView/img/guru.png" height="95" width="110">
+      <img src="{{ asset('ClientView/img/guru.png')}}" height="95" width="110">
 
         </a>
         <button
@@ -65,12 +65,12 @@
                         $className = \App\Models\ClassName::all();
                     @endphp
            <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="ClassDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="" id="ClassDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
         Class
     </a>
 <ul class="dropdown-menu" aria-labelledby="ClassDropdown">
     @foreach ($className as $cn)
-    <li><a class="dropdown-item" href="{{ route('profile.edit') }}">{{$cn->standard }}</a></li>
+    <li><a class="dropdown-item" href="{{ route('classprice.show', $cn->class_id) }}">{{$cn->standard }}</a></li>
     @endforeach
 </ul>
 
