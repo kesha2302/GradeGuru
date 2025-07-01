@@ -7,30 +7,27 @@
     <meta content="Free HTML Templates" name="keywords" />
     <meta content="Free HTML Templates" name="description" />
  <link rel="icon" type="image/png" href="{{ asset('ClientView/img/guru.png') }}" />
-    <!-- Favicon -->
-    {{-- <link href="img/favicon.ico" rel="icon" /> --}}
 
-    <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Handlee&family=Nunito&display=swap"
       rel="stylesheet"
     />
+<!-- In your main layout (e.g., main.blade.php in <head>) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <!-- Font Awesome -->
+
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
       rel="stylesheet"
     />
 
-    <!-- Flaticon Font -->
     <link href="{{ asset('ClientView/lib/flaticon/font/flaticon.css')}}" rel="stylesheet" />
-d
-    <!-- Libraries Stylesheet -->
+
     <link href="{{ asset('ClientView/lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet" />
     <link href="{{ asset('ClientView/lib/lightbox/css/lightbox.min.css')}}" rel="stylesheet" />
 
-    <!-- Customized Bootstrap Stylesheet -->
+
     <link href="{{ asset('ClientView/css/style.css')}}" rel="stylesheet" />
 
   </head>
@@ -43,11 +40,8 @@ d
           class="navbar-brand font-weight-bold text-secondary"
           style="font-size: 50px"
         >
-          {{-- <i class="flaticon-043-teddy-bear"></i> --}}
-      <img src="./ClientView/img/guru.png" alt="GradeGuru" height="95" width="110">
+      <img src="./ClientView/img/guru.png" height="95" width="110">
 
-
-          {{-- <span class="text-primary">GradeGuru</span> --}}
         </a>
         <button
           type="button"
@@ -63,8 +57,6 @@ d
         >
           <div class="navbar-nav font-weight-bold mx-auto py-0">
             <a href="{{ route('home') }}" class="nav-item nav-link active">Home</a>
-            {{-- <a href="{{ route('about') }}">About Us</a>
-<a href="{{ route('contact') }}">Contact Us</a> --}}
 
             <a href="{{ route('about') }}" class="nav-item nav-link">About us</a>
             <a href="{{ route('contact') }}" class="nav-item nav-link">Contact us   </a>
@@ -92,8 +84,7 @@ d
                 <a href="single.html" class="dropdown-item">Blog Detail</a>
               </div>
             </div>
-            {{-- <a href="="{{ route('profile') }}" class="nav-item nav-link">Profile</a> --}}
-            <!-- Dropdown for Profile -->
+
 <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
         Profile
@@ -105,6 +96,24 @@ d
 
 </li>
 
+{{-- <a class="nav-link" href="{{ route('cart.index') }}">
+    <i class="fas fa-shopping-cart"></i>
+
+    @if(session('cart'))
+        <span class="badge bg-danger">{{ count(session('cart')) }}</span>
+    @endif
+</a> --}}
+<a class="nav-link position-relative" href="{{ route('cart.index') }}">
+
+    <i class="fas fa-shopping-cart fa-lg"></i>
+
+    @if(session('cart') && count(session('cart')) > 0)
+        <span class="position-absolute top-50 start-50 translate-middle badge rounded-pill bg-danger">
+            {{ count(session('cart')) }}
+
+        </span>
+    @endif
+</a>
 
           </div>
 
@@ -132,7 +141,7 @@ d
       </nav>
     </div>
 
-<!-- Bootstrap 5 JS Bundle (with Popper) -->
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 

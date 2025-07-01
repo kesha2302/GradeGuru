@@ -23,6 +23,6 @@ $plans = collect([
     $plans = $user->plans ?? collect(); // fallback to empty collection
 
 
-    return view('ClientView.profile.purchased', compact('plans'));
+    return view('ClientView.purchased', compact('plans'));
 }
 }

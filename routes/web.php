@@ -11,6 +11,7 @@ use App\Http\Controllers\AdminRegularQueController;
 use App\Http\Controllers\AdminSuperQueController;
 use App\Http\Controllers\AdminTestController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\ProfileController;
