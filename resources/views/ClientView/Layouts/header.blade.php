@@ -60,18 +60,21 @@
 
             <a href="{{ route('about') }}" class="nav-item nav-link">About us</a>
             <a href="{{ route('contact') }}" class="nav-item nav-link">Contact us   </a>
-            <div class="nav-item dropdown">
-              <a
-                href="#"
-                class="nav-link dropdown-toggle"
-                data-toggle="dropdown"
-                >Class</a
-              >
-              <div class="dropdown-menu rounded-0 m-0">
-                <a href="blog.html" class="dropdown-item">Blog Grid</a>
-                <a href="single.html" class="dropdown-item">Blog Detail</a>
-              </div>
-            </div>
+
+                                @php
+                        $className = \App\Models\ClassName::all();
+                    @endphp
+           <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="ClassDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Class
+    </a>
+<ul class="dropdown-menu" aria-labelledby="ClassDropdown">
+    @foreach ($className as $cn)
+    <li><a class="dropdown-item" href="{{ route('profile.edit') }}">{{$cn->standard }}</a></li>
+    @endforeach
+</ul>
+
+</li>
               <div class="nav-item dropdown">
               <a
                 href="#"
