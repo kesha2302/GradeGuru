@@ -11,6 +11,7 @@ use App\Http\Controllers\AdminRegularQueController;
 use App\Http\Controllers\AdminSuperQueController;
 use App\Http\Controllers\AdminTestController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PlanController;
@@ -126,4 +127,10 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
+Route::post('/cart', [CartController::class, 'addToCart'])->name('cart.add');
+Route::post('/cart/remove', [CartController::class,'removeFromCart'])->name('cart.remove');
+
+
+Route::get('/Checkout', [BookingController::class, 'checkout']);
+Route::post('/bookingdata', [BookingController::class, 'storeBooking']);
+Route::post('/handlepayment', [BookingController::class, 'handlepayment']);

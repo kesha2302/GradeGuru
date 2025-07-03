@@ -99,24 +99,22 @@
 
 </li>
 
-{{-- <a class="nav-link" href="{{ route('cart.index') }}">
-    <i class="fas fa-shopping-cart"></i>
+        @if(session('cart') && count(session('cart')) > 0)
+    <span id="cart-badge" class="position-absolute left-100 translate-middle badge rounded-pill bg-danger text-light"
+        style="font-size: 0.65rem; margin-left:595px; margin-top:20px;">
+        {{ count(session('cart')) }}
+    </span>
+@else
+    <span id="cart-badge" class="position-absolute left-100 translate-middle badge rounded-pill bg-danger text-light d-none"
+        style="font-size: 0.65rem; margin-left:595px; margin-top:20px;">
+        0
+    </span>
+@endif
 
-    @if(session('cart'))
-        <span class="badge bg-danger">{{ count(session('cart')) }}</span>
-    @endif
-</a> --}}
-<a class="nav-link position-relative" href="{{ route('cart.index') }}">
+<a class="nav-link " href="{{ route('cart.index') }}"><i class="fas fa-shopping-cart fa-lg"></i></a>
 
-    <i class="fas fa-shopping-cart fa-lg"></i>
 
-    @if(session('cart') && count(session('cart')) > 0)
-        <span class="position-absolute top-50 start-50 translate-middle badge rounded-pill bg-danger">
-            {{ count(session('cart')) }}
 
-        </span>
-    @endif
-</a>
 
           </div>
 
@@ -148,4 +146,3 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 
-  </body>

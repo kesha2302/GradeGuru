@@ -1,14 +1,7 @@
 @extends('ClientView.Layouts.main')
 @section('main-section')
-    <!-- resources/views/ClientView/index.blade.php -->
-    <!DOCTYPE html>
-    <html>
 
-    <head>
-        <title>Home Page</title>
-    </head>
 
-    <body>
         <div class="container-fluid bg-primary px-0 px-md-5 mb-5">
             <div class="row align-items-center px-3">
                 <div class="col-lg-6 text-center text-lg-left">
@@ -70,7 +63,7 @@
 
 
     <div class="container mt-5 pt-5 mb-4">
-<div class="col-md-6 mb-4">
+<div class="col-md-6 mb-4 ">
     <div class="card shadow-sm border-0 h-100">
         <div class="card-body">
             <h5 class="card-title text-primary">Super Test</h5>
@@ -95,9 +88,7 @@
         </div>
     </div>
 </div>
+    </div>
 
-
-</body>
-</html>
 
 @endsection
