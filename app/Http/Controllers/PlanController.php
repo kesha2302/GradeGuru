@@ -35,6 +35,6 @@ public function purchased()
         $booking->class_prices = $prices;
     }
 
-    return view('ClientView.profile.purchased', compact('plans'));
+    return view('ClientView.purchased', compact('bookings'));
 }
 }
