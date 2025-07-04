@@ -31,10 +31,10 @@ public function purchased()
          ->with('classNames')
          ->get();
 
-    
+
         $booking->class_prices = $prices;
     }
 
-    return view('ClientView.profile.purchased', compact('bookings'));}
-
+    return view('ClientView.profile.purchased', compact('plans'));
+}
 }

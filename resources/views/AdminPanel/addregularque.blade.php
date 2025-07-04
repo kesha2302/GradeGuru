@@ -130,8 +130,7 @@
                         $('#test-dropdown').empty();
                         $('#test-dropdown').append('<option selected disabled>Select Test</option>');
                         $.each(data, function(key, value) {
-                            $('#test-dropdown').append('<option value="' + value.test_id +
-                                '">' + value.title + '</option>');
+                            $('#test-dropdown').append('<option value="' + value.test_id + '">' + value.title + ' - ' + value.que_type + '</option>');
                         });
                     }
                 });

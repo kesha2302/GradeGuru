@@ -10,7 +10,7 @@ class ProfileController extends Controller
     public function edit(): \Illuminate\View\View
     {
         $user = Auth::user();
-        return view('ClientView.profile.edit', compact('user'));
+        return view('ClientView.edit', compact('user'));
     }
 
     public function update(Request $request): \Illuminate\Http\RedirectResponse
@@ -21,8 +21,8 @@ class ProfileController extends Controller
             'contact' => 'nullable|string|max:15',
         ]);
 
-        $user = Auth::user();
-        // $user->update($request->only('name', 'email', 'contact'));
+    $user = Auth::user();
+    $user->update($request->only('name', 'email', 'contact'));
 
         return redirect()->route('profile.edit')->with('success', 'Profile updated successfully.');
     }

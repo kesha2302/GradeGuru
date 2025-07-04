@@ -11,6 +11,8 @@ use App\Http\Controllers\AdminRegularQueController;
 use App\Http\Controllers\AdminSuperQueController;
 use App\Http\Controllers\AdminTestController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BookingController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\ProfileController;
@@ -113,12 +115,24 @@ Route::post('/Admin/Test/update/{id}', [AdminTestController::class, 'testupdate'
 Route::get('/Admin/Test/delete/{id}', [AdminTestController::class, 'testdelete'])->name('test.delete');
 });
 
+
+// ClientView Routes
+Route::get('/classprice/{id}', [HomeController::class, 'classpriceshow'])->name('classprice.show');
+
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
-// Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
 Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
 Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 
 Route::middleware('auth')->group(function () {
     Route::get('/plans/purchased', [PlanController::class, 'purchased'])->name('plans.purchased');
 });
+
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::post('/cart', [CartController::class, 'addToCart'])->name('cart.add');
+Route::post('/cart/remove', [CartController::class,'removeFromCart'])->name('cart.remove');
+
+
+Route::get('/Checkout', [BookingController::class, 'checkout']);
+Route::post('/bookingdata', [BookingController::class, 'storeBooking']);
+Route::post('/handlepayment', [BookingController::class, 'handlepayment']);
