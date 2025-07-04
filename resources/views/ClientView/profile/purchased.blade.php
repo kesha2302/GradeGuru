@@ -1,49 +1,68 @@
 @extends('ClientView.Layouts.main')
 
 @section('main-section')
-<div class="container mt-5 pt-5 mb-4">
-    <div class="container py-4">
-        <h2 class="mb-4">Student Test Plans</h2>
+<div class="container mt-5 pt-5">
+    <h2 class="mb-5 text-center fw-bold display-6 bg-gradient text-primary-emphasis">
+         My Purchased Plans
+    </h2>
 
-        <div class="row">
-            <!-- Super Test Plan -->
-            <div class="col-md-6 mb-4">
-                <div class="card shadow-sm border-0 h-100">
-                    <div class="card-body">
-                        <h5 class="card-title text-primary">Super Test</h5>
+    <div class="row g-4">
+        @foreach($bookings as $booking)
+            @foreach($booking->class_prices as $price)
+                <div class="col-md-6 col-lg-4">
+                    <div class="card custom-card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+                        <div class="card-body p-4">
+                            {{-- <h5 class="card-title text-dark fw-semibold mb-3">{{ $price->title }}</h5> <!-- classprice --> --}}
 
-                        <ul class="list-unstyled text-muted mb-3">
-                            <li><i class="fas fa-check text-success me-2"></i> 240+ Tests Available</li>
-                            {{-- <li><i class="fas fa-check text-success me-2"></i> Advanced Practice & Analysis</li> --}}
-                            <li><i class="fas fa-check text-success me-2"></i>  Solution lecture</li>
-                            <li><i class="fas fa-clock text-warning me-2"></i> Timing: 120 mins</li>
-                        </ul>
+                            <p class="mb-2 d-flex align-items-center">
+                                <i class="bi bi-journal-bookmark-fill text-primary me-2 fs-5"></i>
+                                <span><strong>Standard:</strong> {{ $price->classNames->standard ?? 'N/A' }}</span>
+                            </p>
 
-                        <h6 class="card-subtitle text-muted">Price:</h6>
-                        <p class="card-text fw-bold">₹999</p>
+                            <p class="mb-2 d-flex align-items-center">
+                                <i class="bi bi-currency-rupee text-success me-2 fs-5"></i>
+                                <span><strong>Price:</strong> ₹{{ $price->price }}</span>
+                            </p>
+
+                            {{-- <p class="mb-3 d-flex align-items-center">
+                                <i class="bi bi-receipt-cutoff text-secondary me-2 fs-5"></i>
+                                <span><strong>Booking ID:</strong> {{ $booking->booking_id }}</span>
+                            </p> --}}
+
+                            <a href="{{ route('test.view', $price->cp_id) }}" class="btn btn-info w-100 rounded-pill fw-semibold">
+                                <i class="bi bi-eye-fill me-1"></i> View Test
+                            </a>
+                        </div>
+
+                        <div class="card-footer bg-light border-0 px-4 py-3 text-end text-muted small fw-semibold">
+                            Total Paid: ₹{{ $booking->totalprice }}
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- All Test Plan -->
-            <div class="col-md-6 mb-4">
-                <div class="card shadow-sm border-0 h-100">
-                    <div class="card-body">
-                        <h5 class="card-title text-primary">All Test</h5>
-
-                        <ul class="list-unstyled text-muted mb-3">
-                            <li><i class="fas fa-check text-success me-2"></i> 120 Multiple Choice Questions</li>
-                            {{-- <li><i class="fas fa-check text-success me-2"></i> Basic Mock Tests</li> --}}
-                            <li><i class="fas fa-check text-success me-2"></i> Solution lecture</li>
-                            <li><i class="fas fa-clock text-warning me-2"></i> Timing: 120 mins</li>
-                        </ul>
-
-                        <h6 class="card-subtitle text-muted">Price:</h6>
-                        <p class="card-text fw-bold">₹499</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+            @endforeach
+        @endforeach
     </div>
 </div>
 @endsection
+
+
+
+<style>
+.custom-card {
+    transition: 0.4s ease;
+    background: #fdfdfd;
+    border-radius: 1.25rem;
+}
+
+.custom-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
+}
+
+.card-title {
+    font-size: 1.2rem;
+}
+
+
+</style>
+

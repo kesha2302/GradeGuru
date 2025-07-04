@@ -14,6 +14,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TestviewController;
+use App\Http\Controllers\QuestionTestController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 

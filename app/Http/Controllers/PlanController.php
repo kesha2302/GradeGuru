@@ -5,24 +5,36 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Booking;
+use App\Models\ClassPrice;
+use App\Models\Test;
+use App\Models\ClassName;
 
 class PlanController extends Controller
 {
-  public function purchased()
+
+public function purchased()
 {
-    $user = Auth::user();
-$plans = collect([
-    (object) ['name' => 'Starter Plan', 'price' => 10],
-    (object) ['name' => 'Pro Plan', 'price' => 25],
-]);
-
-    // This assumes you have a `plans()` relationship set up in User model
+ $userId = Auth::id();
 
 
-    // Make sure the user has a "plans" relationship defined
-    $plans = $user->plans ?? collect(); // fallback to empty collection
+    $bookings = Booking::where('user_id', $userId)->get();
+
+    $classPrices = collect();
+
+    foreach ($bookings as $booking) {
+
+        $cpIds = array_filter(explode(',', $booking->cp_id));
 
 
-    return view('ClientView.profile.purchased', compact('plans'));
-}
+        $prices = ClassPrice::whereIn('cp_id', $cpIds)
+         ->with('classNames')
+         ->get();
+
+    
+        $booking->class_prices = $prices;
+    }
+
+    return view('ClientView.profile.purchased', compact('bookings'));}
+
 }

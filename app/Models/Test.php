@@ -9,8 +9,9 @@ class Test extends Model
     protected $table = 'test';
      protected $primaryKey = 'test_id';
 
-      public function classPrice()
+ 
+     public function classPrice()
     {
-        return $this->belongsTo(ClassPrice::class, 'cp_id', 'cp_id');
+        return $this->belongsTo(ClassPrice::class, 'cp_id');
     }
 }

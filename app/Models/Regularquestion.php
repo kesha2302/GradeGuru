@@ -9,6 +9,16 @@ class Regularquestion extends Model
      protected $table = 'regularquestions';
      protected $primaryKey = 'rq_id';
 
+      protected $fillable = [
+        'test_id',
+        'question_no',
+        'question',
+        'option1',
+        'option2',
+        'option3',
+        'option4',
+    ];
+
      public function classPrice()
     {
         return $this->belongsTo(ClassPrice::class, 'cp_id', 'cp_id');
