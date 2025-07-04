@@ -17,7 +17,7 @@ class TestviewController extends Controller
         $superTests = Test::where('cp_id', $cp_id)->where('que_type', 'super')->get();
 
 
-        return view ('ClientView.Layouts.testview',
+        return view ('ClientView.testview',
         compact('tests','cp_id','regularTests','superTests'));
     }
 }

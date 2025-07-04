@@ -34,7 +34,7 @@ class QuestionTestController extends Controller
         $question = $type === 'regular' ? $regularQuestions[$currentIndex] : $superQuestions[$currentIndex];
         $totalQuestions = $type === 'regular' ? $regularQuestions->count() : $superQuestions->count();
 
-        return view('ClientView.Layouts.questiontest', compact(
+        return view('ClientView.questiontest', compact(
             'test',
             'question',
             'currentIndex',
