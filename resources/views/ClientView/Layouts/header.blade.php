@@ -99,10 +99,10 @@
         {{ count(session('cart')) }}
     </span>
 @else
-    <span id="cart-badge" class="position-absolute left-100 translate-middle badge rounded-pill bg-danger text-light d-none"
+    {{-- <span id="cart-badge" class="position-absolute left-100 translate-middle badge rounded-pill bg-danger text-light d-none"
         style="font-size: 0.65rem; margin-left:495px; margin-top:20px;">
         0
-    </span>
+    </span> --}}
 @endif
 
 <a class="nav-link " href="{{ route('cart.index') }}"><i class="fas fa-shopping-cart fa-lg"></i></a>
