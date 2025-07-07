@@ -141,5 +141,6 @@ Route::post('/handlepayment', [BookingController::class, 'handlepayment']);
 
 
 Route::get('/testview/{cp_id}',[TestviewController::class, 'testview'])->name ('test.view');
-Route::get('/question-test/{test_id}', [QuestionTestController::class, 'questiontest'])->name('question.test');
+Route::get('/test/{test_id}/question', [QuestionTestController::class, 'questiontest'])->name('question.test');
 Route::post('/test/{test_id}/submit', [QuestionTestController::class, 'submitAnswer'])->name('test.submit');
+Route::get('/test/{test_id}/result', [QuestionTestController::class, 'result'])->name('test.result');

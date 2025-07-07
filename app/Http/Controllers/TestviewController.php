@@ -11,15 +11,16 @@ class TestviewController extends Controller
 {
     public function testview($cp_id)
     {
-         $tests = Test::where('cp_id', $cp_id)->get();
-        //  $test = Test::where('test_id', $test_id)->get();
-         $regularTests = Test::where('cp_id', $cp_id)->where('que_type', 'regular')->get();
-        $superTests = Test::where('cp_id', $cp_id)->where('que_type', 'super')->get();
+        $regularTests = Test::with('regularQuestions')
+            ->where('cp_id', $cp_id)
+            ->where('que_type', 'Regular')
+            ->get();
 
+        $superTests = Test::with('superQuestions')
+            ->where('cp_id', $cp_id)
+            ->where('que_type', 'Super')
+            ->get();
 
-        return view ('ClientView.testview',
-        compact('tests','cp_id','regularTests','superTests'));
+        return view('ClientView.testview', compact('cp_id', 'regularTests', 'superTests'));
     }
 }
-
-

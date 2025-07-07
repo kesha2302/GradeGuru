@@ -2,7 +2,7 @@
 
 @section('main-section')
 <div class="container mt-5 pt-5 mb-4">
-    <div class="mx-auto bg-white shadow-2xl rounded-5 p-5" style="max-width: 760px;">
+    <div class="mx-auto bg-white shadow-2xl rounded-5 p-5" style="max-width: 700px;">
 
         <!-- Question Header -->
         <div class="d-flex justify-content-between align-items-center mb-4">
@@ -22,6 +22,15 @@
         <!-- Form Start -->
         <form method="POST" action="{{ route('test.submit', $test->test_id) }}">
             @csrf
+
+             {{-- <input type="hidden" name="question_no" value="{{ $question->question_no }}"> --}}
+             @if ($type === 'regular')
+    <input type="hidden" name="rq_id" value="{{ $question->rq_id }}">
+@elseif ($type === 'super')
+    <input type="hidden" name="sq_id" value="{{ $question->sq_id }}">
+@endif
+
+
 
             <!-- Options -->
             @php
@@ -46,7 +55,7 @@
             </div>
 
             <!-- Navigation Buttons -->
-            <div class="d-flex justify-content-between align-items-center">
+            {{-- <div class="d-flex justify-content-between align-items-center">
                 <a href="{{ $prevUrl ?? '#' }}" class="btn btn-outline-secondary px-4 py-2 fw-semibold rounded-pill shadow-sm">
                     ← Previous
                 </a>
@@ -58,7 +67,29 @@
                 <a href="{{ $nextUrl ?? '#' }}" class="btn btn-outline-secondary px-4 py-2 fw-semibold rounded-pill shadow-sm">
                     Next →
                 </a>
-            </div>
+            </div> --}}
+             <div class="d-flex justify-content-between align-items-center">
+        @if ($currentIndex > 0)
+            <button type="submit" name="direction" value="prev"
+                class="btn btn-outline-secondary px-4 py-2 fw-semibold rounded-pill shadow-sm">
+                ← Previous
+            </button>
+        @else
+            <div></div>
+        @endif
+
+        @if ($currentIndex + 1 == $totalQuestions)
+            <button type="submit" name="direction" value="next"
+                class="btn btn-success px-4 py-2 fw-semibold rounded-pill text-white shadow-sm">
+                Submit
+            </button>
+        @else
+            <button type="submit" name="direction" value="next"
+                class="btn btn-outline-secondary px-4 py-2 fw-semibold rounded-pill shadow-sm">
+                Next →
+            </button>
+        @endif
+    </div>
         </form>
     </div>
 </div>
