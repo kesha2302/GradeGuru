@@ -75,19 +75,8 @@
 </ul>
 
 </li>
-              <div class="nav-item dropdown">
-              <a
-                href="#"
-                class="nav-link dropdown-toggle"
-                data-toggle="dropdown"
-                > Package</a
-              >
-              <div class="dropdown-menu rounded-0 m-0">
-                <a href="blog.html" class="dropdown-item">Blog Grid</a>
-                <a href="single.html" class="dropdown-item">Blog Detail</a>
-              </div>
-            </div>
 
+ @auth
 <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
         Profile
@@ -95,25 +84,30 @@
 <ul class="dropdown-menu" aria-labelledby="profileDropdown">
     <li><a class="dropdown-item" href="{{ route('profile.edit') }}">Edit Profile</a></li>
     <li><a class="dropdown-item" href="{{ route('plans.purchased') }}">Purchased Plan</a></li>
+    <li>
+        <form method="POST" action="{{ route('logout') }}" class="d-inline">
+            @csrf
+            <button type="submit" class="btn btn-secondary mr-2 dropdown-item">Logout</button>
+        </form></li>
 </ul>
 
 </li>
 
         @if(session('cart') && count(session('cart')) > 0)
     <span id="cart-badge" class="position-absolute left-100 translate-middle badge rounded-pill bg-danger text-light"
-        style="font-size: 0.65rem; margin-left:595px; margin-top:20px;">
+        style="font-size: 0.65rem; margin-left:495px; margin-top:20px;">
         {{ count(session('cart')) }}
     </span>
 @else
     <span id="cart-badge" class="position-absolute left-100 translate-middle badge rounded-pill bg-danger text-light d-none"
-        style="font-size: 0.65rem; margin-left:595px; margin-top:20px;">
+        style="font-size: 0.65rem; margin-left:495px; margin-top:20px;">
         0
     </span>
 @endif
 
 <a class="nav-link " href="{{ route('cart.index') }}"><i class="fas fa-shopping-cart fa-lg"></i></a>
 
-
+   @endauth
 
 
           </div>
@@ -126,13 +120,13 @@
         <a href="{{ route('login') }}" class="btn btn-outline-secondary mr-2">Login</a>
     @endguest
 
-    @auth
+    {{-- @auth
 
         <form method="POST" action="{{ route('logout') }}" class="d-inline">
             @csrf
             <button type="submit" class="btn btn-secondary mr-2">Logout</button>
         </form>
-    @endauth
+    @endauth --}}
 
 
 </div>
