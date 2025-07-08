@@ -45,8 +45,12 @@
             <div class="d-grid gap-4 mb-5">
                 @foreach ($options as $field => $label)
                     <div class="form-check d-flex align-items-center p-4 rounded-4 bg-light option-card shadow-sm gap-3">
-                        <input class="form-check-input custom-radio" type="radio" name="answer"
-                            id="{{ $field }}" value="{{ $field }}">
+                        {{-- <input class="form-check-input custom-radio" type="radio" name="answer"
+                            id="{{ $field }}" value="{{ $field }}"> --}}
+                            <input class="form-check-input custom-radio" type="radio" name="answer"
+    id="{{ $field }}" value="{{ $field }}"
+    {{ $selected === $field ? 'checked' : '' }}>
+
                         <label class="form-check-label fs-5 fw-semibold text-dark mb-0" for="{{ $field }}">
                             {{ $label }}. {{ $question->$field }}
                         </label>
@@ -68,7 +72,8 @@
                     Next →
                 </a>
             </div> --}}
-             <div class="d-flex justify-content-between align-items-center">
+
+             {{-- <div class="d-flex justify-content-between align-items-center">
         @if ($currentIndex > 0)
             <button type="submit" name="direction" value="prev"
                 class="btn btn-outline-secondary px-4 py-2 fw-semibold rounded-pill shadow-sm">
@@ -89,7 +94,31 @@
                 Next →
             </button>
         @endif
-    </div>
+    </div> --}}
+
+    <div class="d-flex justify-content-between align-items-center">
+    @if ($currentIndex > 0)
+        <button type="submit" name="direction" value="prev"
+            class="btn btn-outline-secondary px-4 py-2 fw-semibold rounded-pill shadow-sm">
+            ← Previous
+        </button>
+    @else
+        <div></div>
+    @endif
+
+    @if ($currentIndex + 1 == $totalQuestions)
+        <button type="submit" name="direction" value="next"
+            class="btn btn-success px-4 py-2 fw-semibold rounded-pill text-white shadow-sm">
+            Submit
+        </button>
+    @else
+        <button type="submit" name="direction" value="next"
+            class="btn btn-outline-secondary px-4 py-2 fw-semibold rounded-pill shadow-sm">
+            Next →
+        </button>
+    @endif
+</div>
+
         </form>
     </div>
 </div>

@@ -29,6 +29,7 @@
  @php
             $className = \App\Models\ClassName::all();
         @endphp
+
         <!-- Blog Start -->
         <div class="container-fluid pt-5">
             <div class="container">

@@ -60,6 +60,7 @@ public function register(Request $request)
     public function logout()
     {
         Auth::logout();
+        session()->forget(['current_question_index', 'answers']);
         return redirect()->route('login');
     }
 }
