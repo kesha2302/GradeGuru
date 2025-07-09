@@ -35,10 +35,14 @@
     {{ $test->regularQuestions->count() }} MCQ • 5 Minutes
 </p>
 
-                                <a href="{{ route('question.test', $test->test_id) }}"
+                                {{-- <a href="{{ route('question.test', $test->test_id) }}"
                                     class="btn btn-primary w-100 fw-semibold py-2 shadow-sm">
                                     <i class="bi bi-play-circle-fill me-2 fs-5"></i> Start
-                                </a>
+                                </a> --}}
+                                <a href="{{ route('question.test', ['test_id' => $test->test_id, 'type' => 'regular']) }}"
+    class="btn btn-primary w-100 fw-semibold py-2 shadow-sm">
+    <i class="bi bi-play-circle-fill me-2 fs-5"></i> Start
+</a>
 
                             </div>
                         </div>
@@ -61,10 +65,14 @@
     {{ $test->superQuestions->count() }} MCQ • 10 Minutes
 </p>
 
-                                <a href="{{ route('question.test', $test->test_id) }}"
+                                {{-- <a href="{{ route('question.test', $test->test_id) }}"
                                     class="btn btn-primary w-100 fw-semibold py-2 shadow-sm">
                                     <i class="bi bi-play-circle-fill me-2 fs-5"></i> Start
-                                </a>
+                                </a> --}}
+                                <a href="{{ route('question.test', ['test_id' => $test->test_id, 'type' => 'super']) }}"
+    class="btn btn-primary w-100 fw-semibold py-2 shadow-sm">
+    <i class="bi bi-play-circle-fill me-2 fs-5"></i> Start
+</a>
                             </div>
                         </div>
                     </div>
