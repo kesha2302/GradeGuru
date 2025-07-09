@@ -1,6 +1,7 @@
 @extends('ClientView.Layouts.main')
 
 @section('main-section')
+<div class="container mt-5 pt-5">
 <div class="container mt-5 pt-5 mb-4">
     <div class="row justify-content-center">
         <div class="col-md-6">
@@ -20,9 +21,9 @@
                         <input type="password" name="password" class="form-control" required>
                     </div>
 
-                 
+
                     <div class="d-flex justify-content-end mb-4">
-                        <a href="" class="text-decoration-none text-primary" style="font-size: 1rem; font-weight: 500;">
+                        <a href="{{ route('forgot.password') }}" class="text-decoration-none text-primary" style="font-size: 1rem; font-weight: 500;">
                             Forgot Password?
                         </a>
                     </div>
@@ -38,5 +39,6 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 @endsection

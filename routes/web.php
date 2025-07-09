@@ -18,6 +18,8 @@ use App\Http\Controllers\PlanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QuestionTestController;
 use App\Http\Controllers\TestviewController;
+use App\Http\Controllers\ForgotPasswordController;
+
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -143,3 +145,11 @@ Route::post('/handlepayment', [BookingController::class, 'handlepayment']);
 Route::get('/testview/{cp_id}',[TestviewController::class, 'testview'])->name ('test.view');
 Route::get('/question-test/{test_id}', [QuestionTestController::class, 'questiontest'])->name('question.test');
 Route::post('/test/{test_id}/submit', [QuestionTestController::class, 'submitAnswer'])->name('test.submit');
+
+
+Route::get('/forgot-password', [ForgotPasswordController::class, 'forgotpasswordload'])->name('forgot.password');
+Route::post('/forgot-password', [ForgotPasswordController::class, 'forgotpassword'])->name('forgot.password.send');
+
+Route::get('/reset-password', [ForgotPasswordController::class, 'resetpasswordload'])->name('reset.password.page');
+Route::post('/reset-password', [ForgotPasswordController::class, 'resetpassword'])->name('reset.password');
+
