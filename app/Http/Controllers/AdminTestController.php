@@ -46,6 +46,7 @@ class AdminTestController extends Controller
             'class_price' => 'required|exists:class_prices,cp_id',
             'title' => 'required|string',
             'que_type' => 'required|string',
+            'time' => 'required|string',
 
         ]);
 
@@ -57,6 +58,7 @@ class AdminTestController extends Controller
         $test->cp_id = $request->input('class_price');
         $test->title = $request->input('title');
         $test->que_type = $request->input('que_type');
+        $test->time = $request->input('time');
         $test->save();
 
         return redirect('/Admin/Test');
@@ -81,6 +83,7 @@ class AdminTestController extends Controller
         $test = Test::find($id);
         $test->title = $request->input('title');
         $test->que_type = $request->input('que_type');
+        $test->time = $request->input('time');
         $test->save();
 
         return redirect('/Admin/Test');

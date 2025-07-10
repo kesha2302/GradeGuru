@@ -10,6 +10,7 @@ class Regularquestion extends Model
      protected $primaryKey = 'rq_id';
 
       protected $fillable = [
+        'rq_id',
         'test_id',
         'question_no',
         'question',
@@ -17,6 +18,7 @@ class Regularquestion extends Model
         'option2',
         'option3',
         'option4',
+        'answer',
     ];
 
      public function classPrice()

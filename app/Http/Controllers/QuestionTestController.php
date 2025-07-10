@@ -6,54 +6,216 @@ use Illuminate\Http\Request;
 use App\Models\Test;
 use App\Models\Regularquestion;
 use App\Models\Superquestion;
+use Illuminate\Support\Facades\Log;
 
 class QuestionTestController extends Controller
 {
+
     public function questiontest($test_id, Request $request)
     {
         $test = Test::findOrFail($test_id);
-
         $regularQuestions = Regularquestion::where('test_id', $test_id)->get()->values();
-        $superQuestions   = Superquestion::where('test_id', $test_id)->get()->values();
+        $superQuestions = Superquestion::where('test_id', $test_id)->get()->values();
 
-        $currentIndex = $request->session()->get('current_question_index', 0);
-        $type = $request->session()->get('question_type', 'regular');
-
-        if ($type === 'regular' && $currentIndex >= $regularQuestions->count()) {
-            $currentIndex = 0;
-            $type = 'super';
-            $request->session()->put('question_type', 'super');
+        // First-time start: check for query param 'type'
+        if (!$request->session()->has('question_type')) {
+            $type = $request->query('type', 'regular'); // default to 'regular'
+            $request->session()->put('question_type', $type);
             $request->session()->put('current_question_index', 0);
+            $request->session()->forget('answers');
+
+            $durationInSeconds = $test->time * 60;
+            $request->session()->put('test_duration', $durationInSeconds);
+
+            $request->session()->put('test_start_time', now()->timestamp);
         }
 
-        if ($type === 'super' && $currentIndex >= $superQuestions->count()) {
-            $request->session()->forget(['current_question_index', 'question_type']);
-            return view('ClientView.Layouts.testcomplete', compact('test'));
+
+        $type = $request->session()->get('question_type');
+        $currentIndex = $request->session()->get('current_question_index', 0);
+
+        if ($type === 'regular') {
+            if ($currentIndex >= $regularQuestions->count()) {
+                $request->session()->forget(['question_type', 'current_question_index']);
+                return redirect()->route('test.result', $test_id);
+            }
+            $question = $regularQuestions[$currentIndex];
+            $totalQuestions = $regularQuestions->count();
+            $questionId = $question->rq_id;
+            $key = 'rq_' . $questionId;
+        } else {
+            if ($currentIndex >= $superQuestions->count()) {
+                $request->session()->forget(['question_type', 'current_question_index']);
+                return redirect()->route('test.result', $test_id);
+            }
+            $question = $superQuestions[$currentIndex];
+            $totalQuestions = $superQuestions->count();
+            $questionId = $question->sq_id;
+            $key = 'sq_' . $questionId;
         }
 
-        $question = $type === 'regular' ? $regularQuestions[$currentIndex] : $superQuestions[$currentIndex];
-        $totalQuestions = $type === 'regular' ? $regularQuestions->count() : $superQuestions->count();
+        $answers = $request->session()->get('answers', []);
+        $selected = $answers[$key] ?? null;
 
         return view('ClientView.questiontest', compact(
             'test',
             'question',
             'currentIndex',
             'type',
-            'totalQuestions'
+            'totalQuestions',
+            'selected'
         ));
     }
 
+
+
+
     public function submitAnswer($test_id, Request $request)
     {
-        $request->validate([
-            'answer' => 'required'
-        ]);
 
-        // Optional: Save answer in DB/session here
-
+        $direction = $request->input('direction', 'next');
         $currentIndex = $request->session()->get('current_question_index', 0);
-        $request->session()->put('current_question_index', $currentIndex + 1);
 
-        return redirect()->route('question.test', $test_id);
+        // Log::info('Initial current_question_index: ' . $currentIndex);
+        // Log::info('Initial answers: ', $request->session()->get('answers', []));
+
+        if ($direction === 'next') {
+            $request->validate([
+                'answer' => 'required'
+            ]);
+
+            $rq_id = $request->input('rq_id');
+            $sq_id = $request->input('sq_id');
+
+            $answer = $request->input('answer');
+            $answers = $request->session()->get('answers', []);
+
+            if ($rq_id) {
+                $key = 'rq_' . $rq_id;
+                // Log::info("Saving answer for Regular Question ID $rq_id: $answer");
+            } elseif ($sq_id) {
+                $key = 'sq_' . $sq_id;
+                // Log::info("Saving answer for Super Question ID $sq_id: $answer");
+            } else {
+                // Log::warning('No question ID found in request');
+                return redirect()->back()->withErrors(['Invalid question ID']);
+            }
+
+            $answers[$key] = $answer;
+            $request->session()->put('answers', $answers);
+
+            $currentIndex++;
+        } elseif ($direction === 'prev') {
+            $currentIndex = max(0, $currentIndex - 1);
+        }
+
+        // Log::info('Updated current_question_index: ' . $currentIndex);
+        // Log::info('Updated answers: ', $request->session()->get('answers', []));
+
+        $request->session()->put('current_question_index', $currentIndex);
+
+        $type = $request->session()->get('question_type', 'regular');
+        return redirect()->route('question.test', ['test_id' => $test_id, 'type' => $type]);
+
+        // return redirect()->route('question.test', $test_id);
+    }
+
+
+
+    public function result($test_id, Request $request)
+    {
+        $test = Test::findOrFail($test_id);
+        $answers = $request->session()->get('answers', []);
+
+        $regularIds = [];
+        $superIds = [];
+
+        foreach (array_keys($answers) as $key) {
+            if (str_starts_with($key, 'rq_')) {
+                $regularIds[] = (int) str_replace('rq_', '', $key);
+            } elseif (str_starts_with($key, 'sq_')) {
+                $superIds[] = (int) str_replace('sq_', '', $key);
+            }
+        }
+
+        // Fetch questions
+        $regularQuestions = Regularquestion::whereIn('rq_id', $regularIds)->get()->keyBy('rq_id');
+        $superQuestions = Superquestion::whereIn('sq_id', $superIds)->get()->keyBy('sq_id');
+
+        $allQuestions = collect();
+        foreach ($regularQuestions as $rq) {
+            $allQuestions->put('rq_' . $rq->rq_id, $rq);
+        }
+        foreach ($superQuestions as $sq) {
+            $allQuestions->put('sq_' . $sq->sq_id, $sq);
+        }
+
+        $correctCount = 0;
+        $wrongCount = 0;
+
+        foreach ($answers as $questionKey => $selectedOption) {
+            $question = $allQuestions[$questionKey] ?? null;
+
+            if ($question) {
+                $selectedOption = trim($selectedOption);
+                $correctOption = trim($question->answer);
+
+                $selectedText = str_starts_with($selectedOption, 'option') ? ($question->{$selectedOption} ?? '') : $selectedOption;
+                $correctText  = str_starts_with($correctOption, 'option') ? ($question->{$correctOption} ?? '') : $correctOption;
+
+                if ($selectedText === $correctText) {
+                    $correctCount++;
+                } else {
+                    $wrongCount++;
+                }
+            }
+        }
+
+        $totalQuestions = $correctCount + $wrongCount;
+        $passingScore = ceil($totalQuestions * 0.5);
+        $status = $correctCount >= $passingScore ? 'Pass' : 'Fail';
+
+        return view('ClientView.result', compact(
+            'test',
+            'answers',
+            'allQuestions',
+            'correctCount',
+            'wrongCount',
+            'totalQuestions',
+            'passingScore',
+            'status'
+        ));
+    }
+
+
+    public function autoSubmit($test_id, Request $request)
+    {
+        $test = Test::findOrFail($test_id);
+        $type = $request->session()->get('question_type');
+        $answers = $request->session()->get('answers', []);
+        $currentIndex = $request->session()->get('current_question_index', 0);
+
+        if ($type === 'regular') {
+            $questions = Regularquestion::where('test_id', $test_id)->get()->values();
+            for ($i = $currentIndex; $i < $questions->count(); $i++) {
+                $key = 'rq_' . $questions[$i]->rq_id;
+                if (!isset($answers[$key])) {
+                    $answers[$key] = '-';
+                }
+            }
+        } elseif ($type === 'super') {
+            $questions = Superquestion::where('test_id', $test_id)->get()->values();
+            for ($i = $currentIndex; $i < $questions->count(); $i++) {
+                $key = 'sq_' . $questions[$i]->sq_id;
+                if (!isset($answers[$key])) {
+                    $answers[$key] = '-';
+                }
+            }
+        }
+
+        $request->session()->put('answers', $answers);
+        $request->session()->forget(['question_type', 'current_question_index']);
+
+        return response()->json(['status' => 'submitted']);
     }
 }
