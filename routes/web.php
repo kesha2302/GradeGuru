@@ -147,9 +147,3 @@ Route::get('/question-test/{test_id}', [QuestionTestController::class, 'question
 Route::post('/test/{test_id}/submit', [QuestionTestController::class, 'submitAnswer'])->name('test.submit');
 
 
-Route::get('/forgot-password', [ForgotPasswordController::class, 'forgotpasswordload'])->name('forgot.password');
-Route::post('/forgot-password', [ForgotPasswordController::class, 'forgotpassword'])->name('forgot.password.send');
-
-Route::get('/reset-password', [ForgotPasswordController::class, 'resetpasswordload'])->name('reset.password.page');
-Route::post('/reset-password', [ForgotPasswordController::class, 'resetpassword'])->name('reset.password');
-

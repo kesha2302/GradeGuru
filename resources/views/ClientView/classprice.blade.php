@@ -1,5 +1,19 @@
 @extends('ClientView.Layouts.main')
 @section('main-section')
+
+<div class="container-fluid bg-primary mb-5">
+      <div
+        class="d-flex flex-column align-items-center justify-content-center"
+        style="min-height: 400px"
+      >
+        <h3 class="display-3 font-weight-bold text-white"> Class</h3>
+        <div class="d-inline-flex text-white">
+          <p class="m-0"><a class="text-white" href="">Home</a></p>
+          <p class="m-0 px-2">/</p>
+          <p class="m-0">Class</p>
+        </div>
+      </div>
+    </div>
     <div class="container mt-5 pt-5 mb-4">
         <h3 class="mt-5 mb-3 text-center text-dark">This is ClassPrice Package</h3>
         <div class="row">

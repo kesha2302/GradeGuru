@@ -14,7 +14,7 @@
                 <div class="row align-items-center m-0 p-5"
                      style="background: linear-gradient(135deg, #0b9db8, #15c5de); min-height: 90vh; position: relative; overflow: hidden; border-radius: 20px;">
 
-                    <!-- Text Content -->
+
                     <div class="col-lg-6 col-md-12 text-center text-lg-start px-5">
                         <h1 class="display-1 fw-bold mb-4"
                             style="line-height: 1.2; color: #e6e6e2; text-shadow: 2px 2px 4px rgba(0,0,0,0.4);">
