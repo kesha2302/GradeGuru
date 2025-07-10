@@ -120,12 +120,10 @@ Route::get('/Admin/Test/delete/{id}', [AdminTestController::class, 'testdelete']
 
 // ClientView Routes
 Route::get('/classprice/{id}', [HomeController::class, 'classpriceshow'])->name('classprice.show');
-
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
 Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
-
 Route::middleware('auth')->group(function () {
     Route::get('/plans/purchased', [PlanController::class, 'purchased'])->name('plans.purchased');
 });
@@ -136,15 +134,23 @@ Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/cart', [CartController::class, 'addToCart'])->name('cart.add');
 Route::post('/cart/remove', [CartController::class,'removeFromCart'])->name('cart.remove');
 
+
 // Booking Controller
 Route::get('/Checkout', [BookingController::class, 'checkout']);
 Route::post('/bookingdata', [BookingController::class, 'storeBooking']);
 Route::post('/handlepayment', [BookingController::class, 'handlepayment']);
 
 
+// QuestionTest Controller
 Route::get('/testview/{cp_id}',[TestviewController::class, 'testview'])->name ('test.view');
 Route::get('/test/{test_id}/question', [QuestionTestController::class, 'questiontest'])->name('question.test');
 Route::post('/test/{test_id}/submit', [QuestionTestController::class, 'submitAnswer'])->name('test.submit');
 Route::get('/test/{test_id}/result', [QuestionTestController::class, 'result'])->name('test.result');
 Route::post('/test/{test_id}/autosubmit', [QuestionTestController::class, 'autoSubmit'])->name('test.autosubmit');
 
+
+// Forget Password Controller
+Route::get('/forgot-password', [ForgotPasswordController::class, 'forgotpasswordload'])->name('forgot.password');
+Route::post('/forgot-password', [ForgotPasswordController::class, 'forgotpassword'])->name('forgot.password.send');
+Route::get('/reset-password', [ForgotPasswordController::class, 'resetpasswordload'])->name('reset.password.page');
+Route::post('/reset-password', [ForgotPasswordController::class, 'resetpassword'])->name('reset.password');
