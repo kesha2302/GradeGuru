@@ -105,7 +105,7 @@ public function index()
         $bannerdetail = Banner::findOrFail($id);
         $title = "Update Banner";
         $url = url('/admin/banner/update') . "/". $id;
-        return view('AdminPanel.addBanner', compact('bannerdetail', 'title','url q'));
+        return view('AdminPanel.addBanner', compact('bannerdetail', 'title','url'));
     }
 
     public function update(Request $request, $id)
