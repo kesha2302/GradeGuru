@@ -55,6 +55,15 @@
                         @enderror
                     </div>
 
+                     <div class="mb-3">
+                        <label class="form-label">Time(in minute):</label>
+                        <input type="text" name="time" class="form-control" value="{{ $test->time }}"
+                            placeholder="5" />
+                        @error('time')
+                            {{ $message }}
+                        @enderror
+                    </div>
+
                     <div class="text-center">
                         <button type="submit" class="btn btn-dark">Submit</button>
                     </div>

@@ -144,3 +144,5 @@ Route::get('/testview/{cp_id}',[TestviewController::class, 'testview'])->name ('
 Route::get('/test/{test_id}/question', [QuestionTestController::class, 'questiontest'])->name('question.test');
 Route::post('/test/{test_id}/submit', [QuestionTestController::class, 'submitAnswer'])->name('test.submit');
 Route::get('/test/{test_id}/result', [QuestionTestController::class, 'result'])->name('test.result');
+Route::post('/test/{test_id}/autosubmit', [QuestionTestController::class, 'autoSubmit'])->name('test.autosubmit');
+

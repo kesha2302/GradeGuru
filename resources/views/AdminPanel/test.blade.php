@@ -39,6 +39,7 @@
                                 <th>Class</th>
                                 <th>Title</th>
                                 <th>Que Type</th>
+                                <th>Time</th>
                                 <th colspan="2">Action</th>
                             </tr>
                         </thead>
@@ -48,6 +49,7 @@
                                     <td>{{$t->classPrice->title}}-(₹{{$t->classPrice->price}})</td>
                                     <td>{{$t->title ?: '-'}}</td>
                                     <td>{{$t->que_type ?: '-'}}</td>
+                                    <td>{{$t->time ?: '-'}} min</td>
                                     <td>
                                         <a href="{{ route('test.delete', ['id' => $t->test_id]) }}">
                                             <button class="btn btn-danger m-2">Delete</button>

@@ -14,6 +14,20 @@
                 </span>
             </div>
 
+            @php
+    $duration = session('test_duration', 90);
+    $start = session('test_start_time', now()->timestamp); // fallback for safety
+    $elapsed = time() - $start;
+    $timeLeft = max($duration - $elapsed, 0);
+    $initialMin = str_pad(floor($timeLeft / 60), 2, '0', STR_PAD_LEFT);
+    $initialSec = str_pad($timeLeft % 60, 2, '0', STR_PAD_LEFT);
+@endphp
+
+<div class="text-end mb-3">
+    <span class="badge bg-danger fs-6 px-3 py-2 text-white" id="timer">{{ $initialMin }}:{{ $initialSec }}</span>
+</div>
+
+
             <!-- Question Title -->
             <h3 class="fs-5 fw-bold text-dark mb-4">
                 {{ $question->question }}
@@ -135,4 +149,41 @@
             min-width: 120px;
         }
     </style>
+
+   <script>
+    const testStartTime = {{ session('test_start_time', now()->timestamp) }};
+    const now = Math.floor(Date.now() / 1000);
+    const totalDuration = {{ session('test_duration', 90) }};
+    const timePassed = now - testStartTime;
+    let timeLeft = Math.max(totalDuration - timePassed, 0);
+
+    const timerElement = document.getElementById('timer');
+
+    const countdown = setInterval(() => {
+        const minutes = Math.floor(timeLeft / 60).toString().padStart(2, '0');
+        const seconds = (timeLeft % 60).toString().padStart(2, '0');
+        timerElement.textContent = `${minutes}:${seconds}`;
+
+        if (timeLeft <= 0) {
+            clearInterval(countdown);
+            autoSubmitDueToTimeout();
+        }
+
+        timeLeft--;
+    }, 1000);
+
+    function autoSubmitDueToTimeout() {
+        fetch('{{ route("test.autosubmit", $test->test_id) }}', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            }
+        }).then(() => {
+            window.location.href = '{{ route("test.result", $test->test_id) }}';
+        });
+    }
+</script>
+
+
 @endsection
