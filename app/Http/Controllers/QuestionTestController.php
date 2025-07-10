@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Test;
 use App\Models\Regularquestion;
+use App\Models\Result;
 use App\Models\Superquestion;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 
 class QuestionTestController extends Controller
 {
@@ -124,6 +126,8 @@ class QuestionTestController extends Controller
 
     public function result($test_id, Request $request)
     {
+        $user = Auth::user();
+
         $test = Test::findOrFail($test_id);
         $answers = $request->session()->get('answers', []);
 
@@ -174,6 +178,16 @@ class QuestionTestController extends Controller
         $totalQuestions = $correctCount + $wrongCount;
         $passingScore = ceil($totalQuestions * 0.5);
         $status = $correctCount >= $passingScore ? 'Pass' : 'Fail';
+
+        Result::create([
+            'test_id'         => $test->test_id,
+            'cp_id'           => $test->cp_id,
+            'user_id'         => $user->id,
+            'result'          => $status,
+            'correct' => $correctCount,
+        ]);
+
+        $request->session()->forget(['answers', 'question_type', 'current_question_index']);
 
         return view('ClientView.result', compact(
             'test',

@@ -9,6 +9,14 @@ class Result extends Model
     protected $table = 'results';
     protected $primaryKey = 'result_id';
 
+     protected $fillable = [
+        'user_id',
+        'cp_id',
+        'test_id',
+        'result',
+        'correct',
+    ];
+
    public function classPrice()
     {
         return $this->belongsTo(ClassPrice::class, 'cp_id', 'cp_id');
