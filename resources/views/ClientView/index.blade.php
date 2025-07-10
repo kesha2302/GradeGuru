@@ -1,29 +1,51 @@
 @extends('ClientView.Layouts.main')
 @section('main-section')
 
+@php
+    $banners = \App\Models\Banner::all();
+@endphp
 
-        <div class="container-fluid bg-primary px-0 px-md-5 mb-5">
-            <div class="row align-items-center px-3">
-                <div class="col-lg-6 text-center text-lg-left">
-                    <h4 class="text-white mb-4 mt-5 mt-lg-0">Kids Learning Center</h4>
-                    <h1 class="display-3 font-weight-bold text-white">
-                        New Approach to Kids Education
-                    </h1>
-                    <p class="text-white mb-4">
-                        Sea ipsum kasd eirmod kasd magna, est sea et diam ipsum est amet sed
-                        sit. Ipsum dolor no justo dolor et, lorem ut dolor erat dolore sed
-                        ipsum at ipsum nonumy amet. Clita lorem dolore sed stet et est justo
-                        dolore.
-                    </p>
-                    <a href="" class="btn btn-secondary mt-1 py-3 px-5">Learn More</a>
-                </div>
-                <div class="col-lg-6 text-center text-lg-right">
-                    <img class="img-fluid mt-5" src="ClientView/img/header.png" alt="" />
+@if($banners->count())
+<div id="carouselExampleAutoplaying" class="carousel slide mt-5 pt-5" data-bs-ride="carousel" data-bs-interval="3000">
+    <div class="carousel-inner">
+        @foreach($banners as $key => $banner)
+        <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+            <div class="container-fluid px-0">
+                <div class="row align-items-center m-0 p-5"
+                     style="background: linear-gradient(135deg, #0b9db8, #15c5de); min-height: 90vh; position: relative; overflow: hidden; border-radius: 20px;">
+
+
+                    <div class="col-lg-6 col-md-12 text-center text-lg-start px-5">
+                        <h1 class="display-1 fw-bold mb-4"
+                            style="line-height: 1.2; color: #e6e6e2; text-shadow: 2px 2px 4px rgba(0,0,0,0.4);">
+                            {{ $banner->title ?? 'Default Main Heading' }}
+                        </h1>
+
+                        <h4 class="fs-4 mb-4"
+                           style="max-width: 600px; color: #ffffffcc; font-weight: 500; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);">
+                            {{ $banner->description ?? 'Default description goes here...' }}
+                    </h4>
+                    </div>
+
+                    <!-- Banner Image -->
+                    <div class="col-lg-6 col-md-12 text-center mt-4 mt-lg-0">
+                        <div style="transform: rotate(-2deg); transition: transform 0.3s;">
+                            <img src="{{ asset('bannerimage/' . $banner->image) }}" alt="Banner Image"
+                                 class="img-fluid rounded-4 shadow-lg"
+                                 style="max-height: 600px; object-fit: cover; border: 6px solid #fff; box-shadow: 0 15px 35px rgba(0,0,0,0.2);">
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
+        @endforeach
+    </div>
+</div>
+@endif
 
-    <h1>Welcome to GradeGuru!</h1>
+
+
 
 
  @php
@@ -91,5 +113,5 @@
 </div>
     </div>
 
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 @endsection

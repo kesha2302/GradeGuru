@@ -13,4 +13,6 @@ class Banner extends Model
       protected $primaryKey = 'banner_id';
 
         protected $fillable = ['title', 'description', 'image'];
+
+        public $timestamps = false;    
 }

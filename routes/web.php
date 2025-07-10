@@ -18,6 +18,8 @@ use App\Http\Controllers\PlanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QuestionTestController;
 use App\Http\Controllers\TestviewController;
+use App\Http\Controllers\ForgotPasswordController;
+
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
