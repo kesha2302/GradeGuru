@@ -11,20 +11,20 @@
 
             <div class="card-body">
 
-                <form action="{{ url($url) }}" method="POST">
+                <form action="{{ url($url) }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
-                    @if (empty($test->cp_id))
+                    @if (empty($demotest->class_id))
                         <div class="mb-3">
-                            <label class="form-label">ClassPrice:</label>
-                            <select name="class_price" class="form-select" data-live-search="true"
+                            <label class="form-label">Class Name:</label>
+                            <select name="class_names" class="form-select" data-live-search="true"
                                 aria-label="Default select">
                                 <option selected disabled>Select Class</option>
-                                @foreach ($class_price as $cp)
-                                    <option value="{{ $cp->cp_id }}">{{ $cp->title }}-(₹{{ $cp->price }})</option>
+                                @foreach ($class_names as $cn)
+                                    <option value="{{ $cn->class_id }}">{{ $cn->standard }}</option>
                                 @endforeach
                             </select>
-                            @error('class_price')
+                            @error('class_names')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
@@ -32,7 +32,7 @@
 
                     <div class="mb-3">
                         <label class="form-label">Title:</label>
-                        <input type="text" name="title" class="form-control" value="{{ $test->title }}"
+                        <input type="text" name="title" class="form-control" value="{{ $demotest->title }}"
                             placeholder="Test 1" />
                         @error('title')
                             {{ $message }}
@@ -40,34 +40,19 @@
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Question Type:</label>
-                        <select name="que_type" class="form-select mb-3">
-                            <option disabled {{ $test->que_type == null ? 'selected' : '' }}>Select Option</option>
-                            <option value="Super" {{ $test->que_type == 'Super' ? 'selected' : '' }}>Super Question
-                            </option>
-                            <option value="Regular" {{ $test->que_type == 'Regular' ? 'selected' : '' }}>Regular Question
-                            </option>
-                        </select>
-
-
-                        @error('que_type')
-                            <div class="text-danger">{{ $message }}</div>
-                        @enderror
-                    </div>
-
-                     <div class="mb-3">
                         <label class="form-label">Time(in minute):</label>
-                        <input type="text" name="time" class="form-control" value="{{ $test->time }}"
+                        <input type="text" name="time" class="form-control" value="{{ $demotest->time }}"
                             placeholder="5" />
                         @error('time')
                             {{ $message }}
                         @enderror
                     </div>
 
+
                     <div class="mb-3">
                         <label class="form-label">Passing Marks:</label>
-                        <input type="text" name="pass_marks" class="form-control" value="{{ $test->pass_marks }}"
-                            placeholder="5" />
+                        <input type="text" name="pass_marks" class="form-control" value="{{ $demotest->pass_marks }}"
+                            placeholder="10" />
                         @error('pass_marks')
                             {{ $message }}
                         @enderror

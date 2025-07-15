@@ -31,7 +31,7 @@
                             <tr>
                                 <th style="width: 5%;">Id</th>
                                 <th style="width: 20%;">Name</th>
-                                <th style="width: 35%;">ClassName</th>
+                                <th style="width: 35%;">Class Price</th>
                                 <th style="width: 35%;">Total Price</th>
                                 <th style="width: 35%;">Payment_Id</th>
                             </tr>
@@ -41,7 +41,15 @@
                                 <tr>
                                     <td>{{ $bk->booking_id }}</td>
                                     <td>{{ $bk->users->name ?: '-' }}</td>
-                                    <td>{{ $bk->classPrice->title ?: '-' }}</td>
+                                    <td>
+    @if ($bk->class_prices && $bk->class_prices->count())
+        @foreach ($bk->class_prices as $cp)
+            <div><strong>{{ $cp->classNames->standard }}</strong> - ₹{{ $cp->price }}</div>
+        @endforeach
+    @else
+        -
+    @endif
+</td>
                                      <td>{{ $bk->totalprice ?: '-' }}</td>
                                      <td>{{ $bk->payment_id ?: '-' }}</td>
                                 </tr>

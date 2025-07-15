@@ -32,17 +32,21 @@
                                 <th style="width: 5%;">Id</th>
                                 <th style="width: 20%;">Name</th>
                                 <th style="width: 35%;">ClassName</th>
-                                <th style="width: 35%;">Question Type</th>
+                                <th style="width: 30%;">Test</th>
+                                <th style="width: 30%;">Type</th>
+                                <th style="width: 35%;">Result</th>
                                 <th style="width: 35%;">Total Correct</th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse ($resultdetail as $result)
                                 <tr>
-                                    <td>{{ $result->id }}</td>
+                                    <td>{{ $result->result_id }}</td>
                                     <td>{{ $result->users->name ?: '-' }}</td>
                                     <td>{{ $result->classPrice->title ?: '-' }}</td>
-                                     <td>{{ $result->classPrice->que_type ?: '-' }}</td>
+                                     <td>{{ $result->test->title ?: '-' }}</td>
+                                     <td>{{ $result->test->que_type ?: '-' }}</td>
+                                     <td>{{ $result->result ?: '-' }}</td>
                                      <td>{{ $result->correct ?: '-' }}</td>
                                 </tr>
                             @empty

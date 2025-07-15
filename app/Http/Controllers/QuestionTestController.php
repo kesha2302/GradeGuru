@@ -176,7 +176,8 @@ class QuestionTestController extends Controller
         }
 
         $totalQuestions = $correctCount + $wrongCount;
-        $passingScore = ceil($totalQuestions * 0.5);
+        // $passingScore = ceil($totalQuestions * 0.5);
+        $passingScore = $test->pass_marks; // fetch pass_marks from test table
         $status = $correctCount >= $passingScore ? 'Pass' : 'Fail';
 
         Result::create([

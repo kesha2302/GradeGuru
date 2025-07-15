@@ -87,8 +87,10 @@
 
 
                 @guest
-                    <a href="{{ route('register') }}" class="btn btn-outline-primary me-2">Register</a>
-                    <a href="{{ route('login') }}" class="btn btn-outline-secondary me-3">Login</a>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <a href="{{ route('register') }}" class="btn btn-outline-primary me-md-2">Register</a>
+                    <a href="{{ route('login') }}" class="btn btn-outline-secondary ">Login</a>
+                </div>
                 @endguest
 
                 @auth

@@ -16,9 +16,8 @@ class ClassPrice extends Model
     {
         return $this->belongsTo(ClassName::class, 'class_id', 'class_id');
     }
- public function tests()
+    public function tests()
     {
         return $this->hasMany(Test::class, 'cp_id');
     }
-
 }

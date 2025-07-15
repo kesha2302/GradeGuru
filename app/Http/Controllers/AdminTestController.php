@@ -47,6 +47,7 @@ class AdminTestController extends Controller
             'title' => 'required|string',
             'que_type' => 'required|string',
             'time' => 'required|string',
+            'pass_marks' => 'required|integer',
 
         ]);
 
@@ -59,6 +60,7 @@ class AdminTestController extends Controller
         $test->title = $request->input('title');
         $test->que_type = $request->input('que_type');
         $test->time = $request->input('time');
+        $test->pass_marks = $request->input('pass_marks');
         $test->save();
 
         return redirect('/Admin/Test');
@@ -84,6 +86,7 @@ class AdminTestController extends Controller
         $test->title = $request->input('title');
         $test->que_type = $request->input('que_type');
         $test->time = $request->input('time');
+        $test->pass_marks = $request->input('pass_marks');
         $test->save();
 
         return redirect('/Admin/Test');

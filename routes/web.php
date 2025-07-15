@@ -7,6 +7,8 @@ use App\Http\Controllers\AdminPanelController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminBannerController;
 use App\Http\Controllers\AdminClassPriceController;
+use App\Http\Controllers\AdminDemoQuestionController;
+use App\Http\Controllers\AdminDemoTestController;
 use App\Http\Controllers\AdminRegularQueController;
 use App\Http\Controllers\AdminSuperQueController;
 use App\Http\Controllers\AdminTestController;
@@ -35,6 +37,8 @@ Route::get('/Admin', [AdminPanelController::class, 'index']);
 Route::get('/Admin/Userdetail', [AdminPanelController::class, 'userdetail']);
 Route::get('/Admin/Result', [AdminPanelController::class, 'resultdetail']);
 Route::get('/Admin/Booking', [AdminPanelController::class, 'bookingdetail']);
+Route::get('/Admin/Inquiry', [AdminPanelController::class, 'inquirydetail']);
+Route::get('/Admin/DemoResult', [AdminPanelController::class, 'demoresultdetail']);
 });
 
 Route::middleware(['admin.auth'])->group(function () {
@@ -122,6 +126,7 @@ Route::get('/Admin/Test/delete/{id}', [AdminTestController::class, 'testdelete']
 Route::get('/classprice/{id}', [HomeController::class, 'classpriceshow'])->name('classprice.show');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::post('/inquiry', [HomeController::class, 'inquirystore']);
 Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
 Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 Route::middleware('auth')->group(function () {
@@ -154,3 +159,25 @@ Route::get('/forgot-password', [ForgotPasswordController::class, 'forgotpassword
 Route::post('/forgot-password', [ForgotPasswordController::class, 'forgotpassword'])->name('forgot.password.send');
 Route::get('/reset-password', [ForgotPasswordController::class, 'resetpasswordload'])->name('reset.password.page');
 Route::post('/reset-password', [ForgotPasswordController::class, 'resetpassword'])->name('reset.password');
+
+
+// AdminDemoTest Controller
+Route::middleware(['admin.auth'])->group(function () {
+Route::get('/Admin/DemoTest', [AdminDemoTestController::class, 'index']);
+Route::get('/Admin/Demotestform', [AdminDemoTestController::class, 'demotestform']);
+Route::post('/Admin/Demotestform2', [AdminDemoTestController::class, 'demotestform2']);
+Route::get('/Admin/Demotest/edit/{id}', [AdminDemoTestController::class, 'demotestedit'])->name('demotest.edit');
+Route::post('/Admin/Demotest/update/{id}', [AdminDemoTestController::class, 'demotestupdate'])->name('demotest.update');
+Route::get('/Admin/Demotest/delete/{id}', [AdminDemoTestController::class, 'demotestdelete'])->name('demotest.delete');
+});
+
+
+// AdminDEmoQuestion Controller
+Route::middleware(['admin.auth'])->group(function () {
+Route::get('/Admin/DemoQuestion', [AdminDemoQuestionController::class, 'index']);
+Route::get('/Admin/DemoQueform', [AdminDemoQuestionController::class, 'demoqueform']);
+Route::post('/Admin/DemoQueform2', [AdminDemoQuestionController::class, 'demoqueform2']);
+Route::get('/Admin/DemoQue/edit/{id}', [AdminDemoQuestionController::class, 'demoqueedit'])->name('demoque.edit');
+Route::post('/Admin/DemoQue/update/{id}', [AdminDemoQuestionController::class, 'demoqueupdate'])->name('demoque.update');
+Route::get('/Admin/DemoQue/delete/{id}', [AdminDemoQuestionController::class, 'demoquedelete'])->name('demoque.delete');
+});

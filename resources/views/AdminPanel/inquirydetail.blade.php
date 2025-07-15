@@ -3,7 +3,7 @@
 @section('main-section')
 
     <div class='mt-3 container'>
-        <h3>User Details</h3>
+        <h3>Inquiry Details</h3>
         <hr>
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -15,21 +15,13 @@
                         aria-label="Search" >
                     <button class="btn btn-dark">Search</button>
                     <span style="margin-left: 10px;">
-                        <a href="{{ url('/Admin/Userdetail') }}">
+                        <a href="{{ url('/Admin/Inquiry') }}">
                             <button class="btn btn-dark" type="button">Reset</button>
                         </a>
                     </span>
                 </form>
 
-                 {{-- <div class="d-flex">
-                    <button type="button" onclick="window.location='{{ route('admin.about.add') }}'"
-                        class="btn btn-dark btn-circle font-rights me-md-2">Add</button>
 
-                     <a href="{{ route('admin.banner.trash') }}">
-                        <button class="btn btn-danger ml-2">Trashed Data</button>
-                    </a>
-                </div>
-            </div> --}}
         </nav>
 
          <div class="card mt-2" style="width:100%;">
@@ -41,30 +33,21 @@
                                 <th style="width: 5%;">Id</th>
                                 <th style="width: 20%;">Name</th>
                                 <th style="width: 35%;">Email</th>
-                                <th style="width: 35%;">Contact</th>
-                                {{-- <th colspan="2" style="width: 25%;">Action</th> --}}
+                                <th style="width: 35%;">Message</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($userdetail as $bc)
+                            @forelse ($inquirydetail as $inq)
                                 <tr>
-                                    <td>{{ $bc->id }}</td>
-                                    <td>{{ $bc->name ?: '-' }}</td>
-                                    <td>{{ $bc->email ?: '-' }}</td>
-                                     <td>{{ $bc->contact ?: '-' }}</td>
-                                    {{-- <td>
-                                        <a href="{{ route('admin.aboutus.delete', ['id' => $->about_id]) }}">
-                                            <button class="btn btn-danger m-2">Delete</button>
-                                        </a>
-                                        <a href="{{ route('admin.aboutus.edit', ['id' => $ab->about_id]) }}">
-                                            <button class="btn btn-primary">Update</button>
-                                        </a>
-                                    </td> --}}
+                                    <td>{{ $inq->inquiry_id }}</td>
+                                    <td>{{ $inq->name ?: '-' }}</td>
+                                    <td>{{ $inq->email ?: '-' }}</td>
+                                     <td>{{ $inq->message ?: '-' }}</td>
                                 </tr>
                             @empty
                                 <tr>
                                     <td colspan="6">
-                                        <div class="text-dark fw-bold">No Users found for "{{ request()->search }}"</div>
+                                        <div class="text-dark fw-bold">No Inquiry found for "{{ request()->search }}"</div>
                                     </td>
                                 </tr>
                             @endforelse
