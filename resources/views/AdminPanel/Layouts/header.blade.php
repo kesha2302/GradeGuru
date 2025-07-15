@@ -45,6 +45,19 @@
                         <!-- ---------------------------------- -->
                         <li class="sidebar-item">
                             <a class="sidebar-link primary-hover-bg justify-content-between"
+                                href="{{ url('/Admin/Userdetail') }}" aria-expanded="false">
+                                <div class="d-flex align-items-center gap-6">
+                                    <span class="d-flex">
+                                        <iconify-icon icon="mdi:account-group-outline" class=""></iconify-icon>
+                                    </span>
+                                    <span class="hide-menu">User Detials</span>
+                                </div>
+                                <span class="hide-menu badge text-bg-primary fs-1 py-1 px-2 rounded-pill"></span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item">
+                            <a class="sidebar-link primary-hover-bg justify-content-between"
                                 href="{{ route('admin.banner') }}" aria-expanded="false">
                                 <div class="d-flex align-items-center gap-6">
                                     <span class="d-flex">
@@ -136,6 +149,32 @@
                             </a>
                         </li>
 
+                         <li class="sidebar-item">
+                            <a class="sidebar-link primary-hover-bg justify-content-between"
+                                href="{{ url('/Admin/DemoTest') }}" aria-expanded="false">
+                                <div class="d-flex align-items-center gap-6">
+                                    <span class="d-flex">
+                                        <iconify-icon icon="mdi:clipboard-text-outline" class=""></iconify-icon>
+                                    </span>
+                                    <span class="hide-menu">Demo Test</span>
+                                </div>
+                                <span class="hide-menu badge text-bg-primary fs-1 py-1 px-2 rounded-pill"></span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item">
+                            <a class="sidebar-link primary-hover-bg justify-content-between"
+                                href="{{ url('/Admin/DemoQuestion') }}" aria-expanded="false">
+                                <div class="d-flex align-items-center gap-6">
+                                    <span class="d-flex">
+                                        <iconify-icon icon="mdi:help-circle-outline"></iconify-icon>
+                                    </span>
+                                    <span class="hide-menu">Demo Question</span>
+                                </div>
+                                <span class="hide-menu badge text-bg-primary fs-1 py-1 px-2 rounded-pill"></span>
+                            </a>
+                        </li>
+
                         <li class="sidebar-item">
                             <a class="sidebar-link primary-hover-bg justify-content-between"
                                 href="{{ url('/Admin/Result') }}" aria-expanded="false">
@@ -149,32 +188,6 @@
                             </a>
                         </li>
 
-                         <li class="sidebar-item">
-                            <a class="sidebar-link primary-hover-bg justify-content-between"
-                                href="{{ url('/Admin/DemoTest') }}" aria-expanded="false">
-                                <div class="d-flex align-items-center gap-6">
-                                    <span class="d-flex">
-                                        <iconify-icon icon="mdi:medal-outline" class=""></iconify-icon>
-                                    </span>
-                                    <span class="hide-menu">Demo Test</span>
-                                </div>
-                                <span class="hide-menu badge text-bg-primary fs-1 py-1 px-2 rounded-pill"></span>
-                            </a>
-                        </li>
-
-                        <li class="sidebar-item">
-                            <a class="sidebar-link primary-hover-bg justify-content-between"
-                                href="{{ url('/Admin/DemoQuestion') }}" aria-expanded="false">
-                                <div class="d-flex align-items-center gap-6">
-                                    <span class="d-flex">
-                                        <iconify-icon icon="mdi:medal-outline" class=""></iconify-icon>
-                                    </span>
-                                    <span class="hide-menu">Demo Question</span>
-                                </div>
-                                <span class="hide-menu badge text-bg-primary fs-1 py-1 px-2 rounded-pill"></span>
-                            </a>
-                        </li>
-
                         <li class="sidebar-item">
                             <a class="sidebar-link primary-hover-bg justify-content-between"
                                 href="{{ url('/Admin/DemoResult') }}" aria-expanded="false">
@@ -182,7 +195,7 @@
                                     <span class="d-flex">
                                         <iconify-icon icon="mdi:medal-outline" class=""></iconify-icon>
                                     </span>
-                                    <span class="hide-menu">Demo Result</span>
+                                    <span class="hide-menu">Demo Result Details</span>
                                 </div>
                                 <span class="hide-menu badge text-bg-primary fs-1 py-1 px-2 rounded-pill"></span>
                             </a>
@@ -193,7 +206,7 @@
                                 href="{{ url('/Admin/Inquiry') }}" aria-expanded="false">
                                 <div class="d-flex align-items-center gap-6">
                                     <span class="d-flex">
-                                        <iconify-icon icon="mdi:medal-outline" class=""></iconify-icon>
+                                        <iconify-icon icon="mdi:file-document-outline"></iconify-icon>
                                     </span>
                                     <span class="hide-menu">Inquiry Details</span>
                                 </div>
@@ -210,19 +223,6 @@
                                             class=""></iconify-icon>
                                     </span>
                                     <span class="hide-menu">Booking Details</span>
-                                </div>
-                                <span class="hide-menu badge text-bg-primary fs-1 py-1 px-2 rounded-pill"></span>
-                            </a>
-                        </li>
-
-                        <li class="sidebar-item">
-                            <a class="sidebar-link primary-hover-bg justify-content-between"
-                                href="{{ url('/Admin/Userdetail') }}" aria-expanded="false">
-                                <div class="d-flex align-items-center gap-6">
-                                    <span class="d-flex">
-                                        <iconify-icon icon="mdi:account-group-outline" class=""></iconify-icon>
-                                    </span>
-                                    <span class="hide-menu">User Detials</span>
                                 </div>
                                 <span class="hide-menu badge text-bg-primary fs-1 py-1 px-2 rounded-pill"></span>
                             </a>

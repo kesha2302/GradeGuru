@@ -15,6 +15,7 @@ use App\Http\Controllers\AdminTestController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\DemoQuestionTestController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\ProfileController;
@@ -181,3 +182,9 @@ Route::get('/Admin/DemoQue/edit/{id}', [AdminDemoQuestionController::class, 'dem
 Route::post('/Admin/DemoQue/update/{id}', [AdminDemoQuestionController::class, 'demoqueupdate'])->name('demoque.update');
 Route::get('/Admin/DemoQue/delete/{id}', [AdminDemoQuestionController::class, 'demoquedelete'])->name('demoque.delete');
 });
+
+
+// DemoQuestionTest Controller
+Route::get('/demotest/{demo_id}/question', [DemoQuestionTestController::class, 'questiontest'])->name('demoquestion.test');
+Route::post('/demotest/{demo_id}/submit', [DemoQuestionTestController::class, 'testsubmit'])->name('demotestsubmit.test');
+Route::get('/demotest/{demo_id}/result', [DemoQuestionTestController::class, 'result'])->name('demotest.result');

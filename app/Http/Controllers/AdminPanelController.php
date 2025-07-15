@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
+use App\Models\ClassName;
 use App\Models\ClassPrice;
+use App\Models\DemoResult;
 use App\Models\Inquiry;
 use App\Models\Result;
+use App\Models\Test;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
@@ -15,7 +18,12 @@ class AdminPanelController extends Controller
 
     public function index()
     {
-        return view('AdminPanel.index');
+        $totalUsers = User::count();
+        $totalBookings = Booking::count();
+        $totalStandards = ClassName::count();
+        $totalTests = Test::count();
+
+        return view('AdminPanel.index', compact('totalUsers','totalBookings','totalStandards','totalTests'));
     }
 
 
@@ -76,5 +84,20 @@ class AdminPanelController extends Controller
         })->get();
 
         return view('AdminPanel.inquirydetail', compact('inquirydetail', 'search'));
+    }
+
+    public function demoresultdetail(Request $request)
+    {
+        $search = $request->input('search');
+
+        $resultdetail = DemoResult::with(['users', 'demotest'])
+            ->when($search, function ($query, $search) {
+                return $query->whereHas('users', function ($subQuery) use ($search) {
+                    $subQuery->where('name', 'LIKE', "%{$search}%");
+                });
+            })
+            ->get();
+
+        return view('AdminPanel.demoresult', compact('resultdetail', 'search'));
     }
 }
