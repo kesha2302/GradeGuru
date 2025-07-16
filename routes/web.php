@@ -188,3 +188,4 @@ Route::get('/Admin/DemoQue/delete/{id}', [AdminDemoQuestionController::class, 'd
 Route::get('/demotest/{demo_id}/question', [DemoQuestionTestController::class, 'questiontest'])->name('demoquestion.test');
 Route::post('/demotest/{demo_id}/submit', [DemoQuestionTestController::class, 'testsubmit'])->name('demotestsubmit.test');
 Route::get('/demotest/{demo_id}/result', [DemoQuestionTestController::class, 'result'])->name('demotest.result');
+Route::post('/demotest/{demo_id}/autosubmit', [DemoQuestionTestController::class, 'autoSubmit'])->name('demotest.autosubmit');

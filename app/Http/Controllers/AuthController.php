@@ -11,31 +11,30 @@ use App\Models\User;
 
 class AuthController extends Controller
 {
-     public function showRegister()
+    public function showRegister()
     {
         return view('ClientView.register');
     }
 
-    // Handle register
-  // Handle register
-public function register(Request $request)
-{
-    $request->validate([
-        'name'     => 'required|string|max:255',
-        'email'    => 'required|string|email|max:255|unique:users',
-        'password' => 'required|string|min:6|confirmed',
-        'contact'  => 'required|string|max:15', // Add contact validation
-    ]);
 
-    User::create([
-        'name'     => $request->name,
-        'email'    => $request->email,
-        'password' => Hash::make($request->password),
-        'contact'  => $request->contact, // Save contact
-    ]);
+    public function register(Request $request)
+    {
+        $request->validate([
+            'name'     => 'required|string|max:255',
+            'email'    => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+            'contact'  => 'required|string|max:10',
+        ]);
 
-    return redirect()->route('login')->with('success', 'Account created! Please login.');
-}
+        User::create([
+            'name'     => $request->name,
+            'email'    => $request->email,
+            'password' => Hash::make($request->password),
+            'contact'  => $request->contact, // Save contact
+        ]);
+
+        return redirect()->route('login')->with('success', 'Account created! Please login.');
+    }
 
 
     // Show login form
@@ -50,7 +49,7 @@ public function register(Request $request)
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-           return redirect()->route('home');
+            return redirect()->route('home');
         }
 
         return back()->withErrors(['email' => 'Invalid credentials'])->withInput();
@@ -61,6 +60,7 @@ public function register(Request $request)
     {
         Auth::logout();
         session()->forget(['current_question_index', 'answers']);
+        session()->forget(['demo_answers']);
         return redirect()->route('login');
     }
 }
