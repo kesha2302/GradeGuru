@@ -34,7 +34,7 @@ class AdminTestController extends Controller
         $class_price = ClassPrice::all();
         $url = url('/Admin/Testform2');
         $title = "Test Detail Form";
-        $data = compact('url', 'title', 'class_price','test');
+        $data = compact('url', 'title', 'class_price', 'test');
 
         return view('AdminPanel.testform')->with($data);
     }
@@ -82,6 +82,18 @@ class AdminTestController extends Controller
 
     public function testupdate($id, Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|string',
+            'que_type' => 'required|string',
+            'time' => 'required|string',
+            'pass_marks' => 'required|integer',
+
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
         $test = Test::find($id);
         $test->title = $request->input('title');
         $test->que_type = $request->input('que_type');
@@ -100,5 +112,4 @@ class AdminTestController extends Controller
         }
         return redirect('/Admin/Test');
     }
-
 }

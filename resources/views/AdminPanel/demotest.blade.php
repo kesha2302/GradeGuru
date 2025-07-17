@@ -1,18 +1,16 @@
 @extends('AdminPanel.Layouts.main')
 @section('main-section')
-
-
- <div class="container-fluid">
+    <div class="container-fluid">
         <h3>DemoTest Data</h3>
         <hr>
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
 
-                <form class="d-flex"  method="GET" action="{{ url('/Admin/DemoTest') }}">
+                <form class="d-flex" method="GET" action="{{ url('/Admin/DemoTest') }}">
 
                     <input class="form-control me-5 mr-sm-2" type="search" value="{{ $search }}" name="search"
-                        placeholder="Search" aria-label="Search">
+                        placeholder="Search by title" aria-label="Search">
                     <button class="btn btn-dark">Search</button>
                     <span style="margin-left: 10px;">
                         <a href="{{ url('/Admin/DemoTest') }}">
@@ -47,9 +45,9 @@
                             @foreach ($demotest as $dt)
                                 <tr>
                                     <td>{{ $dt->classNames->standard ?: '-' }}</td>
-                                    <td>{{$dt->title ?: '-'}}</td>
-                                    <td>{{$dt->time?: '-'}} min</td>
-                                    <td>{{$dt->pass_marks?: '-'}}</td>
+                                    <td>{{ $dt->title ?: '-' }}</td>
+                                    <td>{{ $dt->time ?: '-' }} min</td>
+                                    <td>{{ $dt->pass_marks ?: '-' }}</td>
                                     <td>
                                         <a href="{{ route('demotest.delete', ['id' => $dt->demo_id]) }}">
                                             <button class="btn btn-danger m-2">Delete</button>
@@ -75,5 +73,4 @@
         </div>
 
     </div>
-
 @endsection

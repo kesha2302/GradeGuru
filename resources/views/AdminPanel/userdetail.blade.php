@@ -1,18 +1,15 @@
 @extends('AdminPanel.Layouts.main')
 
 @section('main-section')
-
     <div class='mt-3 container'>
         <h3>User Details</h3>
         <hr>
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg bg-light">
             <div class="container-fluid">
-
                 <form class="d-flex" action="" method="GET">
-                    <input class="form-control me-5 mr-sm-2" type="search"
-                        value="{{ request()->search }}" name="search" placeholder="Search by title"
-                        aria-label="Search" >
+                    <input class="form-control me-5 mr-sm-2" type="search" value="{{ request()->search }}" name="search"
+                        placeholder="Search by title" aria-label="Search">
                     <button class="btn btn-dark">Search</button>
                     <span style="margin-left: 10px;">
                         <a href="{{ url('/Admin/Userdetail') }}">
@@ -20,29 +17,19 @@
                         </a>
                     </span>
                 </form>
-
-                 {{-- <div class="d-flex">
-                    <button type="button" onclick="window.location='{{ route('admin.about.add') }}'"
-                        class="btn btn-dark btn-circle font-rights me-md-2">Add</button>
-
-                     <a href="{{ route('admin.banner.trash') }}">
-                        <button class="btn btn-danger ml-2">Trashed Data</button>
-                    </a>
-                </div>
-            </div> --}}
+            </div>
         </nav>
 
-         <div class="card mt-2" style="width:100%;">
+        <div class="card mt-2" style="width:100%;">
             <div class="card-body">
                 <div class="table-responsive text-center">
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th style="width: 5%;">Id</th>
+                                <th style="width: 5%;">No.</th>
                                 <th style="width: 20%;">Name</th>
                                 <th style="width: 35%;">Email</th>
                                 <th style="width: 35%;">Contact</th>
-                                {{-- <th colspan="2" style="width: 25%;">Action</th> --}}
                             </tr>
                         </thead>
                         <tbody>
@@ -51,15 +38,7 @@
                                     <td>{{ $bc->id }}</td>
                                     <td>{{ $bc->name ?: '-' }}</td>
                                     <td>{{ $bc->email ?: '-' }}</td>
-                                     <td>{{ $bc->contact ?: '-' }}</td>
-                                    {{-- <td>
-                                        <a href="{{ route('admin.aboutus.delete', ['id' => $->about_id]) }}">
-                                            <button class="btn btn-danger m-2">Delete</button>
-                                        </a>
-                                        <a href="{{ route('admin.aboutus.edit', ['id' => $ab->about_id]) }}">
-                                            <button class="btn btn-primary">Update</button>
-                                        </a>
-                                    </td> --}}
+                                    <td>{{ $bc->contact ?: '-' }}</td>
                                 </tr>
                             @empty
                                 <tr>
@@ -74,6 +53,4 @@
             </div>
         </div>
     </div>
-
-
-        @endsection
+@endsection

@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Validator;
 
 class AdminDemoQuestionController extends Controller
 {
-     public function index(Request $request)
+    public function index(Request $request)
     {
         $search = $request->input('search', '');
         $query = DemoQuestion::with(['demotest']);
@@ -89,8 +89,23 @@ class AdminDemoQuestionController extends Controller
 
     public function demoqueupdate($id, Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'que_no' => 'required|integer',
+            'question' => 'required|string',
+            'option1' => 'required|string',
+            'option2' => 'required|string',
+            'option3' => 'required|string',
+            'option4' => 'required|string',
+            'answer' => 'required|string',
+
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
         $demoque = DemoQuestion::find($id);
-       $demoque->question_no = $request->input('que_no');
+        $demoque->question_no = $request->input('que_no');
         $demoque->question = $request->input('question');
         $demoque->option1 = $request->input('option1');
         $demoque->option2 = $request->input('option2');

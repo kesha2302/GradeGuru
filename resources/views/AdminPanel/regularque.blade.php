@@ -9,7 +9,7 @@
 
                 <form class="d-flex" action="" method="GET">
                     <input class="form-control me-5 mr-sm-2" type="search" value="{{ request()->search }}" name="search"
-                        placeholder="Search by title" aria-label="Search">
+                        placeholder="Search by question" aria-label="Search">
                     <button class="btn btn-dark">Search</button>
                     <span style="margin-left: 10px;">
                         <a href="{{ url('Admin/RegularQuestions') }}">
@@ -21,10 +21,6 @@
                 <div class="d-flex">
                     <button type="button" onclick="window.location='{{ route('admin.regularque.add') }}'"
                         class="btn btn-dark btn-circle font-rights me-md-2">Add</button>
-
-                    {{-- <a href="">
-                        <button class="btn btn-danger ml-2">Trashed Data</button>
-                    </a> --}}
                 </div>
             </div>
         </nav>
@@ -51,11 +47,10 @@
                         <tbody>
                             @forelse ($regularque as $xy)
                                 <tr>
-                                    <td>{{ $xy->classPrice->title }}-(₹{{ $xy->classPrice->price}})</td>
+                                    <td>{{ $xy->classPrice->title }}-(₹{{ $xy->classPrice->price }})</td>
                                     <td>{{ $xy->tests->title ?: '-' }}</td>
                                     <td>{{ $xy->question_no ?: '-' }}</td>
-                                    {{-- <td>{{ $xy->question ?: '-' }}</td> --}}
-                                      <td style="width: 25%; text-align: justify;">
+                                    <td style="width: 25%; text-align: justify;">
                                         @if (!empty($xy->question))
                                             <div class="description-container">
                                                 <span class="description-text"
@@ -64,7 +59,7 @@
                                                 </span>
                                                 @if (strlen($xy->question) > 100)
                                                     <button class="btn btn-link btn-sm more-btn"
-                                                        data-description="{{ $xy->question}}">
+                                                        data-description="{{ $xy->question }}">
                                                         More
                                                     </button>
                                                     <button class="btn btn-link btn-sm less-btn" style="display: none;">
@@ -83,10 +78,10 @@
                                     <td>{{ $xy->option4 ?: '-' }}</td>
                                     <td>{{ $xy->answer ?: '-' }}</td>
                                     <td>
-                                        <a href="{{ route('admin.regularque.delete', ['id' => $xy->cp_id]) }}">
+                                        <a href="{{ route('admin.regularque.delete', ['id' => $xy->rq_id]) }}">
                                             <button class="btn btn-danger m-2">Delete</button>
                                         </a>
-                                        <a href="{{ route('admin.regularque.edit', ['id' => $xy->cp_id]) }}">
+                                        <a href="{{ route('admin.regularque.edit', ['id' => $xy->rq_id]) }}">
                                             <button class="btn btn-primary">Update</button>
                                         </a>
                                     </td>
@@ -94,7 +89,8 @@
                             @empty
                                 <tr>
                                     <td colspan="6">
-                                        <div class="text-dark fw-bold">No Regular Question found for "{{ request()->search }}"</div>
+                                        <div class="text-dark fw-bold">No Regular Question found for
+                                            "{{ request()->search }}"</div>
                                     </td>
                                 </tr>
                             @endforelse
@@ -105,13 +101,13 @@
         </div>
     </div>
 
-     <div class="row">
-            <div class="col-md-12 d-flex justify-content-center">
-                {{ $regularque->links('pagination::bootstrap-4') }}
-            </div>
+    <div class="row">
+        <div class="col-md-12 d-flex justify-content-center">
+            {{ $regularque->links('pagination::bootstrap-4') }}
         </div>
+    </div>
 
-         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
             $('.more-btn').on('click', function() {

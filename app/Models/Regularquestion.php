@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Regularquestion extends Model
 {
-     protected $table = 'regularquestions';
-     protected $primaryKey = 'rq_id';
+    protected $table = 'regularquestions';
+    protected $primaryKey = 'rq_id';
 
-      protected $fillable = [
-        'rq_id',
+    protected $fillable = [
+        'cp_id',
         'test_id',
         'question_no',
         'question',
@@ -21,12 +21,12 @@ class Regularquestion extends Model
         'answer',
     ];
 
-     public function classPrice()
+    public function classPrice()
     {
         return $this->belongsTo(ClassPrice::class, 'cp_id', 'cp_id');
     }
 
-     public function tests()
+    public function tests()
     {
         return $this->belongsTo(Test::class, 'test_id', 'test_id');
     }

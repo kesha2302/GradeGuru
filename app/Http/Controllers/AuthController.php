@@ -30,27 +30,24 @@ class AuthController extends Controller
             'name'     => $request->name,
             'email'    => $request->email,
             'password' => Hash::make($request->password),
-            'contact'  => $request->contact, // Save contact
+            'contact'  => $request->contact,
         ]);
 
         return redirect()->route('login')->with('success', 'Account created! Please login.');
     }
 
-
-    // Show login form
     public function showLogin()
     {
         return view('ClientView.login');
     }
 
-    // Handle login
     public function login(Request $request)
     {
 
-            $request->validate([
-        'email' => 'required|email',
-        'password' => 'required|string|min:6',
-    ]);
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|string|min:6',
+        ]);
 
         $credentials = $request->only('email', 'password');
 
@@ -61,7 +58,6 @@ class AuthController extends Controller
         return back()->with('login_error', 'Invalid email or password')->withInput();
     }
 
-    // Logout
     public function logout()
     {
         Auth::logout();

@@ -23,7 +23,7 @@ class AdminPanelController extends Controller
         $totalStandards = ClassName::count();
         $totalTests = Test::count();
 
-        return view('AdminPanel.index', compact('totalUsers','totalBookings','totalStandards','totalTests'));
+        return view('AdminPanel.index', compact('totalUsers', 'totalBookings', 'totalStandards', 'totalTests'));
     }
 
 

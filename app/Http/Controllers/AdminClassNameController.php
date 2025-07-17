@@ -80,6 +80,16 @@ class AdminClassNameController extends Controller
 
     public function classnameupdate($id, Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'standard' => 'required|string',
+            'title' => 'required|string',
+            'description' => 'required|string|max:1500',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
         $class_names = ClassName::find($id);
         $class_names->standard = $request->input('standard');
         $class_names->title = $request->input('title');
@@ -116,7 +126,4 @@ class AdminClassNameController extends Controller
         }
         return redirect()->back();
     }
-
-
-
 }

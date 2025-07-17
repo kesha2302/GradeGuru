@@ -34,7 +34,7 @@ class AdminClassPriceController extends Controller
         $class_names = ClassName::all();
         $url = url('/Admin/Classpriceform2');
         $title = "ClassPrice Detail Form";
-        $data = compact('url', 'title', 'class_price','class_names');
+        $data = compact('url', 'title', 'class_price', 'class_names');
 
         return view('AdminPanel.classpriceform')->with($data);
     }
@@ -86,6 +86,16 @@ class AdminClassPriceController extends Controller
 
     public function classpriceupdate($id, Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|string',
+            'feature' => 'required|string|max:1500',
+            'price' => 'required|integer',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
         $class_price = ClassPrice::find($id);
         $class_price->title = $request->input('title');
         $class_price->feature = $request->input('feature');

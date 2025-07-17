@@ -9,6 +9,13 @@ class Test extends Model
     protected $table = 'test';
     protected $primaryKey = 'test_id';
 
+    protected $fillable = [
+        'cp_id',
+        'title',
+        'que_type',
+        'time',
+        'pass_marks',
+    ];
 
     public function classPrice()
     {

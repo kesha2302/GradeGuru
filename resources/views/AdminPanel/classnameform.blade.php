@@ -1,6 +1,5 @@
 @extends('AdminPanel.Layouts.main')
 @section('main-section')
-
     <div class="container-fluid">
         <div class="card  mt-3 mx-auto" style="width:50rem;">
 
@@ -19,25 +18,25 @@
                         <input type="text" name="standard" class="form-control" value="{{ $class_names->standard }}"
                             placeholder="Class 1" />
                         @error('standard')
-                            {{ $message }}
+                            <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
 
-                     <div class="mb-3">
+                    <div class="mb-3">
                         <label class="form-label">Title:</label>
                         <input type="text" name="title" class="form-control" value="{{ $class_names->title }}"
                             placeholder="Title of Class" />
                         @error('title')
-                            {{ $message }}
+                            <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Description:</label>
-                        <input type="text" name="description" class="form-control" value="{{ $class_names->description }}"
-                            placeholder="Desccription" />
+                        <input type="text" name="description" class="form-control"
+                            value="{{ $class_names->description }}" placeholder="Desccription" />
                         @error('description')
-                            {{ $message }}
+                            <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
 

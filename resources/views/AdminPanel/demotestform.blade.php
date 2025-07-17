@@ -35,7 +35,7 @@
                         <input type="text" name="title" class="form-control" value="{{ $demotest->title }}"
                             placeholder="Test 1" />
                         @error('title')
-                            {{ $message }}
+                            <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
 
@@ -44,7 +44,7 @@
                         <input type="text" name="time" class="form-control" value="{{ $demotest->time }}"
                             placeholder="5" />
                         @error('time')
-                            {{ $message }}
+                            <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
 
@@ -54,7 +54,7 @@
                         <input type="text" name="pass_marks" class="form-control" value="{{ $demotest->pass_marks }}"
                             placeholder="10" />
                         @error('pass_marks')
-                            {{ $message }}
+                            <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
 

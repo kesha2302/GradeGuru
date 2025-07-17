@@ -9,7 +9,7 @@ class Result extends Model
     protected $table = 'results';
     protected $primaryKey = 'result_id';
 
-     protected $fillable = [
+    protected $fillable = [
         'user_id',
         'cp_id',
         'test_id',
@@ -17,7 +17,7 @@ class Result extends Model
         'correct',
     ];
 
-   public function classPrice()
+    public function classPrice()
     {
         return $this->belongsTo(ClassPrice::class, 'cp_id', 'cp_id');
     }
@@ -27,9 +27,8 @@ class Result extends Model
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
-     public function test()
+    public function test()
     {
         return $this->belongsTo(Test::class, 'test_id', 'test_id');
     }
-
 }

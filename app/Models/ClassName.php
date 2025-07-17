@@ -7,9 +7,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ClassName extends Model
 {
-     use SoftDeletes;
+    use SoftDeletes;
 
-     protected $table = 'class_names';
-     protected $primaryKey = 'class_id';
+    protected $table = 'class_names';
+    protected $primaryKey = 'class_id';
 
+    protected $fillable = ['standard', 'title', 'description'];
 }

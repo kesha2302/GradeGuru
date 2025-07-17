@@ -55,18 +55,18 @@ class HomeController extends Controller
         $classprice = ClassPrice::where('class_id', $id)->get();
         $demotest = DemoTest::where('class_id', $id)->get();
 
-         $attempts = [];
+        $attempts = [];
 
-    if (Auth::check()) {
-        $userId = Auth::id();
+        if (Auth::check()) {
+            $userId = Auth::id();
 
-        foreach ($demotest as $dt) {
-            $count = DemoResult::where('user_id', $userId)
-                               ->where('demo_id', $dt->demo_id)
-                               ->count();
-            $attempts[$dt->demo_id] = $count;
+            foreach ($demotest as $dt) {
+                $count = DemoResult::where('user_id', $userId)
+                    ->where('demo_id', $dt->demo_id)
+                    ->count();
+                $attempts[$dt->demo_id] = $count;
+            }
         }
-    }
 
         return view('ClientView.classprice', compact('className', 'classprice', 'demotest', 'attempts'));
     }

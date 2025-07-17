@@ -14,6 +14,9 @@
                 <div class="mb-3">
                     <label class="form-label">Title:</label>
                     <input type="text" name="title" class="form-control" value="{{ $bannerdetail->title ?? '' }}" />
+                    @error('title')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
                 </div>
 
                 <div class="mb-3">

@@ -35,7 +35,7 @@
                         <input type="text" name="title" class="form-control" value="{{ $test->title }}"
                             placeholder="Test 1" />
                         @error('title')
-                            {{ $message }}
+                            <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
 
@@ -55,12 +55,12 @@
                         @enderror
                     </div>
 
-                     <div class="mb-3">
+                    <div class="mb-3">
                         <label class="form-label">Time(in minute):</label>
                         <input type="text" name="time" class="form-control" value="{{ $test->time }}"
                             placeholder="5" />
                         @error('time')
-                            {{ $message }}
+                            <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
 
@@ -69,7 +69,7 @@
                         <input type="text" name="pass_marks" class="form-control" value="{{ $test->pass_marks }}"
                             placeholder="5" />
                         @error('pass_marks')
-                            {{ $message }}
+                            <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
 

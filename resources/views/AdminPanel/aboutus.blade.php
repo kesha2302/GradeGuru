@@ -33,7 +33,7 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th style="width: 5%;">Id</th>
+                                <th style="width: 5%;">No.</th>
                                 <th style="width: 20%;">Title</th>
                                 <th style="width: 35%;">Description1</th>
                                 <th style="width: 35%;">Description2</th>

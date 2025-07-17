@@ -10,9 +10,8 @@
             <div class="container-fluid">
 
                 <form class="d-flex" action="" method="GET">
-                    <input class="form-control me-5 mr-sm-2" type="search"
-                        value="{{ request()->search }}" name="search" placeholder="Search by name"
-                        aria-label="Search" >
+                    <input class="form-control me-5 mr-sm-2" type="search" value="{{ request()->search }}" name="search"
+                        placeholder="Search by name" aria-label="Search">
                     <button class="btn btn-dark">Search</button>
                     <span style="margin-left: 10px;">
                         <a href="{{ url('/Admin/Booking') }}">
@@ -23,7 +22,7 @@
 
         </nav>
 
-         <div class="card mt-2" style="width:100%;">
+        <div class="card mt-2" style="width:100%;">
             <div class="card-body">
                 <div class="table-responsive text-center">
                     <table class="table table-bordered">
@@ -42,21 +41,22 @@
                                     <td>{{ $bk->booking_id }}</td>
                                     <td>{{ $bk->users->name ?: '-' }}</td>
                                     <td>
-    @if ($bk->class_prices && $bk->class_prices->count())
-        @foreach ($bk->class_prices as $cp)
-            <div><strong>{{ $cp->classNames->standard }}</strong> - ₹{{ $cp->price }}</div>
-        @endforeach
-    @else
-        -
-    @endif
-</td>
-                                     <td>{{ $bk->totalprice ?: '-' }}</td>
-                                     <td>{{ $bk->payment_id ?: '-' }}</td>
+                                        @if ($bk->class_prices && $bk->class_prices->count())
+                                            @foreach ($bk->class_prices as $cp)
+                                                <div><strong>{{ $cp->classNames->standard }}</strong> - ₹{{ $cp->price }}
+                                                </div>
+                                            @endforeach
+                                        @else
+                                            -
+                                        @endif
+                                    </td>
+                                    <td>{{ $bk->totalprice ?: '-' }}</td>
+                                    <td>{{ $bk->payment_id ?: '-' }}</td>
                                 </tr>
                             @empty
                                 <tr>
                                     <td colspan="6">
-                                        <div class="text-dark fw-bold">No Booking found  "{{ request()->search }}"</div>
+                                        <div class="text-dark fw-bold">No Booking found "{{ request()->search }}"</div>
                                     </td>
                                 </tr>
                             @endforelse
@@ -68,4 +68,4 @@
     </div>
 
 
-        @endsection
+@endsection

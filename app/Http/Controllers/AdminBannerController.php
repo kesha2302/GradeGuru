@@ -7,59 +7,59 @@ use App\Models\Banner;
 
 class AdminBannerController extends Controller
 {
-public function banner(Request $request)
-{
-   $search = $request->input('search');
+    public function banner(Request $request)
+    {
+        $search = $request->input('search');
 
-    $bannerdetail = Banner::when($search, function ($query, $search) {
-        return $query->where('title', 'like', "%{$search}%")
-                     ->orWhere('description', 'like', "%{$search}%");
-    })->get();
+        $bannerdetail = Banner::when($search, function ($query, $search) {
+            return $query->where('title', 'like', "%{$search}%")
+                ->orWhere('description', 'like', "%{$search}%");
+        })->get();
 
-    return view('AdminPanel.banner', compact('bannerdetail', 'search'));
-}
-
-
-public function addBannerForm()
-{
-    $bannerdetail = new \stdClass();
-    $bannerdetail->title = '';
-    $bannerdetail->description = '';
-    $bannerdetail->image = '';
-    $title = 'Add Banner';
-    $url = url('/Admin/banner/store');
-
-    return view('AdminPanel.addbanner', compact('bannerdetail', 'title','url'));
-}
+        return view('AdminPanel.banner', compact('bannerdetail', 'search'));
+    }
 
 
-public function storeBanner(Request $request)
-{
-    $request->validate([
-        'title' => 'nullable|string|max:255',
-        'description' => 'required|string',
-        'image' => 'required|image|mimes:jpg,jpeg,png|max:2048',
-    ]);
+    public function addBannerForm()
+    {
+        $bannerdetail = new \stdClass();
+        $bannerdetail->title = '';
+        $bannerdetail->description = '';
+        $bannerdetail->image = '';
+        $title = 'Add Banner';
+        $url = url('/Admin/banner/store');
+
+        return view('AdminPanel.addbanner', compact('bannerdetail', 'title', 'url'));
+    }
 
 
-    $imageName = time() . '.' . $request->image->extension();
-    $request->image->move(public_path('BannerImage'), $imageName);
+    public function storeBanner(Request $request)
+    {
+        $request->validate([
+            'title' => 'nullable|string|max:255',
+            'description' => 'required|string|max:255',
+            'image' => 'required|image|mimes:jpg,jpeg,png|max:2048',
+        ]);
 
 
-    Banner::create([
-        'title' => $request->title,
-        'description' => $request->description,
-        'image' => $imageName,
-    ]);
+        $imageName = time() . '.' . $request->image->extension();
+        $request->image->move(public_path('BannerImage'), $imageName);
 
-    return redirect()->route('admin.banner')->with('success', 'Banner added successfully.');
-}
 
-public function index()
-{
-    $bannerdetail = Banner::all();
-    return view('AdminPanel.banner', compact('bannerdetail'));
-}
+        Banner::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'image' => $imageName,
+        ]);
+
+        return redirect()->route('admin.banner')->with('success', 'Banner added successfully.');
+    }
+
+    public function index()
+    {
+        $bannerdetail = Banner::all();
+        return view('AdminPanel.banner', compact('bannerdetail'));
+    }
 
 
 
@@ -70,11 +70,11 @@ public function index()
     }
 
     public function trashSoft($id)
-{
-    $banner = Banner::findOrFail($id);
-    $banner->delete();
-    return redirect()->back()->with('success', 'Banner moved to trash.');
-}
+    {
+        $banner = Banner::findOrFail($id);
+        $banner->delete();
+        return redirect()->back()->with('success', 'Banner moved to trash.');
+    }
 
 
     public function restore($id)
@@ -104,8 +104,8 @@ public function index()
     {
         $bannerdetail = Banner::findOrFail($id);
         $title = "Update Banner";
-        $url = url('/admin/banner/update') . "/". $id;
-        return view('AdminPanel.addBanner', compact('bannerdetail', 'title','url'));
+        $url = url('/admin/banner/update') . "/" . $id;
+        return view('AdminPanel.addBanner', compact('bannerdetail', 'title', 'url'));
     }
 
     public function update(Request $request, $id)
@@ -136,6 +136,4 @@ public function index()
 
         return redirect()->route('admin.banner')->with('success', 'Banner updated successfully.');
     }
-
-
 }

@@ -14,11 +14,12 @@ use Razorpay\Api\Api;
 
 class BookingController extends Controller
 {
-    public function checkout(){
+    public function checkout()
+    {
         return view('ClientView.checkout');
     }
 
-     public function storeBooking(Request $request)
+    public function storeBooking(Request $request)
     {
         $name = $request->input('name');
         $email = $request->input('email');

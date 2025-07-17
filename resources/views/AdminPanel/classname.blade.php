@@ -1,18 +1,16 @@
 @extends('AdminPanel.Layouts.main')
 @section('main-section')
-
-
- <div class="container-fluid">
+    <div class="container-fluid">
         <h3>ClassName Data</h3>
         <hr>
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
 
-                <form class="d-flex"  method="GET" action="{{ url('/Admin/ClassNameData') }}">
+                <form class="d-flex" method="GET" action="{{ url('/Admin/ClassNameData') }}">
 
                     <input class="form-control me-5 mr-sm-2" type="search" value="{{ $search }}" name="search"
-                        placeholder="Search" aria-label="Search">
+                        placeholder="Search by standard" aria-label="Search">
                     <button class="btn btn-dark">Search</button>
                     <span style="margin-left: 10px;">
                         <a href="{{ url('/Admin/ClassNameData') }}">
@@ -50,7 +48,7 @@
                             @foreach ($class_names as $cn)
                                 <tr>
                                     <td>{{ $cn->standard ?: '-' }}</td>
-                                    <td>{{$cn->title ?: '-'}}</td>
+                                    <td>{{ $cn->title ?: '-' }}</td>
                                     <td style="width: 25%; text-align: justify;">
                                         @if (!empty($cn->description))
                                             <div class="description-container">
@@ -99,7 +97,7 @@
 
     </div>
 
-     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
             $('.more-btn').on('click', function() {
@@ -118,5 +116,4 @@
             });
         });
     </script>
-
 @endsection

@@ -19,9 +19,8 @@ class QuestionTestController extends Controller
         $regularQuestions = Regularquestion::where('test_id', $test_id)->get()->values();
         $superQuestions = Superquestion::where('test_id', $test_id)->get()->values();
 
-        // First-time start: check for query param 'type'
         if (!$request->session()->has('question_type')) {
-            $type = $request->query('type', 'regular'); // default to 'regular'
+            $type = $request->query('type', 'regular');
             $request->session()->put('question_type', $type);
             $request->session()->put('current_question_index', 0);
             $request->session()->forget('answers');
@@ -70,16 +69,11 @@ class QuestionTestController extends Controller
     }
 
 
-
-
     public function submitAnswer($test_id, Request $request)
     {
 
         $direction = $request->input('direction', 'next');
         $currentIndex = $request->session()->get('current_question_index', 0);
-
-        // Log::info('Initial current_question_index: ' . $currentIndex);
-        // Log::info('Initial answers: ', $request->session()->get('answers', []));
 
         if ($direction === 'next') {
             $request->validate([
@@ -94,12 +88,9 @@ class QuestionTestController extends Controller
 
             if ($rq_id) {
                 $key = 'rq_' . $rq_id;
-                // Log::info("Saving answer for Regular Question ID $rq_id: $answer");
             } elseif ($sq_id) {
                 $key = 'sq_' . $sq_id;
-                // Log::info("Saving answer for Super Question ID $sq_id: $answer");
             } else {
-                // Log::warning('No question ID found in request');
                 return redirect()->back()->withErrors(['Invalid question ID']);
             }
 
@@ -111,15 +102,10 @@ class QuestionTestController extends Controller
             $currentIndex = max(0, $currentIndex - 1);
         }
 
-        // Log::info('Updated current_question_index: ' . $currentIndex);
-        // Log::info('Updated answers: ', $request->session()->get('answers', []));
-
         $request->session()->put('current_question_index', $currentIndex);
 
         $type = $request->session()->get('question_type', 'regular');
         return redirect()->route('question.test', ['test_id' => $test_id, 'type' => $type]);
-
-        // return redirect()->route('question.test', $test_id);
     }
 
 
@@ -142,7 +128,6 @@ class QuestionTestController extends Controller
             }
         }
 
-        // Fetch questions
         $regularQuestions = Regularquestion::whereIn('rq_id', $regularIds)->get()->keyBy('rq_id');
         $superQuestions = Superquestion::whereIn('sq_id', $superIds)->get()->keyBy('sq_id');
 
@@ -176,8 +161,7 @@ class QuestionTestController extends Controller
         }
 
         $totalQuestions = $correctCount + $wrongCount;
-        // $passingScore = ceil($totalQuestions * 0.5);
-        $passingScore = $test->pass_marks; // fetch pass_marks from test table
+        $passingScore = $test->pass_marks;
         $status = $correctCount >= $passingScore ? 'Pass' : 'Fail';
 
         Result::create([
@@ -201,7 +185,6 @@ class QuestionTestController extends Controller
             'status'
         ));
     }
-
 
     public function autoSubmit($test_id, Request $request)
     {

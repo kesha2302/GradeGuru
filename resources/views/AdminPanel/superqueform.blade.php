@@ -48,7 +48,7 @@
                         <input type="text" name="que_no" class="form-control" value="{{ $superque->question_no }}"
                             placeholder="Question Number" />
                         @error('que_no')
-                            {{ $message }}
+                            <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
 
@@ -57,7 +57,7 @@
                         <input type="text" name="question" class="form-control" value="{{ $superque->question }}"
                             placeholder="Question" />
                         @error('question')
-                            {{ $message }}
+                            <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
 
@@ -66,7 +66,7 @@
                         <input type="text" name="option1" class="form-control" value="{{ $superque->option1 }}"
                             placeholder="Option1" />
                         @error('option1')
-                            {{ $message }}
+                            <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
 
@@ -75,7 +75,7 @@
                         <input type="text" name="option2" class="form-control" value="{{ $superque->option2 }}"
                             placeholder="Option2" />
                         @error('option2')
-                            {{ $message }}
+                            <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
 
@@ -84,7 +84,7 @@
                         <input type="text" name="option3" class="form-control" value="{{ $superque->option3 }}"
                             placeholder="Option3" />
                         @error('option3')
-                            {{ $message }}
+                            <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
 
@@ -92,8 +92,8 @@
                         <label class="form-label">Option4:</label>
                         <input type="text" name="option4" class="form-control" value="{{ $superque->option4 }}"
                             placeholder="Option4" />
-                        @error('option1')
-                            {{ $message }}
+                        @error('option4')
+                            <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
 
@@ -102,7 +102,7 @@
                         <input type="text" name="answer" class="form-control" value="{{ $superque->answer }}"
                             placeholder="Answer" />
                         @error('answer')
-                            {{ $message }}
+                            <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
 
@@ -128,7 +128,8 @@
                         $('#test-dropdown').empty();
                         $('#test-dropdown').append('<option selected disabled>Select Test</option>');
                         $.each(data, function(key, value) {
-                            $('#test-dropdown').append('<option value="' + value.test_id + '">' + value.title + ' - ' + value.que_type + '</option>');
+                            $('#test-dropdown').append('<option value="' + value.test_id +
+                                '">' + value.title + ' - ' + value.que_type + '</option>');
 
                         });
                     }

@@ -24,9 +24,9 @@ class ProfileController extends Controller
             'contact' => 'nullable|string|max:15',
         ]);
 
-    $user = Auth::user();
+        $user = Auth::user();
 
-      if ($user instanceof User) {
+        if ($user instanceof User) {
 
             $user->name = $request->input('name');
             $user->email = $request->input('email');
@@ -43,18 +43,18 @@ class ProfileController extends Controller
 
     public function progress()
     {
-         $user = Auth::user();
+        $user = Auth::user();
 
-         $results = Result::with('test')
-        ->where('user_id', $user->id)
-        ->where('created_at', '>=', Carbon::now()->subDays(30))
-        ->orderBy('created_at', 'desc')
-        ->get();
+        $results = Result::with('test')
+            ->where('user_id', $user->id)
+            ->where('created_at', '>=', Carbon::now()->subDays(30))
+            ->orderBy('created_at', 'desc')
+            ->get();
 
-    $totalTests = $results->count();
-    $totalPassed = $results->where('result', 'Pass')->count();
-    $totalFailed = $results->where('result', 'Fail')->count();
+        $totalTests = $results->count();
+        $totalPassed = $results->where('result', 'Pass')->count();
+        $totalFailed = $results->where('result', 'Fail')->count();
 
-    return view('ClientView.progressreport', compact('results', 'totalTests', 'totalPassed', 'totalFailed'));
+        return view('ClientView.progressreport', compact('results', 'totalTests', 'totalPassed', 'totalFailed'));
     }
 }

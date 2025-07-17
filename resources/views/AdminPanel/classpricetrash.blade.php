@@ -1,10 +1,10 @@
 @extends('AdminPanel.Layouts.main')
 @section('main-section')
-<div class="container-fluid">
+    <div class="container-fluid">
         <h3>Trashed ClassPrice Data</h3>
         <hr>
 
-         <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
 
                 <div class="d-flex">
@@ -23,7 +23,7 @@
                 <div class="table-responsive text-center">
                     <table class="table">
                         <thead>
-                          <tr>
+                            <tr>
                                 <th>ClassName</th>
                                 <th>Title</th>
                                 <th>Feature</th>
@@ -35,7 +35,7 @@
                             @foreach ($class_price as $cp)
                                 <tr>
                                     <td>{{ $cp->classNames->standard ?: '-' }}</td>
-                                    <td>{{$cp->title ?: '-'}}</td>
+                                    <td>{{ $cp->title ?: '-' }}</td>
                                     <td style="width: 25%; text-align: justify;">
                                         @if (!empty($cp->feature))
                                             <div class="description-container">
@@ -57,7 +57,7 @@
                                             -
                                         @endif
                                     </td>
-                                    <td>₹{{$cp->price ?: '-'}}</td>
+                                    <td>₹{{ $cp->price ?: '-' }}</td>
 
                                     <td>
                                         <a href="{{ route('classprice.forcedelete', ['id' => $cp->cp_id]) }}">
@@ -85,7 +85,7 @@
 
     </div>
 
-     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
             $('.more-btn').on('click', function() {

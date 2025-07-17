@@ -1,10 +1,10 @@
 @extends('AdminPanel.Layouts.main')
 @section('main-section')
-<div class="container-fluid">
+    <div class="container-fluid">
         <h3>Trashed ClassName Data</h3>
         <hr>
 
-         <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
 
                 <div class="d-flex">
@@ -34,7 +34,7 @@
                             @foreach ($class_names as $cn)
                                 <tr>
                                     <td>{{ $cn->standard ?: '-' }}</td>
-                                    <td>{{$cn->title ?: '-'}}</td>
+                                    <td>{{ $cn->title ?: '-' }}</td>
                                     <td style=" width: 25%; text-align: justify;">
                                         @if (!empty($cn->description))
                                             <div class="description-container">
@@ -83,7 +83,7 @@
 
     </div>
 
-     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
             $('.more-btn').on('click', function() {

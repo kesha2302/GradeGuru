@@ -19,9 +19,9 @@ class AdminRegularQueController extends Controller
         if (!empty($search)) {
             $query->where(function ($q) use ($search) {
                 $q->where('question', 'LIKE', "%$search%")
-                  ->orWhereHas('classPrice', function ($subQuery) use ($search) {
-                      $subQuery->where('title', 'LIKE', "%{$search}%");
-                  });
+                    ->orWhereHas('classPrice', function ($subQuery) use ($search) {
+                        $subQuery->where('title', 'LIKE', "%{$search}%");
+                    });
             });
         }
 
@@ -78,11 +78,11 @@ class AdminRegularQueController extends Controller
         return redirect('/Admin/RegularQuestions')->with('success', 'Regular Question entry added successfully!');
     }
 
-   public function getTestsByClass($cp_id)
-{
-    $test = Test::where('cp_id', $cp_id)->get();
-    return response()->json($test);
-}
+    public function getTestsByClass($cp_id)
+    {
+        $test = Test::where('cp_id', $cp_id)->get();
+        return response()->json($test);
+    }
 
     public function editRegularqueForm($id)
     {

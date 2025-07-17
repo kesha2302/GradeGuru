@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Middleware;
+
 use Illuminate\Support\Facades\Auth;
 
 use Closure;
@@ -16,8 +17,7 @@ class AdminAuthMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-         if (!Auth::guard('admin')->check()) {
-            // If not, redirect to admin login route
+        if (!Auth::guard('admin')->check()) {
             return redirect('/AdminLogin');
         }
 

@@ -1,18 +1,16 @@
 @extends('AdminPanel.Layouts.main')
 @section('main-section')
-
-
- <div class="container-fluid">
+    <div class="container-fluid">
         <h3>Test Data</h3>
         <hr>
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
 
-                <form class="d-flex"  method="GET" action="{{ url('/Admin/Test') }}">
+                <form class="d-flex" method="GET" action="{{ url('/Admin/Test') }}">
 
                     <input class="form-control me-5 mr-sm-2" type="search" value="{{ $search }}" name="search"
-                        placeholder="Search" aria-label="Search">
+                        placeholder="Search by title" aria-label="Search">
                     <button class="btn btn-dark">Search</button>
                     <span style="margin-left: 10px;">
                         <a href="{{ url('/Admin/Test') }}">
@@ -32,7 +30,7 @@
 
         <div class="card mt-2" style="width:100%">
             <div class="card-body">
-                <div class="table-responsive text-center" >
+                <div class="table-responsive text-center">
                     <table class="table">
                         <thead>
                             <tr>
@@ -47,11 +45,11 @@
                         <tbody>
                             @foreach ($test as $t)
                                 <tr>
-                                    <td>{{$t->classPrice->title}}-(₹{{$t->classPrice->price}})</td>
-                                    <td>{{$t->title ?: '-'}}</td>
-                                    <td>{{$t->que_type ?: '-'}}</td>
-                                    <td>{{$t->time ?: '-'}} min</td>
-                                    <td>{{$t->pass_marks ?: '-'}}</td>
+                                    <td>{{ $t->classPrice->title }}-(₹{{ $t->classPrice->price }})</td>
+                                    <td>{{ $t->title ?: '-' }}</td>
+                                    <td>{{ $t->que_type ?: '-' }}</td>
+                                    <td>{{ $t->time ?: '-' }} min</td>
+                                    <td>{{ $t->pass_marks ?: '-' }}</td>
                                     <td>
                                         <a href="{{ route('test.delete', ['id' => $t->test_id]) }}">
                                             <button class="btn btn-danger m-2">Delete</button>
@@ -77,5 +75,4 @@
         </div>
 
     </div>
-
 @endsection

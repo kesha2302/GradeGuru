@@ -1,7 +1,6 @@
 @extends('AdminPanel.Layouts.main')
 
 @section('main-section')
-
     <div class='mt-3 container'>
         <h3>Inquiry Details</h3>
         <hr>
@@ -10,9 +9,8 @@
             <div class="container-fluid">
 
                 <form class="d-flex" action="" method="GET">
-                    <input class="form-control me-5 mr-sm-2" type="search"
-                        value="{{ request()->search }}" name="search" placeholder="Search by title"
-                        aria-label="Search" >
+                    <input class="form-control me-5 mr-sm-2" type="search" value="{{ request()->search }}" name="search"
+                        placeholder="Search by name" aria-label="Search">
                     <button class="btn btn-dark">Search</button>
                     <span style="margin-left: 10px;">
                         <a href="{{ url('/Admin/Inquiry') }}">
@@ -24,7 +22,7 @@
 
         </nav>
 
-         <div class="card mt-2" style="width:100%;">
+        <div class="card mt-2" style="width:100%;">
             <div class="card-body">
                 <div class="table-responsive text-center">
                     <table class="table table-bordered">
@@ -42,7 +40,7 @@
                                     <td>{{ $inq->inquiry_id }}</td>
                                     <td>{{ $inq->name ?: '-' }}</td>
                                     <td>{{ $inq->email ?: '-' }}</td>
-                                     <td>{{ $inq->message ?: '-' }}</td>
+                                    <td>{{ $inq->message ?: '-' }}</td>
                                 </tr>
                             @empty
                                 <tr>
@@ -57,6 +55,4 @@
             </div>
         </div>
     </div>
-
-
-        @endsection
+@endsection

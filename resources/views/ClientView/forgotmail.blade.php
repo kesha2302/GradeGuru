@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Reset Password</title>
 </head>
+
 <body>
     <h2>{{ $data['title'] }}</h2>
     <p>{{ $data['body'] }}</p>
@@ -13,4 +15,5 @@
     </p>
     <p>If you did not request a password reset, ignore this mail.</p>
 </body>
+
 </html>

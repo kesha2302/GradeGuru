@@ -39,13 +39,6 @@ class DemoQuestionTestController extends Controller
         $duration = session($durationKey);
         $elapsed = time() - $start;
 
-        // Log::info('Timer Check', [
-        //     'start_time' => $start,
-        //     'duration' => $duration,
-        //     'elapsed' => $elapsed,
-        //     'time_now' => time(),
-        // ]);
-
         if ($elapsed >= $duration) {
             return redirect()->route('demotest.result', ['demo_id' => $demo_id]);
         }

@@ -1,38 +1,41 @@
 @extends('AdminPanel.Layouts.main')
 
 @section('main-section')
-<div class="card mt-5 mx-auto shadow-lg" style="width:50rem;">
-    <div class="card-header mt-2">
-        <h3>{{ $title }}</h3>
-    </div>
+    <div class="card mt-5 mx-auto shadow-lg" style="width:50rem;">
+        <div class="card-header mt-2">
+            <h3>{{ $title }}</h3>
+        </div>
 
-    <div class="card-body">
-      <form action="{{ $url }}" enctype="multipart/form-data" method="POST">
+        <div class="card-body">
+            <form action="{{ $url }}" enctype="multipart/form-data" method="POST">
 
-            @csrf
+                @csrf
 
-            <div class="mb-3">
-                <label class="form-label">Title:</label>
-                <input type="text" name="title" class="form-control" value="{{ $aboutdetail->title ?? '' }}" />
-            </div>
+                <div class="mb-3">
+                    <label class="form-label">Title:</label>
+                    <input type="text" name="title" class="form-control" value="{{ $aboutdetail->title ?? '' }}" />
+                    @error('title')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                </div>
 
-            <div class="mb-3">
-                <label class="form-label">Description1:</label>
-                <textarea name="description1" rows="4" class="form-control">{{ $aboutdetail->description1 ?? '' }}</textarea>
-                @error('description1')
-                    <div class="text-danger">{{ $message }}</div>
-                @enderror
-            </div>
+                <div class="mb-3">
+                    <label class="form-label">Description1:</label>
+                    <textarea name="description1" rows="4" class="form-control">{{ $aboutdetail->description1 ?? '' }}</textarea>
+                    @error('description1')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                </div>
 
 
-            <div class="mb-3">
-                <label class="form-label">Description2:</label>
-                <textarea name="description2" rows="4" class="form-control">{{ $aboutdetail->description2 ?? '' }}</textarea>
-                @error('description2')
-                    <div class="text-danger">{{ $message }}</div>
-                @enderror
-            </div>
-{{--
+                <div class="mb-3">
+                    <label class="form-label">Description2:</label>
+                    <textarea name="description2" rows="4" class="form-control">{{ $aboutdetail->description2 ?? '' }}</textarea>
+                    @error('description2')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                {{--
             <div class="mb-3">
                 <label for="formFile" class="form-label">Image</label>
                 @if (!empty($bannerdetail->image))
@@ -47,10 +50,10 @@
                 @enderror
             </div> --}}
 
-            <div class="text-center">
-                 <button type="submit" class="btn btn-dark">Submit</button>
-            </div>
-        </form>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-dark">Submit</button>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 @endsection

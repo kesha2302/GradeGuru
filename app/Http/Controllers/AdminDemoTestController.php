@@ -80,6 +80,17 @@ class AdminDemoTestController extends Controller
     public function demotestupdate($id, Request $request)
     {
         $demotest = DemoTest::find($id);
+
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|string',
+            'time' => 'required|string',
+            'pass_marks' => 'required|integer',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
         $demotest->title = $request->input('title');
         $demotest->time = $request->input('time');
         $demotest->pass_marks = $request->input('pass_marks');

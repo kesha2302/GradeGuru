@@ -1,7 +1,6 @@
 @extends('AdminPanel.Layouts.main')
 
 @section('main-section')
-
     <div class='mt-3 container'>
         <h3>Banner Details</h3>
         <hr>
@@ -10,9 +9,8 @@
             <div class="container-fluid">
 
                 <form class="d-flex" action="{{ route('admin.banner') }}" method="GET">
-                    <input class="form-control me-5 mr-sm-2" type="search"
-                        value="{{ request()->search }}" name="search" placeholder="Search by title"
-                        aria-label="Search" >
+                    <input class="form-control me-5 mr-sm-2" type="search" value="{{ request()->search }}" name="search"
+                        placeholder="Search by title" aria-label="Search">
                     <button class="btn btn-dark">Search</button>
                     <span style="margin-left: 10px;">
                         <a href="{{ route('admin.banner') }}">
@@ -38,7 +36,7 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th style="width: 5%;">Id</th>
+                                <th style="width: 5%;">No.</th>
                                 <th style="width: 15%;">Image</th>
                                 <th style="width: 20%;">Title</th>
                                 <th style="width: 35%;">Description</th>
@@ -67,7 +65,8 @@
                             @empty
                                 <tr>
                                     <td colspan="6">
-                                        <div class="text-danger fw-bold">No banners found for "{{ request()->search }}"</div>
+                                        <div class="text-danger fw-bold">No banners found for "{{ request()->search }}"
+                                        </div>
                                     </td>
                                 </tr>
                             @endforelse
@@ -77,5 +76,4 @@
             </div>
         </div>
     </div>
-
 @endsection

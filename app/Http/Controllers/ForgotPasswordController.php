@@ -59,17 +59,17 @@ class ForgotPasswordController extends Controller
         }
     }
 
- public function resetpasswordload(Request $request)
+    public function resetpasswordload(Request $request)
     {
 
-        $resetdata =ResetPasswordtoken::where('token', $request->token)->first();
+        $resetdata = ResetPasswordtoken::where('token', $request->token)->first();
 
         Log::info("Resetdata= " . json_encode($resetdata));
 
         if ($resetdata) {
 
             $email = $resetdata->email;
-        Log::info("Email= " . $email);
+            Log::info("Email= " . $email);
 
             $user = User::where('email', $resetdata->email)->first();
             Log::info("user= " . json_encode($user));
@@ -100,5 +100,4 @@ class ForgotPasswordController extends Controller
 
         return redirect('/login')->with('success', 'Your password has been reset successfully. Please log in.');
     }
-
 }

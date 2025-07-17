@@ -1,18 +1,16 @@
 @extends('AdminPanel.Layouts.main')
 @section('main-section')
-
-
- <div class="container-fluid">
+    <div class="container-fluid">
         <h3>SuperQuestions Data</h3>
         <hr>
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
 
-                <form class="d-flex"  method="GET" action="{{ url('/Admin/SuperQuestions') }}">
+                <form class="d-flex" method="GET" action="{{ url('/Admin/SuperQuestions') }}">
 
                     <input class="form-control me-5 mr-sm-2" type="search" value="{{ $search }}" name="search"
-                        placeholder="Search" aria-label="Search">
+                        placeholder="Search by question" aria-label="Search">
                     <button class="btn btn-dark">Search</button>
                     <span style="margin-left: 10px;">
                         <a href="{{ url('/Admin/SuperQuestions') }}">
@@ -25,10 +23,6 @@
                         class="btn btn-dark btn-circle font-rights me-md-2">
                         </i> Add
                     </button>
-                    {{-- <a href="{{ url('/Admin/ClasspriceTrashdata') }}">
-                        <button class="btn btn-danger ml-2">
-                            Trashed Data</button>
-                    </a> --}}
                 </div>
             </div>
         </nav>
@@ -36,7 +30,7 @@
 
         <div class="card mt-2" style="width:100%">
             <div class="card-body">
-                <div class="table-responsive text-center" >
+                <div class="table-responsive text-center">
                     <table class="table">
                         <thead>
                             <tr>
@@ -55,9 +49,9 @@
                         <tbody>
                             @foreach ($superque as $sq)
                                 <tr>
-                                    <td>{{ $sq->classPrice->title}}-(₹{{ $sq->classPrice->price}})</td>
-                                    <td>{{ $sq->tests->title}}</td>
-                                    <td>{{$sq->question_no ?: '-'}}</td>
+                                    <td>{{ $sq->classPrice->title }}-(₹{{ $sq->classPrice->price }})</td>
+                                    <td>{{ $sq->tests->title }}</td>
+                                    <td>{{ $sq->question_no ?: '-' }}</td>
                                     <td style="width: 25%; text-align: justify;">
                                         @if (!empty($sq->question))
                                             <div class="description-container">
@@ -79,11 +73,11 @@
                                             -
                                         @endif
                                     </td>
-                                    <td>{{$sq->option1 ?: '-'}}</td>
-                                    <td>{{$sq->option2 ?: '-'}}</td>
-                                    <td>{{$sq->option3 ?: '-'}}</td>
-                                    <td>{{$sq->option4 ?: '-'}}</td>
-                                    <td>{{$sq->answer ?: '-'}}</td>
+                                    <td>{{ $sq->option1 ?: '-' }}</td>
+                                    <td>{{ $sq->option2 ?: '-' }}</td>
+                                    <td>{{ $sq->option3 ?: '-' }}</td>
+                                    <td>{{ $sq->option4 ?: '-' }}</td>
+                                    <td>{{ $sq->answer ?: '-' }}</td>
                                     <td>
                                         <a href="{{ route('superque.delete', ['id' => $sq->sq_id]) }}">
                                             <button class="btn btn-danger m-2">Delete</button>
@@ -110,7 +104,7 @@
 
     </div>
 
-     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
             $('.more-btn').on('click', function() {
@@ -129,5 +123,4 @@
             });
         });
     </script>
-
 @endsection

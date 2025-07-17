@@ -1,7 +1,6 @@
 @extends('AdminPanel.Layouts.main')
 
 @section('main-section')
-
     <div class='mt-3 container'>
         <h3>Result Details</h3>
         <hr>
@@ -10,9 +9,8 @@
             <div class="container-fluid">
 
                 <form class="d-flex" action="" method="GET">
-                    <input class="form-control me-5 mr-sm-2" type="search"
-                        value="{{ request()->search }}" name="search" placeholder="Search by name"
-                        aria-label="Search" >
+                    <input class="form-control me-5 mr-sm-2" type="search" value="{{ request()->search }}" name="search"
+                        placeholder="Search by name" aria-label="Search">
                     <button class="btn btn-dark">Search</button>
                     <span style="margin-left: 10px;">
                         <a href="{{ url('/Admin/Result') }}">
@@ -23,7 +21,7 @@
 
         </nav>
 
-         <div class="card mt-2" style="width:100%;">
+        <div class="card mt-2" style="width:100%;">
             <div class="card-body">
                 <div class="table-responsive text-center">
                     <table class="table table-bordered">
@@ -44,15 +42,15 @@
                                     <td>{{ $result->result_id }}</td>
                                     <td>{{ $result->users->name ?: '-' }}</td>
                                     <td>{{ $result->classPrice->title ?: '-' }}</td>
-                                     <td>{{ $result->test->title ?: '-' }}</td>
-                                     <td>{{ $result->test->que_type ?: '-' }}</td>
-                                     <td>{{ $result->result ?: '-' }}</td>
-                                     <td>{{ $result->correct ?: '-' }}</td>
+                                    <td>{{ $result->test->title ?: '-' }}</td>
+                                    <td>{{ $result->test->que_type ?: '-' }}</td>
+                                    <td>{{ $result->result ?: '-' }}</td>
+                                    <td>{{ $result->correct ?: '-' }}</td>
                                 </tr>
                             @empty
                                 <tr>
                                     <td colspan="6">
-                                        <div class="text-dark fw-bold">No Result found  "{{ request()->search }}"</div>
+                                        <div class="text-dark fw-bold">No Result found "{{ request()->search }}"</div>
                                     </td>
                                 </tr>
                             @endforelse
@@ -62,6 +60,4 @@
             </div>
         </div>
     </div>
-
-
-        @endsection
+@endsection

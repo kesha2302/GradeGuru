@@ -20,7 +20,7 @@ class PaymentConfirmationToUser extends Mailable
      */
     public function __construct($booking)
     {
-         $this->booking = $booking;
+        $this->booking = $booking;
     }
 
     /**
@@ -44,7 +44,7 @@ class PaymentConfirmationToUser extends Mailable
     }
 
 
-     public function build()
+    public function build()
     {
         return $this->with(['booking' => $this->booking])
             ->withSwiftMessage(function ($message) {

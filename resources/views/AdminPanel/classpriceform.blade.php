@@ -35,7 +35,7 @@
                         <input type="text" name="title" class="form-control" value="{{ $class_price->title }}"
                             placeholder="Title of Class" />
                         @error('title')
-                            {{ $message }}
+                            <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
 
@@ -44,7 +44,7 @@
                         <input type="text" name="feature" class="form-control" value="{{ $class_price->feature }}"
                             placeholder="Features" />
                         @error('feature')
-                            {{ $message }}
+                            <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
 
@@ -54,7 +54,7 @@
                         <input type="text" name="price" class="form-control" value="{{ $class_price->price }}"
                             placeholder="Price" />
                         @error('price')
-                            {{ $message }}
+                            <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
 

@@ -109,7 +109,7 @@
                             </a>
                         </li>
 
-                         <li class="sidebar-item">
+                        <li class="sidebar-item">
                             <a class="sidebar-link primary-hover-bg justify-content-between"
                                 href="{{ url('/Admin/Test') }}" aria-expanded="false">
                                 <div class="d-flex align-items-center gap-6">
@@ -149,7 +149,7 @@
                             </a>
                         </li>
 
-                         <li class="sidebar-item">
+                        <li class="sidebar-item">
                             <a class="sidebar-link primary-hover-bg justify-content-between"
                                 href="{{ url('/Admin/DemoTest') }}" aria-expanded="false">
                                 <div class="d-flex align-items-center gap-6">
@@ -219,8 +219,7 @@
                                 href="{{ url('/Admin/Booking') }}" aria-expanded="false">
                                 <div class="d-flex align-items-center gap-6">
                                     <span class="d-flex">
-                                        <iconify-icon icon="mdi:clipboard-text-clock-outline"
-                                            class=""></iconify-icon>
+                                        <iconify-icon icon="mdi:calendar-check" class=""></iconify-icon>
                                     </span>
                                     <span class="hide-menu">Booking Details</span>
                                 </div>
@@ -231,9 +230,6 @@
                     </ul>
                     <div class=>
                         <div class="flex-shrink-0">
-                            {{-- <h6 class="fw-semibold fs-4 mb-6 text-dark w-75 lh-sm">Check Pro Version</h6>
-              <a href="https://www.wrappixel.com/templates/spike-bootstrap-admin-dashboard/?ref=376" target="_blank"
-                class="btn btn-secondary fs-2 fw-semibold lh-sm">Check</a> --}}
                         </div>
                         <div class="unlimited-access-img">
                             <img src="../assets/images/backgrounds/sidebar-buynow-bg.png" alt=""
@@ -254,33 +250,6 @@
                     <!--  Header Start -->
                     <header class="app-header">
                         <nav class="navbar navbar-expand-lg navbar-light">
-                            <ul class="navbar-nav">
-                                <li class="nav-item d-block d-xl-none">
-                                    <a class="nav-link sidebartoggler " id="headerCollapse"
-                                        href="javascript:void(0)">
-                                        <i class="ti ti-menu-2"></i>
-                                    </a>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link " href="javascript:void(0)" id="drop1"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                        <iconify-icon icon="solar:bell-linear" class="fs-6"></iconify-icon>
-                                        <div class="notification bg-primary rounded-circle"></div>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-animate-up" aria-labelledby="drop1">
-                                        <div class="message-body">
-                                            <a href="javascript:void(0)" class="dropdown-item">
-                                                Item 1
-                                            </a>
-                                            <a href="javascript:void(0)" class="dropdown-item">
-                                                Item 2
-                                            </a>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-
-
 
                             <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
 
@@ -290,7 +259,7 @@
 
                                         @auth('admin')
                                             <form action="{{ route('adminlogout') }}" method="POST"
-                                                style="display: inline;">
+                                                style="display: inline; margin-right: 20px;">
                                                 @csrf
                                                 <button type="submit" class="btn btn-danger">
                                                     <i class="fa fa-sign-out-alt"></i> Logout

@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Banner extends Model
 {
-     use SoftDeletes;
+    use SoftDeletes;
 
-      protected $table = 'banners';
-      protected $primaryKey = 'banner_id';
+    protected $table = 'banners';
+    protected $primaryKey = 'banner_id';
 
-        protected $fillable = ['title', 'description', 'image'];
+    protected $fillable = ['title', 'description', 'image'];
 
-        public $timestamps = false;    
+    public $timestamps = false;
 }

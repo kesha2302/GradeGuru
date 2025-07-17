@@ -21,27 +21,27 @@ class AdminAuthController extends Controller
     }
 
     public function storeRegister(Request $request)
-{
+    {
 
- $validator = Validator::make($request->all(), [
+        $validator = Validator::make($request->all(), [
 
-        'name' => 'required|string',
-        'email' => 'required|string',
-        'password' => 'required|string',
-    ]);
+            'name' => 'required|string',
+            'email' => 'required|string',
+            'password' => 'required|string',
+        ]);
 
-    if ($validator->fails()) {
-        return redirect()->back()->withErrors($validator)->withInput();
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $register = new AdminRegister();
+        $register->name = $request->input('name');
+        $register->email = $request->input('email');
+        $register->password = Hash::make($request->input('password'));
+        $register->save();
+
+        return redirect('/AdminLogin')->with('success', 'Register added successfully!');
     }
-
-    $register = new AdminRegister();
-    $register->name = $request->input('name');
-    $register->email = $request->input('email');
-    $register->password =Hash::make($request->input('password'));
-    $register->save();
-
-    return redirect('/AdminLogin')->with('success', 'Register added successfully!');
-}
 
     public function loginstore(Request $request)
     {
@@ -52,8 +52,8 @@ class AdminAuthController extends Controller
 
         if ($validator->fails()) {
             return redirect()->back()
-            ->withErrors($validator)
-            ->withInput();
+                ->withErrors($validator)
+                ->withInput();
         }
         $credentials = $request->only('email', 'password');
 

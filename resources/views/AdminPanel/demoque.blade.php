@@ -1,18 +1,16 @@
 @extends('AdminPanel.Layouts.main')
 @section('main-section')
-
-
- <div class="container-fluid">
+    <div class="container-fluid">
         <h3>DemoQuestions Data</h3>
         <hr>
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
 
-                <form class="d-flex"  method="GET" action="{{ url('/Admin/DemoQuestion') }}">
+                <form class="d-flex" method="GET" action="{{ url('/Admin/DemoQuestion') }}">
 
                     <input class="form-control me-5 mr-sm-2" type="search" value="{{ $search }}" name="search"
-                        placeholder="Search" aria-label="Search">
+                        placeholder="Search by question" aria-label="Search">
                     <button class="btn btn-dark">Search</button>
                     <span style="margin-left: 10px;">
                         <a href="{{ url('/Admin/DemoQuestion') }}">
@@ -32,7 +30,7 @@
 
         <div class="card mt-2" style="width:100%">
             <div class="card-body">
-                <div class="table-responsive text-center" >
+                <div class="table-responsive text-center">
                     <table class="table">
                         <thead>
                             <tr>
@@ -50,8 +48,8 @@
                         <tbody>
                             @foreach ($demoque as $dq)
                                 <tr>
-                                    <td>{{ $dq->demotest->title}}-({{ $dq->demotest->classNames->standard}})</td>
-                                    <td>{{$dq->question_no ?: '-'}}</td>
+                                    <td>{{ $dq->demotest->title }}-({{ $dq->demotest->classNames->standard }})</td>
+                                    <td>{{ $dq->question_no ?: '-' }}</td>
                                     <td style="width: 25%; text-align: justify;">
                                         @if (!empty($dq->question))
                                             <div class="description-container">
@@ -73,11 +71,11 @@
                                             -
                                         @endif
                                     </td>
-                                    <td>{{$dq->option1 ?: '-'}}</td>
-                                    <td>{{$dq->option2 ?: '-'}}</td>
-                                    <td>{{$dq->option3 ?: '-'}}</td>
-                                    <td>{{$dq->option4 ?: '-'}}</td>
-                                    <td>{{$dq->answer ?: '-'}}</td>
+                                    <td>{{ $dq->option1 ?: '-' }}</td>
+                                    <td>{{ $dq->option2 ?: '-' }}</td>
+                                    <td>{{ $dq->option3 ?: '-' }}</td>
+                                    <td>{{ $dq->option4 ?: '-' }}</td>
+                                    <td>{{ $dq->answer ?: '-' }}</td>
                                     <td>
                                         <a href="{{ route('demoque.delete', ['id' => $dq->demoque_id]) }}">
                                             <button class="btn btn-danger m-2">Delete</button>
@@ -104,7 +102,7 @@
 
     </div>
 
-     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
             $('.more-btn').on('click', function() {
@@ -123,5 +121,4 @@
             });
         });
     </script>
-
 @endsection

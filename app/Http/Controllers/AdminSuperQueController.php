@@ -99,6 +99,21 @@ class AdminSuperQueController extends Controller
 
     public function superqueupdate($id, Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'que_no' => 'required|integer',
+            'question' => 'required|string',
+            'option1' => 'required|string',
+            'option2' => 'required|string',
+            'option3' => 'required|string',
+            'option4' => 'required|string',
+            'answer' => 'required|string',
+
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
         $superque = Superquestion::find($id);
         $superque->question_no = $request->input('que_no');
         $superque->question = $request->input('question');
