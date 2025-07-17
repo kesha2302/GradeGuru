@@ -133,7 +133,7 @@ Route::post('/profile/update', [ProfileController::class, 'update'])->name('prof
 Route::middleware('auth')->group(function () {
     Route::get('/plans/purchased', [PlanController::class, 'purchased'])->name('plans.purchased');
 });
-
+Route::get('/profile/progress', [ProfileController::class, 'progress'])->name('profile.progressreport');
 
 // Cart Controller
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');

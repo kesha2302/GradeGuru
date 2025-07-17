@@ -55,7 +55,7 @@
     <div class="container-fluid bg-light position-relative shadow">
         <nav class="navbar navbar-expand-lg bg-light navbar-light fixed-top py-3 py-lg-0 px-0 px-lg-5">
             <a href="" class="navbar-brand font-weight-bold text-secondary" style="font-size: 50px">
-                <img src="{{ asset('ClientView/img/guru.png') }}" height="95" width="110">
+                <img src="{{ asset('ClientView/img/guru.png') }}" height="95" width="90">
 
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -87,10 +87,10 @@
 
 
                 @guest
-                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <a href="{{ route('register') }}" class="btn btn-outline-primary me-md-2">Register</a>
-                    <a href="{{ route('login') }}" class="btn btn-outline-secondary ">Login</a>
-                </div>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a href="{{ route('register') }}" class="btn btn-outline-primary me-md-2">Register</a>
+                        <a href="{{ route('login') }}" class="btn btn-outline-secondary ">Login</a>
+                    </div>
                 @endguest
 
                 @auth
@@ -101,8 +101,10 @@
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 <h3> <i class="fas fa-user-circle mt-3"></i> </h3>
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="profileDropdown"  style="right:80px;">
+                            <ul class="dropdown-menu" aria-labelledby="profileDropdown" style="right:80px;">
                                 <li><a class="dropdown-item" href="{{ route('profile.edit') }}">Edit Profile</a></li>
+                                <li><a class="dropdown-item" href="{{ route('profile.progressreport') }}">Progress
+                                        Report</a></li>
                                 <li><a class="dropdown-item" href="{{ route('plans.purchased') }}">Purchased Plan</a></li>
                                 <li>
                                     <form method="POST" action="{{ route('logout') }}">

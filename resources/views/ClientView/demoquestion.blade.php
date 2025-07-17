@@ -5,14 +5,6 @@
     <div class="mx-auto bg-white shadow-lg rounded-5 p-5 animate__animated animate__fadeIn" style="max-width: 750px;">
 
 
-{{-- @php
-    $duration = session("test_duration_{$test->demo_id}", 90); // in seconds
-    $start = session("test_start_time_{$test->demo_id}", time());
-    $elapsed = time() - $start;
-    $timeLeft = max($duration - $elapsed, 0);
-    $initialMin = str_pad(floor($timeLeft / 60), 2, '0', STR_PAD_LEFT);
-    $initialSec = str_pad($timeLeft % 60, 2, '0', STR_PAD_LEFT);
-@endphp --}}
 @php
     $duration = session("test_duration_{$test->demo_id}", 90); // seconds
     $start = session("test_start_time_{$test->demo_id}", time());
@@ -28,13 +20,6 @@
         <span class="text-muted">Question:</span>
         <span class="text-primary">{{ $currentIndex + 1 }}</span>
     </h4>
-    {{-- <span class="badge rounded-pill bg-primary px-3 py-2 fs-6 shadow-sm text-white">
-    {{ $currentIndex + 1 }} of {{ $totalQuestions }}
-</span>
-
- <span class="badge bg-danger fs-6 px-3 py-2 text-white rounded-pill shadow-sm" id="timer">
-                    {{ $initialMin }}:{{ $initialSec }}
-                </span> --}}
                 <div class="d-flex align-items-center gap-2">
     <span class="badge rounded-pill bg-primary px-3 py-2 fs-6 shadow-sm text-white">
         {{ $currentIndex + 1 }} of {{ $totalQuestions }}

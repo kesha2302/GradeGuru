@@ -11,14 +11,28 @@
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
 
+                    @if (session('login_error'))
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ session('login_error') }}
+    </div>
+@endif
+
+
                     <div class="form-group mb-4">
                         <label>Email Address</label>
-                        <input type="email" name="email" class="form-control" required autofocus>
+                        <input type="email" name="email" class="form-control">
+                        @error('email')
+    <p class="text-danger">{{ $message }}</p>
+@enderror
+
                     </div>
 
                     <div class="form-group mb-2">
                         <label>Password</label>
-                        <input type="password" name="password" class="form-control" required>
+                        <input type="password" name="password" class="form-control">
+                        @error('password')
+    <p class="text-danger">{{ $message }}</p>
+@enderror
                     </div>
 
 

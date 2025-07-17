@@ -43,11 +43,8 @@
                             </div>
 
                             <div class="mt-auto">
-                                {{-- <button onclick="addToCart({{ $cp->cp_id }})" class="btn btn-dark w-100">
-                                    Add to cart
-                                </button> --}}
                                 @auth
-                                    <button onclick="addToCart({{ $cp->cp_id }})" class="btn btn-dark w-100">
+                                    <button onclick="addToCart({{ $cp->cp_id }})" class="btn btn-primary w-100">
                                         Add to cart
                                     </button>
                                 @endauth
@@ -74,7 +71,6 @@
                     <div class="card border-warning border-top border-3 shadow rounded-4 h-100 hover-shadow">
                         <div class="card-body d-flex flex-column">
 
-                            <!-- Test Label -->
                             <span
                                 class="badge bg-light border border-warning mb-2 w-fit px-3 py-2 rounded-pill text-uppercase d-flex align-items-center gap-1 shadow-sm">
                                 <iconify-icon icon="mdi:star" width="18" height="18"
@@ -82,7 +78,6 @@
                                 <span class="fw-semibold text-dark">Trial Test</span>
                             </span>
 
-                            <!-- Test Info -->
                             <h5 class="fw-bold text-dark mb-2">Mock {{ $dt->title }}</h5>
                             <p class="text-muted mb-1">
                                 <iconify-icon icon="mdi:clock-outline" width="18"
@@ -91,15 +86,28 @@
                             </p>
 
                             <p class="text-muted small">Get a quick feel of the real test environment. No pressure!</p>
-
                             <!-- CTA -->
                             <div class="mt-auto">
                                 @auth
-                                    <a href="{{ route('demoquestion.test', $dt->demo_id) }}" class="btn btn-primary w-100 rounded-3">
-    <iconify-icon icon="mdi:play-circle-outline" width="20" class="me-1 icon-align"></iconify-icon>
-    Try Test
-</a>
+                                    @php
+                                        $userAttempts = $attempts[$dt->demo_id] ?? 0;
+                                    @endphp
 
+                                    @if ($userAttempts < 3)
+                                        <a href="{{ route('demoquestion.test', $dt->demo_id) }}"
+                                            class="btn btn-primary w-100 rounded-3">
+                                            <iconify-icon icon="mdi:play-circle-outline" width="20"
+                                                class="me-1 icon-align"></iconify-icon>
+                                            Try Test
+                                        </a>
+                                    @else
+                                        <button type="button" class="btn btn-outline-danger w-100 rounded-3"
+                                            onclick="alert('You have already taken this trial test 3 times. Please purchase a package to continue.')">
+                                            <iconify-icon icon="mdi:alert-circle-outline" width="20"
+                                                class="me-1 icon-align"></iconify-icon>
+                                            Trial Limit Reached
+                                        </button>
+                                    @endif
                                 @endauth
 
                                 @guest
@@ -109,6 +117,8 @@
                                     </a>
                                 @endguest
                             </div>
+
+
                         </div>
                     </div>
                 </div>

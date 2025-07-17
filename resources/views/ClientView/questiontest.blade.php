@@ -196,7 +196,7 @@
                 <span class="text-muted">Question:</span> <span class="text-primary">{{ $currentIndex + 1 }}</span>
             </h4>
             <div class="d-flex gap-3">
-                <span class="badge bg-gradient fs-6 px-4 py-2 rounded-pill shadow-sm">
+                <span class="badge bg-primary text-white fs-6 px-4 py-2 rounded-pill shadow-sm">
                     {{ $currentIndex + 1 }} of {{ $totalQuestions }}
                 </span>
                 <span class="badge bg-danger fs-6 px-3 py-2 text-white rounded-pill shadow-sm" id="timer">

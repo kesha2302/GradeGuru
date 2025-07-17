@@ -105,7 +105,7 @@
                         <div class="d-flex align-items-center gap-2">
                             <i class="bi bi-lightbulb-fill text-warning fs-5"></i>
                             <span class="text-secondary fw-semibold">Correct Answer:</span>
-                            <span class="ms-2">{{ $correctLabel }}. {{ $correctText }}</span>
+                            <span class="ms-2">{{ $correctLabel }}</span>
                         </div>
                     @endunless
                 </li>

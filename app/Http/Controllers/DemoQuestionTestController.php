@@ -12,60 +12,58 @@ use Illuminate\Support\Facades\Auth;
 class DemoQuestionTestController extends Controller
 {
 
-public function questiontest($demo_id, Request $request)
-{
-    $test = DemoTest::findOrFail($demo_id);
-    $questions = DemoQuestion::where('demo_id', $demo_id)->orderBy('question_no')->get()->values();
-    $currentIndex = (int) $request->input('index', 0);
+    public function questiontest($demo_id, Request $request)
+    {
+        $test = DemoTest::findOrFail($demo_id);
+        $questions = DemoQuestion::where('demo_id', $demo_id)->orderBy('question_no')->get()->values();
+        $currentIndex = (int) $request->input('index', 0);
 
-    if ($currentIndex < 0) {
-        $currentIndex = 0;
-    } elseif ($currentIndex >= $questions->count()) {
-        $currentIndex = $questions->count() - 1;
+        if ($currentIndex < 0) {
+            $currentIndex = 0;
+        } elseif ($currentIndex >= $questions->count()) {
+            $currentIndex = $questions->count() - 1;
+        }
+
+        $startKey = "test_start_time_$demo_id";
+        $durationKey = "test_duration_$demo_id";
+
+        if (!session()->has($startKey)) {
+            session()->put($startKey, time());
+        }
+
+        if (!session()->has($durationKey)) {
+            session()->put($durationKey, $test->time * 60);
+        }
+
+        $start = session($startKey);
+        $duration = session($durationKey);
+        $elapsed = time() - $start;
+
+        // Log::info('Timer Check', [
+        //     'start_time' => $start,
+        //     'duration' => $duration,
+        //     'elapsed' => $elapsed,
+        //     'time_now' => time(),
+        // ]);
+
+        if ($elapsed >= $duration) {
+            return redirect()->route('demotest.result', ['demo_id' => $demo_id]);
+        }
+
+        $question = $questions[$currentIndex];
+        $totalQuestions = $questions->count();
+        $answers = session()->get('demo_answers', []);
+        $selected = $answers[$question->demoque_id] ?? null;
+
+        return view('ClientView.demoquestion', compact(
+            'test',
+            'questions',
+            'question',
+            'currentIndex',
+            'totalQuestions',
+            'selected'
+        ));
     }
-
-    // ✅ Check if timer already started
-    $startKey = "test_start_time_$demo_id";
-    $durationKey = "test_duration_$demo_id";
-
-    if (!session()->has($startKey)) {
-        session()->put($startKey, time());
-    }
-
-    if (!session()->has($durationKey)) {
-        session()->put($durationKey, $test->time * 60); // in seconds
-    }
-
-    $start = session($startKey);
-    $duration = session($durationKey);
-    $elapsed = time() - $start;
-
-    // ✅ Debug log (check storage/logs/laravel.log)
-    Log::info('Timer Check', [
-        'start_time' => $start,
-        'duration' => $duration,
-        'elapsed' => $elapsed,
-        'time_now' => time(),
-    ]);
-
-    if ($elapsed >= $duration) {
-        return redirect()->route('demotest.result', ['demo_id' => $demo_id]);
-    }
-
-    $question = $questions[$currentIndex];
-    $totalQuestions = $questions->count();
-    $answers = session()->get('demo_answers', []);
-    $selected = $answers[$question->demoque_id] ?? null;
-
-    return view('ClientView.demoquestion', compact(
-        'test',
-        'questions',
-        'question',
-        'currentIndex',
-        'totalQuestions',
-        'selected'
-    ));
-}
 
 
 
@@ -130,7 +128,7 @@ public function questiontest($demo_id, Request $request)
         $passMarks = $test->pass_marks;
         $status = $correct >= $passMarks ? 'Pass' : 'Fail';
 
-         DemoResult::create([
+        DemoResult::create([
             'user_id'         => $user->id,
             'demo_id'         => $test->demo_id,
             'result'          => $status,
