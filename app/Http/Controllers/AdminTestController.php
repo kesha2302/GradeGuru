@@ -46,7 +46,7 @@ class AdminTestController extends Controller
             'class_price' => 'required|exists:class_prices,cp_id',
             'title' => 'required|string',
             'que_type' => 'required|string',
-            'time' => 'required|string',
+            'time' => 'required|integer',
             'pass_marks' => 'required|integer',
 
         ]);
@@ -85,7 +85,7 @@ class AdminTestController extends Controller
         $validator = Validator::make($request->all(), [
             'title' => 'required|string',
             'que_type' => 'required|string',
-            'time' => 'required|string',
+            'time' => 'required|integer',
             'pass_marks' => 'required|integer',
 
         ]);

@@ -75,7 +75,7 @@
                                 class="badge bg-light border border-warning mb-2 w-fit px-3 py-2 rounded-pill text-uppercase d-flex align-items-center gap-1 shadow-sm">
                                 <iconify-icon icon="mdi:star" width="18" height="18"
                                     style="color: #ffc107;"></iconify-icon>
-                                <span class="fw-semibold text-dark">Trial Test</span>
+                                <span class="fw-semibold text-dark">Free Test</span>
                             </span>
 
                             <h5 class="fw-bold text-dark mb-2">Mock {{ $dt->title }}</h5>
@@ -162,8 +162,11 @@
             success: function(response) {
                 alert(response.message);
                 let badge = $('#cart-badge');
+
                 badge.text(response.totalItems);
-                badge.removeClass('d-none');
+                if (badge.hasClass('d-none')) {
+                    badge.removeClass('d-none');
+                }
             },
             error: function(xhr) {
                 alert('Error: ' + xhr.responseJSON.message);

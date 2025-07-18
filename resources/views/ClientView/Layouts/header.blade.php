@@ -118,15 +118,15 @@
                         <!-- Cart Icon -->
                         <div class="cart-wrapper position-relative">
                             <a class="nav-link p-0" href="{{ route('cart.index') }}">
-                                <h3> <i class="fas fa-shopping-cart mt-3 "></i></h3>
-                                @if (session('cart') && count(session('cart')) > 0)
-                                    <span id="cart-badge"
-                                        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                        {{ count(session('cart')) }}
-                                    </span>
-                                @endif
+                                <h3><i class="fas fa-shopping-cart mt-3"></i></h3>
+                                <span id="cart-badge"
+                                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger {{ session('cart') && count(session('cart')) > 0 ? '' : 'd-none' }}">
+                                    {{ session('cart') ? count(session('cart')) : 0 }}
+                                </span>
                             </a>
                         </div>
+
+
                     </div>
                 @endauth
 

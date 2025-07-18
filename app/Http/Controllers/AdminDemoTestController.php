@@ -45,7 +45,7 @@ class AdminDemoTestController extends Controller
         $validator = Validator::make($request->all(), [
             'class_names' => 'required|exists:class_names,class_id',
             'title' => 'required|string',
-            'time' => 'required|string',
+            'time' => 'required|integer',
             'pass_marks' => 'required|integer',
         ]);
 
@@ -83,7 +83,7 @@ class AdminDemoTestController extends Controller
 
         $validator = Validator::make($request->all(), [
             'title' => 'required|string',
-            'time' => 'required|string',
+            'time' => 'required|integer',
             'pass_marks' => 'required|integer',
         ]);
 
